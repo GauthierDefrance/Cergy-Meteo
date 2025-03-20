@@ -16,12 +16,25 @@
 
 
     $imageUrl = $data['url'];
-    $imgPath = "../ressources/image_du_jour.png"; 
-    $image = file_get_contents($imageUrl);
-    if ($image === false) {
-        echo "Failed to download image.<br>";
-        print_r(error_get_last());
+    $imgPath = "../ressources/";
+
+    if($data['media_type']=="image"){
+        echo "hey";
+        $imgPath .= "image_du_jour.jpg";
+        $image = file_get_contents($imageUrl);
+        if ($image === false) {
+            echo "Failed";
+            print_r(error_get_last());
+        }
+        file_put_contents($imgPath, $image);
     }
-    file_put_contents($imgPath, $image);
+    elseif($data['media_type']=="video"){
+
+    }
+    else{
+        echo "Catastrophe!";
+    }
+    
+
     
 ?>
