@@ -1,3 +1,2 @@
-<Directory "/www/protected">
-  Require all denied
-</Directory>
+# /www/protected/.htaccess
+Require all denied
