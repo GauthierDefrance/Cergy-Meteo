@@ -13,7 +13,7 @@
     }
 
     $data = json_decode($json, true);
-    
+
     $imageUrl = $data['url'];
     $imgPath = "../ressources/image_du_jour.png"; 
     $image = file_get_contents($imageUrl);

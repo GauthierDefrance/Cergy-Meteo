@@ -3,7 +3,7 @@ require "./include/header.inc.php";
 ?>
 
 <main>
-    <h1>Tittle</h1>
+    <h1>Tech</h1>
     <section>
         <p>Test 1234</p>
     </section>
