@@ -13,8 +13,7 @@
     }
 
     $data = json_decode($json, true);
-
-
+    
     $imageUrl = $data['url'];
     $imgPath = "../ressources/image_du_jour.png"; 
     $image = file_get_contents($imageUrl);
@@ -22,10 +21,5 @@
         echo "Failed to download image.<br>";
         print_r(error_get_last());
     }
-<<<<<<< Updated upstream
-    file_put_contents($imgPath, $image);
-    
-=======
-    file_put_contents($path, $image);
->>>>>>> Stashed changes
+
 ?>
