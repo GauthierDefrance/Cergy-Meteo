@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -17,9 +13,8 @@
 <header>
     <nav class="navigation">
         <ul>
-            <li>Accueil</li>
-            <li>Stats</li>
-            <li>Technique</li>
+            <li><a href="./index.php"><img src="./ressources/icons/home.png" /></a></li>
+            <li><a href="./stats.php"><img src="./ressources/icons/stats.png" /></a></li>
         </ul>
     </nav>
 </header>

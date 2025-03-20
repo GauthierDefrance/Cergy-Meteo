@@ -14,7 +14,6 @@
 
     $data = json_decode($json, true);
 
-
     $imageUrl = $data['url'];
     $imgPath = "../ressources/";
 
