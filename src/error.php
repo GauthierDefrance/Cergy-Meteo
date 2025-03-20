@@ -12,7 +12,6 @@ require "./include/header.inc.php";
         <p>Il semblerait qu'il y a eu une erreur lors de la connexion !</p>
         <p>Erreur : <?= $Error ?></p>
     </section>
-
 </main>
 
 <?php
