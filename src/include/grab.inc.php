@@ -22,6 +22,10 @@
         echo "Failed to download image.<br>";
         print_r(error_get_last());
     }
+<<<<<<< Updated upstream
     file_put_contents($imgPath, $image);
     
+=======
+    file_put_contents($path, $image);
+>>>>>>> Stashed changes
 ?>
