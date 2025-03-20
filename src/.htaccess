@@ -1,3 +1,0 @@
-# /www/protected/.htaccess
-Require all denied
-ErrorDocument 403 /pages/
