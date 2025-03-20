@@ -1,4 +1,3 @@
-<Directory "/www/protected/">
-  Order Allow,Deny
-  Deny from all
+<Directory "/www/protected">
+  Require all denied
 </Directory>
