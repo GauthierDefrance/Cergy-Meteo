@@ -20,7 +20,7 @@ require "./include/header.inc.php";
     <section>
         <h2>Recherche</h2>
 
-        <form action="index.php" method="get">
+        <form class="searchbox" action="index.php" method="get">
             <input type="search" name="region" placeholder="Région" />
             <input type="search" name="departement" placeholder="Département" />
             <input type="search" name="Ville" placeholder="Ville" />
