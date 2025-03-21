@@ -43,15 +43,16 @@ section {
 .navigation ul {
 
     height: 60px;
-    align-content: space-around;
+    align-content: center;
+    vertical-align: center;
     list-style-type : none;
     overflow: hidden;
 }
 
 .navigation li {
     border-radius: 5px;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     float: left;
 }
 

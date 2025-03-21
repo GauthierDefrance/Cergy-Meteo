@@ -16,8 +16,8 @@
     <p id="name">Cergy-Méteo</p>
     <nav class="navigation">
         <ul>
-            <li><a href="./index.php"><i class="fa-solid fa-house-chimney fa-2xl"></i></a></li>
-            <li><a href="./stats.php"><i class="fa-solid fa-chart-simple fa-2xl"></i></a></li>
+            <a href="./index.php"><li><i class="fa-solid fa-house-chimney fa-2xl"></i></li></a>
+            <a href="./stats.php"><li><i class="fa-solid fa-chart-simple fa-2xl"></i></li></a>
         </ul>
     </nav>
 </header>
