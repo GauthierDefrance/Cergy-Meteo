@@ -28,7 +28,7 @@ require "./include/header.inc.php";
         ?>
 
         <p><?php echo ("<figcaption class='texte'>".$json['explanation']."</figcaption>");?></p>
-        <p>Source : <a href="https://api.nasa.gov/planetary/apod">Nasa Apod</a></p>
+        <p>Source : <a href="https://api.nasa.gov/">Nasa</a></p>
 
     </section>
 
