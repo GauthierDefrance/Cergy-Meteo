@@ -2,7 +2,95 @@
     text-align: center;
 }
 
+header, footer {
+    background-color: #00b2b2;
+}
+
+body {
+    margin-right: 0;
+    margin-left: 0;
+}
+
 main {
-    margin: 15%;
-    background-color: #f8fdbd;
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: #e8ffff;
+}
+
+section {
+    box-shadow: 5px 5px 5px lightgray;
+    border-radius: 10px;
+    margin: 5%;
+    background-color: #c3f6f6;
+}
+
+
+/*Sert à réduire la taille de l'image du jour*/
+.nasa {
+    max-width: 40%;
+    max-height: 480px;
+}
+
+
+
+/*Sert à la navigation*/
+
+.navigation {
+    text-decoration: none;
+}
+
+.navigation ul {
+
+    height: 60px;
+    align-content: space-around;
+    list-style-type : none;
+    overflow: hidden;
+}
+
+.navigation li {
+    border-radius: 5px;
+    width: 40px;
+    height: 40px;
+    float: left;
+}
+
+.navigation li:hover {
+    transition: background-color 0.3s;
+    background-color: lightgreen;
+}
+
+.navigation i {
+    color: black;
+    transition: transform 0.3s ease-out;
+}
+
+.navigation li:hover i {
+    color: #282828;
+    transform: translateY(-5px);
+}
+
+/*----------------*/
+
+h1 {
+    box-shadow: 5px 5px 5px lightgray;
+    border-radius: 10px;
+    margin-left: 20%;
+    margin-right: 20%;
+    background: linear-gradient(to top, #c3f6f6, #ddfcfc); /* Dégradé linéaire */
+}
+
+#name {
+    text-align: left;
+    font-size: x-large;
+    font-family: "Saira Stencil One", sans-serif;
+}
+
+.texte {
+    font-family: "Merienda", cursive;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #e8ffff;
 }
