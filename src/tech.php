@@ -39,7 +39,6 @@ require "./include/header.inc.php";
             echo getUserLocalisation();
         ?>
 
-
     </section>
 
 

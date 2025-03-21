@@ -15,7 +15,7 @@
             </a>
             <a href="./site_map.php">
                 <li>
-                    <i class="fa-solid fa-map-location fa-2xl"></i>
+                    <i class="fa-solid fa-map-location-dot fa-2xl"></i>
                     <span>Carte</span>
                 </li>
             </a>

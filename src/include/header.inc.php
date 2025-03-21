@@ -28,20 +28,42 @@
     </p>
     <nav class="navigation">
         <ul>
-            <a href="./index.php">
-                <li>
+            <li class="dropdown">
+                <a href="./index.php">
                     <i class="fa-solid fa-house-chimney fa-2xl"></i>
                     <span>Accueil</span>
-                </li>
-            </a>
-            <a href="./stats.php">
-                <li>
+                </a>
+            </li>
+            <li>
+                <a href="./stats.php">
                     <i class="fa-solid fa-chart-simple fa-2xl"></i>
                     <span>Stats</span>
-                </li>
-            </a>
+                </a>
+            </li>
         </ul>
     </nav>
+
+    <nav class="options">
+        <ul>
+            <li class="dropdown">
+                <i class="fa-solid fa-language fa-2xl"></i>
+                <span>Language</span>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Français</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <i class="fa-solid fa-palette fa-2xl"></i>
+                <span>Style</span>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Clair</a></li>
+                    <li><a href="#">Sombre</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
 </header>
 
 

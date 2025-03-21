@@ -21,7 +21,6 @@ function getUserLocalisation():string{
     $ip = getUserIP();
     $XMLurl = "http://www.geoplugin.net/xml.gp?ip=".$ip;
     $xml = simplexml_load_string(file_get_contents($XMLurl));
-    echo "<p>$xml</p>";
     $country = $xml->geoplugin_countryName;
     $region = $xml->geoplugin_region;
     $city = $xml->geoplugin_city;
@@ -33,5 +32,7 @@ function getUserLocalisation():string{
 
     return $result;
 }
+
+
 
 ?>

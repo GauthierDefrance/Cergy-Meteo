@@ -3,7 +3,13 @@
 }
 
 header, footer {
+    position: sticky;
     background-color: rgba(109, 234, 133, 0.7);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
 }
 
 body {
@@ -35,60 +41,66 @@ section {
 
 
 
-/*Sert à la navigation*/
-
-.navigation {
+/* Sert à la navigation */
+.options, .navigation {
+    display: flex;
+    justify-content: center; /* Centre les éléments horizontalement */
+    align-items: center; /* Centre les éléments verticalement */
     text-decoration: none;
 }
 
-.navigation ul {
-
-    height: 60px;
-    align-content: center;
-    vertical-align: center;
-    list-style-type : none;
-    overflow: hidden;
+.options a, .navigation a {
+    text-decoration: none;
 }
 
-.navigation li {
-    border-radius: 5px;
+
+.navigation ul, .options ul {
+    display: flex; /* Permet aux éléments de s'afficher sur la même ligne */
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%; /* Assure que le ul prend toute la largeur du conteneur */
+    justify-content: center; /* Centre le contenu de la liste */
+}
+
+/* Icônes et texte dans les éléments de la navigation */
+.navigation li, .options li {
+    display: flex; /* Permet de placer l'icône et le texte sur une colonne */
+    flex-direction: column; /* Dispose les éléments verticalement */
+    justify-content: center; /* Centrer l'élément à l'intérieur du li */
+    align-items: center; /* Centre horizontalement l'icône et le texte */
     width: 60px;
     height: 60px;
-    float: left;
+    margin: 0 10px; /* Espace entre les éléments */
 }
 
-.navigation li:hover {
+.navigation li:hover, .options li:hover {
     transition: background-color 0.3s;
     background-color: #79f3a3;
 }
 
-.navigation i {
-    margin-top: 50%;
+/* Icônes */
+.navigation i, .options i {
     color: black;
     transition: transform 0.3s ease-out;
-    display: block;
-    margin-bottom: 20%;
+    font-size: 24px;
 }
 
-.navigation li:hover i {
+/* Effet de survol sur les icônes */
+.navigation li:hover i, .options li:hover i {
     color: rgba(40, 40, 40, 0.78);
     transform: translateY(-5px);
 }
 
-.navigation li:hover p {
-    color: rgba(40, 40, 40, 0.78);
-    transform: translateY(-5px);
-}
-
-.navigation span {
-    margin-bottom: 20%;
+/* Texte sous les icônes */
+.navigation span, .options span {
+    margin-top: 5px;
     display: block;
     font-size: 14px;
     color: #333;
+    text-align: center; /* Centrer le texte sous l'icône */
 }
 
-
-/*----------------*/
 
 h1 {
     box-shadow: 5px 5px 5px lightgray;
@@ -133,4 +145,100 @@ table {
 
 th, td {
     background-color: white
+}
+
+/* Menu principal */
+.navigation ul, .options ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.navigation li, .options li {
+    position: relative; /* Nécessaire pour que le sous-menu soit positionné par rapport à l'élément parent */
+    margin: 0 15px;
+}
+
+/* Style des liens dans le menu */
+.navigation a, .options a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+}
+
+/* Icônes */
+.navigation i, .options i {
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+.navigation span, .options span {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+
+/* Sous-menu (invisible par défaut) */
+.dropdown-menu {
+    visibility: hidden;
+    position: absolute;
+    top: 100%;
+    left: -100px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 10px 0;
+}
+
+/* Apparition du sous-menu au survol */
+.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    display: block;
+}
+
+/* Style pour les éléments du sous-menu */
+.dropdown-menu li {
+    padding: 8px 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.dropdown-menu li:hover {
+    background-color: rgba(158, 255, 142, 0.55);
+    display:block;
+}
+
+.dropdown-menu a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Effet de survol pour les éléments de la navigation */
+.navigation li:hover, .options li:hover {
+    background-color: rgba(175, 175, 175, 0.15);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navigation li:hover i, .options li:hover i {
+    transform: translateY(-5px);
+    color: rgba(40, 40, 40, 0.78);
+}
+
+.navigation li:hover span, .options li:hover span {
+    color: rgba(40, 40, 40, 0.78);
+    transform: translateY(-5px);
+}
+
+
+/* Effet de survol pour les éléments du menu */
+.navigation li:hover {
+    background-color: rgba(175, 175, 175, 0.15);
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
