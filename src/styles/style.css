@@ -215,6 +215,7 @@ th, td {
 
 .dropdown-menu a {
     text-decoration: none;
+    text-align: center;
     color: black;
 }
 

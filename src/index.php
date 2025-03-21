@@ -18,8 +18,16 @@ require "./include/header.inc.php";
     </section>
 
     <section>
-        <h2>Titre</h2>
-        <p>Test 1234</p>
+        <h2>Recherche</h2>
+
+        <form action="index.php" method="get">
+            <input type="search" name="region" placeholder="Région" />
+            <input type="search" name="departement" placeholder="Département" />
+            <input type="search" name="Ville" placeholder="Ville" />
+            <input type="submit" />
+        </form>
+
+
     </section>
 
 </main>
