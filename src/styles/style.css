@@ -242,3 +242,9 @@ th, td {
     border-radius: 5px;
     transition: background-color 0.3s;
 }
+
+.galery {
+    border-radius: 10px;
+    max-height: 400px;
+    max-width: 80%;
+}
