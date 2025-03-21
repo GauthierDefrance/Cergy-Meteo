@@ -14,6 +14,9 @@ if(isset($_GET['lang'])=="en"){
     $style="fr";
 }
 
+require_once "./include/functions/UserIp/php";
+
+
 
 
 

@@ -19,7 +19,7 @@
 
     if($data['media_type']=="image"){
         echo "hey";
-        $imgPath .= "image_du_jour.jpg";
+        $imgPath .= "image_du_jour.png";
         $image = file_get_contents($imageUrl);
         if ($image === false) {
             echo "Failed";

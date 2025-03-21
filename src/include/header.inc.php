@@ -13,11 +13,33 @@
     </head>
 <body>
 <header>
-    <p id="name">Cergy-Méteo</p>
+    <p id="name">
+        <span>C</span>
+        <span>e</span>
+        <span>r</span>
+        <span>g</span>
+        <span>y</span>
+        <span>-</span>
+        <span>M</span>
+        <span>é</span>
+        <span>t</span>
+        <span>e</span>
+        <span>o</span>
+    </p>
     <nav class="navigation">
         <ul>
-            <a href="./index.php"><li><i class="fa-solid fa-house-chimney fa-2xl"></i></li></a>
-            <a href="./stats.php"><li><i class="fa-solid fa-chart-simple fa-2xl"></i></li></a>
+            <a href="./index.php">
+                <li>
+                    <i class="fa-solid fa-house-chimney fa-2xl"></i>
+                    <span>Accueil</span>
+                </li>
+            </a>
+            <a href="./stats.php">
+                <li>
+                    <i class="fa-solid fa-chart-simple fa-2xl"></i>
+                    <span>Stats</span>
+                </li>
+            </a>
         </ul>
     </nav>
 </header>

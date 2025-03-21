@@ -28,6 +28,17 @@ require "./include/header.inc.php";
         ?>
 
         <p><?php echo ("<figcaption class='texte'>".$json['explanation']."</figcaption>");?></p>
+        <p>Source : <a href="https://api.nasa.gov/planetary/apod">Nasa Apod</a></p>
+
+    </section>
+
+    <section>
+        <h2>IP</h2>
+        <?php
+            require "./include/functions/UserIp.php";
+            echo getUserLocalisation();
+        ?>
+
 
     </section>
 
