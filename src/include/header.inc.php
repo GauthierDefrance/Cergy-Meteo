@@ -20,61 +20,56 @@ require_once "./include/functions/cookieLoading.inc.php";
     </head>
 <body>
 <header id="PageHeader">
+
     <p id="name">
-        <span>C</span>
-        <span>e</span>
-        <span>r</span>
-        <span>g</span>
-        <span>y</span>
-        <span>-</span>
-        <span>M</span>
-        <span>é</span>
-        <span>t</span>
-        <span>e</span>
-        <span>o</span>
+        <span>C</span><span>l</span><span>o</span><span>u</span><span>d</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span>
     </p>
+
     <nav class="navigation">
-        <ul>
-            <li class="dropdown">
-                <a href="./index.php">
-                    <i class="fa-solid fa-house-chimney fa-2xl"></i>
-                    <span>Accueil</span>
-                </a>
-            </li>
-            <li>
-                <a href="./stats.php">
-                    <i class="fa-solid fa-chart-simple fa-2xl"></i>
-                    <span>Stats</span>
-                </a>
-            </li>
-        </ul>
+
+
     </nav>
 
-    <nav class="options">
+    <div class="options">
         <ul>
+
             <li class="dropdown">
                 <i class="fa-solid fa-language fa-2xl"></i>
                 <span>Language</span>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Français</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
+
+                <div class="dropdown-menu">
+                    <form action="#" method="get">
+                        <button type="submit" class="" name="lang" value="fr">Français</button>
+                    </form>
+
+                    <form action="#" method="get">
+                        <button type="submit" class="" name="lang" value="en">English</button>
+                    </form>
+                </div>
+
             </li>
+
+
             <li class="dropdown">
                 <i class="fa-solid fa-palette fa-2xl"></i>
                 <span>Style</span>
-                <ul class="dropdown-menu">
-                    <li><a href="index.php?mode=light">Clair</a></li>
-                    <li><a href="index.php?mode=dark">Sombre</a></li>
-                    <?php
-                        if (isset($_GET['mode'])) {
-                            set_mode($_GET['mode']);
-                        }
-                    ?>
-                </ul>
+
+                <div class="dropdown-menu">
+                    <form action="#" method="get">
+                        <button type="submit" class="" name="style" value="dark">Dark</button>
+                    </form>
+
+                    <form action="#" method="get">
+                        <button type="submit" class="" name="style" value="light">Light</button>
+                    </form>
+                </div>
+
             </li>
+
+
         </ul>
-    </nav>
+
+    </div>
 
 </header>
 

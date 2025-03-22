@@ -13,6 +13,7 @@ main header {
 }
 
 section {
+    text-align: center;
     box-shadow: 5px 5px 5px lightgray;
     border-radius: 10px;
     margin: 5%;
