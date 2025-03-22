@@ -1,0 +1,51 @@
+/* Main CSS */
+
+main {
+    text-align: center;
+    background-color: #79f3a3;
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
+main header {
+
+}
+
+section {
+    box-shadow: 5px 5px 5px lightgray;
+    border-radius: 10px;
+    margin: 5%;
+    background-color: white;
+}
+
+section header {
+
+}
+
+/*Sert à réduire la taille de l'image du jour*/
+.nasa {max-width: 40%;max-height: 480px;}
+
+/*Paramètre la taille de l'image de la galerie*/
+.galery {border-radius: 10px;max-height: 400px;max-width: 80%;}
+
+/* Texte spécial */
+.texte {
+    font-family: "Merienda", cursive;
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-left: 5%;
+    margin-right: 5%;
+    background-color: #edffe8;
+}
+
+/* Table détouré */
+table {
+    margin: 10px 10%;
+    width: 80%;
+    border-radius: 5px;
+    background-color: darkgrey;
+    border: solid 2px black;
+    box-shadow: 5px 5px 5px lightgray;
+}
+th, td {background-color: white}

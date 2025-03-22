@@ -1,0 +1,11 @@
+/* Effets et animations */
+
+
+
+/* Effet nom de la page*/
+#name span {
+    display: inline-block;
+    transition: transform 0.3s ease-out;}
+#name span:hover{
+    transform: translateY(-5px);
+}

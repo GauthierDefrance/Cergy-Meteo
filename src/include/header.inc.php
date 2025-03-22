@@ -11,7 +11,9 @@ require_once "./include/functions/cookieLoading.inc.php";
         <meta name='date' content=''/>
         <meta name='description' content=''/>
         <link rel="icon" type="image/png" href=''/>
-        <link rel='stylesheet' href='./styles/style.css'/>
+        <link rel='stylesheet' href='./styles/main.css'/>
+        <link rel='stylesheet' href='./styles/pagehf.css'/>
+        <link rel='stylesheet' href='./styles/effect.css'/>
         <link rel='stylesheet' href='./styles/<?= mode() ?>.css'/>
         <script src="https://kit.fontawesome.com/39e26908ee.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
