@@ -25,77 +25,59 @@ require_once "./include/functions/cookieLoading.inc.php";
         <span>C</span><span>l</span><span>o</span><span>u</span><span>d</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span>
     </p>
 
-    <nav class="navigation">
-        <ul>
+    <nav>
+        <div class="container">
+            <!-- Bloc gauche : Accueil et Stats -->
+            <ul class="left-block">
+                <li class="box">
+                    <a href="./index.php">
+                        <div class="nav-menu-button">
+                            <i class="fa-solid fa-house-chimney fa-2xl"></i>
+                            <span>Accueil</span>
+                        </div>
+                    </a>
+                </li>
 
-            <li>
+                <li class="box">
+                    <a href="./stats.php">
+                        <div class="nav-menu-button">
+                            <i class="fa-solid fa-chart-simple fa-2xl"></i>
+                            <span>Stats</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
 
-                <a href="./index.php">
-                <div class="nav-menu-button">
-                    <i class="fa-solid fa-house-chimney fa-2xl"></i>
-                    <span>Accueil</span>
-                </div>
-                </a>
+            <!-- Bloc droit : Language et Style -->
+            <ul class="right-block">
+                <li class="dropdown box">
+                    <i class="fa-solid fa-language fa-2xl"></i>
+                    <span>Language</span>
+                    <div class="dropdown-menu">
+                        <form action="#" method="get">
+                            <button type="submit" class="" name="lang" value="fr">Français</button>
+                        </form>
+                        <form action="#" method="get">
+                            <button type="submit" class="" name="lang" value="en">English</button>
+                        </form>
+                    </div>
+                </li>
 
-            </li>
-
-
-            <li>
-                <a href="./stats.php">
-                <div class="nav-menu-button">
-                    <i class="fa-solid fa-chart-simple fa-2xl"></i>
-                    <span>Stats</span>
-                </div>
-                </a>
-
-            </li>
-
-
-        </ul>
-
+                <li class="dropdown box">
+                    <i class="fa-solid fa-palette fa-2xl"></i>
+                    <span>Style</span>
+                    <div class="dropdown-menu">
+                        <form action="#" method="get">
+                            <button type="submit" class="" name="style" value="dark">Dark</button>
+                        </form>
+                        <form action="#" method="get">
+                            <button type="submit" class="" name="style" value="light">Light</button>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </nav>
-
-
-    <div class="options">
-        <ul>
-
-            <li class="dropdown">
-                <i class="fa-solid fa-language fa-2xl"></i>
-                <span>Language</span>
-
-                <div class="dropdown-menu">
-                    <form action="#" method="get">
-                        <button type="submit" class="" name="lang" value="fr">Français</button>
-                    </form>
-
-                    <form action="#" method="get">
-                        <button type="submit" class="" name="lang" value="en">English</button>
-                    </form>
-                </div>
-
-            </li>
-
-
-            <li class="dropdown">
-                <i class="fa-solid fa-palette fa-2xl"></i>
-                <span>Style</span>
-
-                <div class="dropdown-menu">
-                    <form action="#" method="get">
-                        <button type="submit" class="" name="style" value="dark">Dark</button>
-                    </form>
-
-                    <form action="#" method="get">
-                        <button type="submit" class="" name="style" value="light">Light</button>
-                    </form>
-                </div>
-
-            </li>
-
-
-        </ul>
-
-    </div>
 
 </header>
 
