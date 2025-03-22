@@ -26,9 +26,35 @@ require_once "./include/functions/cookieLoading.inc.php";
     </p>
 
     <nav class="navigation">
+        <ul>
 
+            <li>
+
+                <a href="./index.php">
+                <div class="nav-menu-button">
+                    <i class="fa-solid fa-house-chimney fa-2xl"></i>
+                    <span>Accueil</span>
+                </div>
+                </a>
+
+            </li>
+
+
+            <li>
+                <a href="./stats.php">
+                <div class="nav-menu-button">
+                    <i class="fa-solid fa-chart-simple fa-2xl"></i>
+                    <span>Stats</span>
+                </div>
+                </a>
+
+            </li>
+
+
+        </ul>
 
     </nav>
+
 
     <div class="options">
         <ul>
