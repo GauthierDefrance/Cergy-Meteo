@@ -68,10 +68,10 @@ require_once "./include/functions/cookieLoading.inc.php";
                     <span>Style</span>
                     <div class="dropdown-menu">
                         <form action="#" method="get">
-                            <button type="submit" class="" name="style" value="dark">Dark</button>
+                            <button type="submit" class="" name="mode" value="dark">Dark</button>
                         </form>
                         <form action="#" method="get">
-                            <button type="submit" class="" name="style" value="light">Light</button>
+                            <button type="submit" class="" name="mode" value="light">Light</button>
                         </form>
                     </div>
                 </li>
