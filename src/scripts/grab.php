@@ -2,10 +2,11 @@
     require_once('../protected/KEYS.php');
 
     $jsonUrl = "https://api.nasa.gov/planetary/apod?api_key=".$NASA_KEY;
+    //$jsonUrl = "https://api.nasa.gov/planetary/apod?api_key=".$NASA_KEY.'&date=2025-02-05';
     $jsonPath= '../ressources/nasa_file.JSON';
     $json = file_get_contents($jsonUrl);
     if ($json === false) {
-        echo "❌ Failed to fetch JSON.";
+        echo "Failed to fetch JSON.";
     }
     else{
         echo $json;
@@ -28,7 +29,15 @@
         file_put_contents($imgPath, $image);
     }
     elseif($data['media_type']=="video"){
-
+        if (strpos($data['url'], '.mp4') !== false) {
+            $video= file_get_contents($imageUrl);
+            $videoPath .= "video_du_jour.mp4";
+            if ($video === false) {
+                echo "Failed";
+                print_r(error_get_last());
+            }
+            file_put_contents($videoPath, $video);
+        } 
     }
     else{
         echo "Catastrophe!";

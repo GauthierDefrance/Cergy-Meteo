@@ -4,7 +4,8 @@ require "./include/header.inc.php";
 
 <?php
     $json=json_decode(file_get_contents('./ressources/nasa_file.JSON'),true);
-    $media_type=$json['media_type']
+    $media_type=$json['media_type'];
+    $url=$json['url'];
 ?>
 
 <main>
@@ -20,10 +21,23 @@ require "./include/header.inc.php";
                 </figure>");
             }
             elseif($media_type=="video"){
-                echo ('<video class="nasa" controls>
+                //on pourra remplacer par un switchcase
+                if(strpos($url, '.mp4') !== false){
+                    echo ('<video class="nasa" controls>
                     <source src="' . $json['url'] . '" type="video/mp4">
                     Your browser does not support the video tag.
                     </video>');
+                }
+                elseif(strpos($url,'youtube.com')){
+                    echo ('<iframe width="560" height="315" src="'.$url.'" 
+                        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>');
+                        
+                }
+                else{
+
+                }
+                
             }
         ?>
 
