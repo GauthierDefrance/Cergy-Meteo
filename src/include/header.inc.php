@@ -1,9 +1,5 @@
 <?php
 require_once "./include/functions/cookieLoading.inc.php";
-if (isset($_GET['mode'])) {
-    set_mode($_GET['mode']);
-}
-$current_mode=mode();
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +14,7 @@ $current_mode=mode();
         <link rel='stylesheet' href='./styles/main.css'/>
         <link rel='stylesheet' href='./styles/pagehf.css'/>
         <link rel='stylesheet' href='./styles/effect.css'/>
-        <link rel='stylesheet' href='./styles/<?= $current_mode ?>.css'/>
+        <link rel='stylesheet' href='./styles/<?= mode() ?>.css'/>
         <script src="https://kit.fontawesome.com/39e26908ee.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
     </head>
@@ -86,11 +82,11 @@ $current_mode=mode();
 
                 <div class="dropdown-menu">
                     <form action="#" method="get">
-                        <button type="submit" class="" name="mode" value="dark">Dark</button>
+                        <button type="submit" class="" name="style" value="dark">Dark</button>
                     </form>
 
                     <form action="#" method="get">
-                        <button type="submit" class="" name="mode" value="light">Light</button>
+                        <button type="submit" class="" name="style" value="light">Light</button>
                     </form>
                 </div>
 

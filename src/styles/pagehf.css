@@ -42,16 +42,37 @@ body {
     color: var(--text-color);
 }
 
-/* Espacement entre les menus*/
 header ul, footer ul {
-    list-style-type: none;
-    display: flex;
-    justify-content: space-between;
+    list-style: none;
 }
 
 header a, footer a {
     color: black;
-    text-decoration: none;
 }
 
+/* Conteneur principal de la navigation */
+nav {
+    padding: 0;
+}
 
+/* Conteneur des deux blocs */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Bloc gauche : Accueil et Stats */
+.left-block {display: flex;align-items: center;}
+
+.left-block .box {margin-right: 20px;}
+
+/* Bloc droit : Language et Style */
+.right-block {display: flex;align-items: center;}
+
+.right-block .box {margin-left: 20px;}
+
+/* Retirer les décorations des liens */
+nav a {
+    text-decoration: none;
+}
