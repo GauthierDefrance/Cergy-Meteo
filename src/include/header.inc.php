@@ -1,3 +1,4 @@
+<?php require_once "./include/functions/cookieLoading.inc.php";?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -8,6 +9,7 @@
         <meta name='description' content=''/>
         <link rel="icon" type="image/png" href=''/>
         <link rel='stylesheet' href='./styles/style.css'/>
+        <link rel='stylesheet' href='./styles/<?php echo (mode());?>.css'/>
         <script src="https://kit.fontawesome.com/39e26908ee.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
     </head>
@@ -57,8 +59,13 @@
                 <i class="fa-solid fa-palette fa-2xl"></i>
                 <span>Style</span>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Clair</a></li>
-                    <li><a href="#">Sombre</a></li>
+                    <li><a href="index.php?mode=light">Clair</a></li>
+                    <li><a href="index.php?mode=dark">Sombre</a></li>
+                    <?php
+                        if (isset($_GET['mode'])) {
+                            set_mode($_GET['mode']);
+                        }
+                    ?>
                 </ul>
             </li>
         </ul>

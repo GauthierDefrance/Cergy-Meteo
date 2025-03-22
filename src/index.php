@@ -1,5 +1,6 @@
 <?php
 require "./include/header.inc.php";
+require_once "./include/functions/cookieLoading.inc.php";
 ?>
 
 <main>
