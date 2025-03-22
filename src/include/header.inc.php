@@ -1,4 +1,7 @@
-<?php require_once "./include/functions/cookieLoading.inc.php";?>
+<?php
+require_once "./include/functions/cookieLoading.inc.php";
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
     <head>
