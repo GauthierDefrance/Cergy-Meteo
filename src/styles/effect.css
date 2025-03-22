@@ -9,3 +9,10 @@
 #name span:hover{
     transform: translateY(-5px);
 }
+
+
+
+.box:hover i {
+    transition: transform 0.3s ease-out;
+    transform: translateY(-5px);
+}

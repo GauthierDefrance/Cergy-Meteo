@@ -51,8 +51,11 @@ require_once "./include/functions/cookieLoading.inc.php";
             <!-- Bloc droit : Language et Style -->
             <ul class="right-block">
                 <li class="dropdown box">
-                    <i class="fa-solid fa-language fa-2xl"></i>
-                    <span>Language</span>
+                    <div class="nav-menu-button">
+                        <i class="fa-solid fa-language fa-2xl"></i>
+                        <span>Language</span>
+                    </div>
+
                     <div class="dropdown-menu">
                         <form action="#" method="get">
                             <button type="submit" class="" name="lang" value="fr">Français</button>
@@ -64,8 +67,10 @@ require_once "./include/functions/cookieLoading.inc.php";
                 </li>
 
                 <li class="dropdown box">
-                    <i class="fa-solid fa-palette fa-2xl"></i>
-                    <span>Style</span>
+                    <div class="nav-menu-button">
+                        <i class="fa-solid fa-palette fa-2xl"></i>
+                        <span>Style</span>
+                    </div>
                     <div class="dropdown-menu">
                         <form action="#" method="get">
                             <button type="submit" class="" name="mode" value="dark">Dark</button>

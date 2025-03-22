@@ -50,18 +50,28 @@ header a, footer a {
     color: black;
 }
 
-/* Conteneur principal de la navigation */
-nav {
-    padding: 0;
-}
 
-/* Conteneur des deux blocs */
+/* Autres styles de nav comme tu les as déjà définis */
 .container {
     margin-right: 10%;
     margin-left: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.box {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.box:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Bloc gauche : Accueil et Stats */
@@ -125,3 +135,10 @@ nav a {
 .dropdown:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.nav-menu-button i, .nav-menu-button span {
+    display: block;  /* Forcer chaque élément à être sur une nouvelle ligne */
+    text-align: center; /* Optionnel : pour centrer le texte et l'icône */
+} .nav-menu-button span {
+    margin-top: 10px;
+  }
