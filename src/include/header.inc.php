@@ -12,12 +12,12 @@ require_once "./include/functions/cookieLoading.inc.php";
         <meta name='description' content=''/>
         <link rel="icon" type="image/png" href=''/>
         <link rel='stylesheet' href='./styles/style.css'/>
-        <link rel='stylesheet' href='./styles/<?php echo (mode());?>.css'/>
+        <link rel='stylesheet' href='./styles/<?= mode() ?>.css'/>
         <script src="https://kit.fontawesome.com/39e26908ee.js" crossorigin="anonymous"></script>
         <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
     </head>
 <body>
-<header>
+<header id="PageHeader">
     <p id="name">
         <span>C</span>
         <span>e</span>

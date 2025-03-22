@@ -1,9 +1,6 @@
-<footer>
-
+<footer id="PageFooter">
 
         <p>Information création page</p>
-
-
 
     <nav class="navigation">
         <ul>
