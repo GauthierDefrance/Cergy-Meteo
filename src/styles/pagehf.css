@@ -57,6 +57,8 @@ nav {
 
 /* Conteneur des deux blocs */
 .container {
+    margin-right: 10%;
+    margin-left: 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -75,4 +77,51 @@ nav {
 /* Retirer les décorations des liens */
 nav a {
     text-decoration: none;
+}
+
+/* Styles de base pour le dropdown */
+.dropdown {
+    position: relative; /* Nécessaire pour que le dropdown-menu soit positionné par rapport à ce li */
+}
+
+.dropdown-menu {
+    display: none; /* Cache le menu déroulant par défaut */
+    position: absolute;
+    top: 100%; /* Place le menu juste en dessous de l'élément parent */
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    border-radius: 5px;
+    padding: 10px 0;
+    width: 150px; /* Taille du menu */
+}
+
+/* Apparition du menu au survol */
+.dropdown:hover .dropdown-menu {
+    display: block; /* Affiche le menu lors du survol de .dropdown */
+}
+
+/* Pour les boutons dans le menu */
+.dropdown-menu form {
+    margin: 0;
+}
+
+.dropdown-menu button {
+    background-color: #f1f1f1;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-menu button:hover {
+    background-color: #ddd;
+}
+
+/* Optionnel : style pour le li */
+.dropdown:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
