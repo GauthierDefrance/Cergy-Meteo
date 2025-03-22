@@ -42,118 +42,16 @@ body {
     color: var(--text-color);
 }
 
-/* Navigation (menu principal) */
-.options, .navigation {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.options a, .navigation a {
-    text-decoration: none;
-}
-
-/* Style du menu (ul) */
-.navigation ul, .options ul {
-    display: flex;
+/* Espacement entre les menus*/
+header ul, footer ul {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
-    justify-content: center;
-}
-
-/* Style des éléments du menu */
-.navigation li, .options li {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 15px;
-    position: relative;
-    width: 60px;
-    height: 60px;
-    transition: background-color var(--transition-speed);
+    justify-content: space-between;
 }
 
-.navigation li:hover, .options li:hover {
-    background-color: var(--hover-color);
-    border-radius: 5px;
-}
-
-/* Icônes et texte */
-.navigation i, .options i {
+header a, footer a {
     color: black;
-    font-size: 24px;
-    margin-bottom: 5px;
-    transition: transform var(--transition-speed) ease-out;
-}
-
-.navigation span, .options span {
-    font-size: 14px;
-    color: var(--text-color);
-    text-align: center;
-}
-
-/* Effet de survol sur les icônes */
-.navigation li:hover i, .options li:hover i {
-    transform: translateY(-5px);
-    color: var(--icon-hover-color);
-}
-
-/* Effet de survol sur le texte sous les icônes */
-.navigation li:hover span, .options li:hover span {
-    color: var(--icon-hover-color);
-    transform: translateY(-5px);
-}
-
-/* Sous-menu */
-.dropdown-menu {
-    visibility: hidden;
-    position: absolute;
-    top: 100%;
-    left: -100px;
-    background-color: var(--bg-color-light);
-    min-width: 160px;
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-    border-radius: 10px 0;
-    z-index: 1;
-}
-
-/* Apparition du sous-menu au survol */
-.dropdown:hover .dropdown-menu {
-    visibility: visible;
-    display: block;
-}
-
-/* Style des éléments du sous-menu */
-.dropdown-menu li {
-    padding: 8px 12px;
-    border-bottom: 1px solid #ddd;
-    transition: background-color var(--transition-speed);
-}
-
-.dropdown-menu li:hover {
-    background-color: rgba(158, 255, 142, 0.55);
-}
-
-/* Liens dans le sous-menu */
-.dropdown-menu a {
     text-decoration: none;
-    color: black;
-    text-align: center;
 }
 
-/* Animations de survol pour les éléments */
-.navigation li:hover, .options li:hover {
-    background-color: var(--hover-color);
-    transition: background-color var(--transition-speed);
-}
 
-.navigation li:hover i, .options li:hover i {
-    color: var(--icon-hover-color);
-    transform: translateY(-5px);
-}
-
-.navigation li:hover span, .options li:hover span {
-    color: var(--icon-hover-color);
-    transform: translateY(-5px);
-}
