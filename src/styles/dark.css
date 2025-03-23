@@ -2,7 +2,7 @@
     --primary-color: rgb(27, 48, 31);
     --hover-color: rgba(175, 175, 175, 0.15);
     --icon-hover-color: rgba(40, 40, 40, 0.78);
-    --text-color: #f1f1f1;
+    --text-color: #c5c5c5;
     --bg-color-light: #363636;
 }
 
@@ -12,21 +12,17 @@ body{
 
 /* Header & Footer */
 #PageHeader, #PageFooter {
-    background-color: var(--primary-color);
+    background-color: black;
+    color: white;
 }
 
 header, footer {
     background-color: rgba(109, 234, 133, 0.7);
 }
 
-/* Footer */
-#PageFooter {
-    color: var(--text-color);
-}
-
 /* Nom de la page */
 #name {
-    color: var(--text-color);
+    color: white;
 }
 
 header a, footer a {
@@ -66,14 +62,14 @@ header a, footer a {
 }
 
 main {
-    background-color: #343450;
-    color: var(--text-color);
+    background-color: #242438;
+    color: white;
 }
 
 section {
     box-shadow: 5px 5px 5px rgb(71, 71, 71);
-    background-color: #505060;
-    color: var(--text-color);
+    background-color: #3b3b5d;
+    color: white;
 }
 
 .texte {
