@@ -2,7 +2,7 @@
     --primary-color: rgb(27, 48, 31);
     --hover-color: rgba(175, 175, 175, 0.15);
     --icon-hover-color: rgba(40, 40, 40, 0.78);
-    --text-color: #f1f1f1;
+    --text-color: #c5c5c5;
     --bg-color-light: #363636;
 }
 
@@ -12,16 +12,12 @@ body{
 
 /* Header & Footer */
 #PageHeader, #PageFooter {
-    background-color: var(--primary-color);
+    background-color: black;
+    color: var(--text-color);
 }
 
 header, footer {
     background-color: rgba(109, 234, 133, 0.7);
-}
-
-/* Footer */
-#PageFooter {
-    color: var(--text-color);
 }
 
 /* Nom de la page */
