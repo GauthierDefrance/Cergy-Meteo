@@ -10,7 +10,7 @@
 
 /* Global styles */
 body {
-    font-family: "Saira Stencil One", sans-serif;
+
     margin: 0;
     padding: 0;
 }
@@ -31,15 +31,17 @@ body {
 #PageFooter {
     padding: 20px 0;
     text-align: center;
-    color: white;
+    color: black;
 }
 
 /* Nom de la page */
 #name {
+    font-family: "Saira Stencil One", sans-serif;
     text-align: left;
     font-size: x-large;
     font-weight: bold;
     color: var(--text-color);
+    margin: 0;
 }
 
 header ul, footer ul {
@@ -61,6 +63,7 @@ header a, footer a {
 }
 
 .box {
+    font-family: "Saira Stencil One", sans-serif;
     width: 80px;
     height: 80px;
     display: flex;

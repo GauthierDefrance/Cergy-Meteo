@@ -1,6 +1,8 @@
 <footer id="PageFooter">
 
-        <p>Information création page</p>
+        <p>Ce site vous est proposé par <strong>Thomas Hornung</strong> et <strong>Gauthier Defrance</strong> du groupe L2I-C à CY CERGY PARIS UNIVERSITÉ</p>
+
+    <hr>
 
     <nav class="navigation">
         <div class="container">
@@ -14,7 +16,6 @@
                         </div>
                     </a>
                 </li>
-
             </ul>
 
             <!-- Bloc droit : Tech -->
@@ -38,6 +39,10 @@
             </ul>
         </div>
     </nav>
+
+    <hr>
+
+    <a href="#">Haut de page</a>
 
 
 </footer>
