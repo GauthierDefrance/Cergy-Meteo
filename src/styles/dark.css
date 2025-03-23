@@ -1,9 +1,13 @@
 :root {
-    --primary-color: rgb(109, 234, 133);
+    --primary-color: rgb(27, 48, 31);
     --hover-color: rgba(175, 175, 175, 0.15);
     --icon-hover-color: rgba(40, 40, 40, 0.78);
-    --text-color: #333;
-    --bg-color-light: #f9f9f9;
+    --text-color: #f1f1f1;
+    --bg-color-light: #363636;
+}
+
+body{
+    background-color: rgba(28, 28, 30, 1);
 }
 
 /* Header & Footer */
@@ -17,7 +21,7 @@ header, footer {
 
 /* Footer */
 #PageFooter {
-    color: black;
+    color: var(--text-color);
 }
 
 /* Nom de la page */
@@ -26,24 +30,34 @@ header, footer {
 }
 
 header a, footer a {
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .box:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown.box{
+    color: rgb(255, 255, 255);
+}
+
+.dropdown.box:hover{
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .dropdown-menu {
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    
+    background-color: #000000;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
 }
 
 .dropdown-menu button {
-    background-color: #f1f1f1;
+    color: var(--text-color);
+    background-color: #2b2b2b;
 }
 
 .dropdown-menu button:hover {
-    background-color: #ddd;
+    background-color: #5e5e5e;
 }
 
 /* Optionnel : style pour le li */
@@ -52,23 +66,29 @@ header a, footer a {
 }
 
 main {
-    background-color: #79f3a3;
+    background-color: #343450;
+    color: var(--text-color);
 }
 
 section {
-    box-shadow: 5px 5px 5px lightgray;
-    background-color: white;
+    box-shadow: 5px 5px 5px rgb(71, 71, 71);
+    background-color: #505060;
+    color: var(--text-color);
 }
 
 .texte {
     border: 2px solid rgba(0, 0, 0, 0.3);
-    background-color: #edffe8;
+    background-color: #272750;
 }
 
 /* Table détouré */
 table {
-    background-color: darkgrey;
-    border: solid 2px black;
-    box-shadow: 5px 5px 5px lightgray;
+    
+    background-color: rgb(29, 29, 29);
+    border: solid 2px rgb(255, 252, 252);
+    box-shadow: 5px 5px 5px rgb(51, 51, 61);
 }
-th, td {background-color: white}
+th, td {
+    background-color: rgb(60, 60, 65);
+    color: var(--text-color);
+}
