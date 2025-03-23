@@ -13,7 +13,7 @@ body{
 /* Header & Footer */
 #PageHeader, #PageFooter {
     background-color: black;
-    color: var(--text-color);
+    color: white;
 }
 
 header, footer {
@@ -22,7 +22,7 @@ header, footer {
 
 /* Nom de la page */
 #name {
-    color: var(--text-color);
+    color: white;
 }
 
 header a, footer a {
@@ -62,14 +62,14 @@ header a, footer a {
 }
 
 main {
-    background-color: #343450;
-    color: var(--text-color);
+    background-color: #242438;
+    color: white;
 }
 
 section {
     box-shadow: 5px 5px 5px rgb(71, 71, 71);
-    background-color: #505060;
-    color: var(--text-color);
+    background-color: #3b3b5d;
+    color: white;
 }
 
 .texte {
