@@ -1,5 +1,8 @@
 <?php
 require_once "./include/functions/cookieLoading.inc.php";
+if(isset($_GET['mode'])){
+    set_mode($_GET['mode']);
+}
 ?>
 
 <!DOCTYPE html>

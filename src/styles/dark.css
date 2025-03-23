@@ -92,3 +92,13 @@ th, td {
     background-color: rgb(60, 60, 65);
     color: var(--text-color);
 }
+
+main a {
+    color: rgb(200, 200, 255);
+    text-decoration: none;  
+}
+  
+main a:visited {
+    color: rgb(225, 200, 255);           
+}
+  
