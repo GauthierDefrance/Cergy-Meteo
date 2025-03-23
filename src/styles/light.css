@@ -1,4 +1,74 @@
-main {
-    background-color: #fcfcfc;
-    color: #000000;
+:root {
+    --primary-color: rgb(109, 234, 133);
+    --hover-color: rgba(175, 175, 175, 0.15);
+    --icon-hover-color: rgba(40, 40, 40, 0.78);
+    --text-color: #333;
+    --bg-color-light: #f9f9f9;
 }
+
+/* Header & Footer */
+#PageHeader, #PageFooter {
+    background-color: var(--primary-color);
+}
+
+header, footer {
+    background-color: rgba(109, 234, 133, 0.7);
+}
+
+/* Footer */
+#PageFooter {
+    color: black;
+}
+
+/* Nom de la page */
+#name {
+    color: var(--text-color);
+}
+
+header a, footer a {
+    color: black;
+}
+
+.box:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-menu {
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu button {
+    background-color: #f1f1f1;
+}
+
+.dropdown-menu button:hover {
+    background-color: #ddd;
+}
+
+/* Optionnel : style pour le li */
+.dropdown:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+main {
+    background-color: #79f3a3;
+}
+
+section {
+    box-shadow: 5px 5px 5px lightgray;
+    background-color: white;
+}
+
+.texte {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    background-color: #edffe8;
+}
+
+/* Table détouré */
+table {
+    background-color: darkgrey;
+    border: solid 2px black;
+    box-shadow: 5px 5px 5px lightgray;
+}
+th, td {background-color: white}

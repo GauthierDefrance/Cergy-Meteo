@@ -1,23 +1,9 @@
-/* Déclaration des variables */
-:root {
-    --primary-color: rgb(109, 234, 133);
-    --hover-color: rgba(175, 175, 175, 0.15);
-    --icon-hover-color: rgba(40, 40, 40, 0.78);
-    --text-color: #333;
-    --bg-color-light: #f9f9f9;
-    --transition-speed: 0.3s;
-}
+
 
 /* Global styles */
 body {
-
     margin: 0;
     padding: 0;
-}
-
-/* Header & Footer */
-#PageHeader, #PageFooter {
-    background-color: var(--primary-color);
 }
 
 /* Header sticky effect */
@@ -31,7 +17,6 @@ body {
 #PageFooter {
     padding: 20px 0;
     text-align: center;
-    color: black;
 }
 
 /* Nom de la page */
@@ -40,16 +25,11 @@ body {
     text-align: left;
     font-size: x-large;
     font-weight: bold;
-    color: var(--text-color);
     margin: 0;
 }
 
 header ul, footer ul {
     list-style: none;
-}
-
-header a, footer a {
-    color: black;
 }
 
 
@@ -71,10 +51,6 @@ header a, footer a {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-}
-
-.box:hover {
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Bloc gauche : Accueil et Stats */
@@ -102,8 +78,6 @@ nav a {
     position: absolute;
     top: 100%; /* Place le menu juste en dessous de l'élément parent */
     left: 0;
-    background-color: #fff;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 10;
     border-radius: 5px;
     padding: 10px 0;
@@ -121,22 +95,12 @@ nav a {
 }
 
 .dropdown-menu button {
-    background-color: #f1f1f1;
     border: none;
     padding: 8px 16px;
     text-align: center;
     width: 100%;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.dropdown-menu button:hover {
-    background-color: #ddd;
-}
-
-/* Optionnel : style pour le li */
-.dropdown:hover {
-    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .nav-menu-button i, .nav-menu-button span {

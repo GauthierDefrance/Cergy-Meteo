@@ -2,7 +2,6 @@
 
 main {
     text-align: center;
-    background-color: #79f3a3;
     border-radius: 10px;
     margin-left: 15%;
     margin-right: 15%;
@@ -14,10 +13,8 @@ main header {
 
 section {
     text-align: center;
-    box-shadow: 5px 5px 5px lightgray;
     border-radius: 10px;
     margin: 5%;
-    background-color: white;
 }
 
 section header {
@@ -33,11 +30,9 @@ section header {
 /* Texte spécial */
 .texte {
     font-family: "Merienda", cursive;
-    border: 2px solid rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     margin-left: 5%;
     margin-right: 5%;
-    background-color: #edffe8;
 }
 
 /* Table détouré */
@@ -45,8 +40,4 @@ table {
     margin: 10px 10%;
     width: 80%;
     border-radius: 5px;
-    background-color: darkgrey;
-    border: solid 2px black;
-    box-shadow: 5px 5px 5px lightgray;
 }
-th, td {background-color: white}
