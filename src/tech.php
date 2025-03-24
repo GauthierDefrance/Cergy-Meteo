@@ -1,3 +1,4 @@
+<?php $title="Tech"; ?>
 <?php
 require "./include/header.inc.php";
 ?>

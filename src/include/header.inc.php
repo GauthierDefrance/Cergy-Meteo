@@ -8,7 +8,7 @@ if(isset($_GET['mode'])){
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>Accueil</title>
+        <title><?= $title;?></title>
         <meta charset='UTF-8'/>
         <meta name='author' content=''/>
         <meta name='date' content=''/>

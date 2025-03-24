@@ -1,3 +1,4 @@
+<?php $title="Erreur"; ?>
 <?php
 $Error="None";
 if(isset($_GET['error'])){
