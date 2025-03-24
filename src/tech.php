@@ -6,7 +6,7 @@ require "./include/header.inc.php";
 <?php
     $json=json_decode(file_get_contents('./ressources/nasa_file.JSON'),true);
     $media_type=$json['media_type'];
-    $url=$json['url'];
+    $url= $json['url'] ?? false;
 ?>
 
 <main>
