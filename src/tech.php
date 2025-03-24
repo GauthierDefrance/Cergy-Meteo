@@ -63,6 +63,14 @@ require "./include/header.inc.php";
         ?>
 
     </section>
+    <section>
+        <h2>TestCSV</h2>
+        <?php
+            require "./include/functions/main.inc.php";
+            log_array();
+        ?>
+
+    </section>
 
 
 </main>
