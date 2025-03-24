@@ -3,6 +3,9 @@ require_once "./include/functions/cookieLoading.inc.php";
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
+
+require_once "./include/functions/increasePageNumber.php";
+
 ?>
 
 <!DOCTYPE html>
