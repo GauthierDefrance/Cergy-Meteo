@@ -1,6 +1,10 @@
 <?php
+
+/**
+ * Méthode qui calcule l'IP de l'utilisateur actuel.
+ * @return String IP de l'utilisateur courant.
+ */
 function getUserIP() {
-    // Si l'utilisateur utilise un proxy, l'adresse IP sera dans HTTP_X_FORWARDED_FOR
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
         $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
     }
@@ -17,6 +21,10 @@ function getUserIP() {
     return $ip;
 }
 
+/**
+ * Fonction qui affiche les informations relative à la positions d'un utilisateur selon son IP.
+ * @return string un tableau html
+ */
 function getUserLocalisation():string{
     $ip = getUserIP();
     $XMLurl = "http://www.geoplugin.net/xml.gp?ip=".$ip;

@@ -2,13 +2,28 @@
 
         <p>Ce site vous est proposé par <strong>Thomas Hornung</strong> et <strong>Gauthier Defrance</strong> du groupe L2I-C à CY CERGY PARIS UNIVERSITÉ</p>
 
-        <p>Cette page a été affiché <?= $currentHits ?></p>
+        <p>Cette page a été affiché <?= $currentHits ?> fois.</p>
     <hr>
 
     <nav class="navigation">
         <div class="container">
             <!-- Bloc gauche : GitHub et Carte -->
             <ul class="left-block">
+                <li class="box">
+                    <a href="https://www.cyu.fr/">
+                        <div class="logo-fac">
+                            <?php
+                                if(mode()=="light") {
+                                    echo "<img src='./ressources/CY_black.png' alt='Erreur du chargement du logo CY' />";
+                                } else {
+                                    echo "<img  src='./ressources/CY_white.png' alt='Erreur du chargement du logo CY' />";
+                                }
+                            ?>
+                        </div>
+                    </a>
+
+                </li>
+
                 <li class="box">
                     <a href="https://github.com/GauthierDefrance/Cergy-Meteo">
                         <div class="nav-menu-button">
