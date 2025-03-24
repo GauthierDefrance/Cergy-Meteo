@@ -97,4 +97,7 @@ main a {
 main a:visited {
     color: rgb(225, 200, 255);           
 }
-  
+
+section ul li a {
+    color: black;
+}

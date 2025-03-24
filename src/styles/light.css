@@ -72,3 +72,7 @@ table {
     box-shadow: 5px 5px 5px lightgray;
 }
 th, td {background-color: white}
+
+section ul li a {
+    color: black;
+}

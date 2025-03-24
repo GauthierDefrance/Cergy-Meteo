@@ -40,6 +40,14 @@ require "./include/header.inc.php";
                 }
                 
             }
+            else {
+                echo "
+                        <figure>
+                            <img src=\"./ressources/default.jpg\" alt=\"image_du_jour\" class='nasa' \">
+                            <figcaption>Pas d&apos;images aujourd&apos;hui !</figcaption>
+                        </figure>
+                    ";
+            }
         ?>
 
         <p><?php echo ("<figcaption class='texte'>".$json['explanation']."</figcaption>");?></p>

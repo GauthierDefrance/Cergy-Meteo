@@ -13,7 +13,7 @@ if(isset($_GET['mode'])){
         <meta name='author' content=''/>
         <meta name='date' content=''/>
         <meta name='description' content=''/>
-        <link rel="icon" type="image/png" href=''/>
+        <link rel="icon" type="image/png" href='./ressources/favicon.png'/>
         <link rel='stylesheet' href='./styles/main.css'/>
         <link rel='stylesheet' href='./styles/pagehf.css'/>
         <link rel='stylesheet' href='./styles/effect.css'/>
