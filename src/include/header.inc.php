@@ -49,6 +49,23 @@ if(isset($_GET['mode'])){
                         </div>
                     </a>
                 </li>
+
+                <li class="dropdown box">
+                    <div class="nav-menu-button">
+                        <i class="fa-solid fa-folder-open fa-2xl"></i>
+                        <span>TD</span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="./td/hornung/index.php">
+                            <button>Thomas Hornung</button>
+                        </a>
+                        <a href="./td/defrance/index.php">
+                            <button>Gauthier Defrance</button>
+                        </a>
+
+                    </div>
+                </li>
+
             </ul>
 
             <!-- Bloc droit : Language et Style -->
