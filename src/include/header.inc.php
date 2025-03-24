@@ -3,6 +3,9 @@ require_once "./include/functions/cookieLoading.inc.php";
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
+
+require_once "./include/functions/increasePageNumber.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +16,7 @@ if(isset($_GET['mode'])){
         <meta name='author' content=''/>
         <meta name='date' content=''/>
         <meta name='description' content=''/>
-        <link rel="icon" type="image/png" href=''/>
+        <link rel="icon" type="image/png" href='./ressources/favicon.png'/>
         <link rel='stylesheet' href='./styles/main.css'/>
         <link rel='stylesheet' href='./styles/pagehf.css'/>
         <link rel='stylesheet' href='./styles/effect.css'/>
@@ -49,6 +52,23 @@ if(isset($_GET['mode'])){
                         </div>
                     </a>
                 </li>
+
+                <li class="dropdown box">
+                    <div class="nav-menu-button">
+                        <i class="fa-solid fa-folder-open fa-2xl"></i>
+                        <span>TD</span>
+                    </div>
+                    <div class="dropdown-menu">
+                        <a href="./td/hornung/index.php">
+                            <button>Thomas Hornung</button>
+                        </a>
+                        <a href="./td/defrance/index.php">
+                            <button>Gauthier Defrance</button>
+                        </a>
+
+                    </div>
+                </li>
+
             </ul>
 
             <!-- Bloc droit : Language et Style -->

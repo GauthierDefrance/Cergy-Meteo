@@ -17,6 +17,15 @@ section {
     margin: 5%;
 }
 
+section ul li {
+    list-style: none;
+
+}
+
+section ul li a {
+    text-decoration: none;
+}
+
 section header {
 
 }

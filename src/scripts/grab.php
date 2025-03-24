@@ -15,7 +15,15 @@
 
     $data = json_decode($json, true);
 
-    $imageUrl = $data['url'];
+    if($data['media_type']){
+
+    }
+
+
+
+
+
+    $imageUrl = isset($data['url']) ? $data['url'] : false;
     $imgPath = "../ressources/";
 
     if($data['media_type']=="image"){
