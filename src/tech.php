@@ -6,7 +6,7 @@ require "./include/header.inc.php";
 <?php
     $json=json_decode(file_get_contents('./ressources/nasa_file.JSON'),true);
     $media_type=$json['media_type'];
-    $url=$json['url'];
+    $url= $json['url'] ?? false;
 ?>
 
 <main>
@@ -40,6 +40,14 @@ require "./include/header.inc.php";
                 }
                 
             }
+            else {
+                echo "
+                        <figure>
+                            <img src=\"./ressources/default.jpg\" alt=\"image_du_jour\" class='nasa' \">
+                            <figcaption>Pas d&apos;images aujourd&apos;hui !</figcaption>
+                        </figure>
+                    ";
+            }
         ?>
 
         <p><?php echo ("<figcaption class='texte'>".$json['explanation']."</figcaption>");?></p>
@@ -52,6 +60,14 @@ require "./include/header.inc.php";
         <?php
             require "./include/functions/UserIp.php";
             echo getUserLocalisation();
+        ?>
+
+    </section>
+    <section>
+        <h2>TestCSV</h2>
+        <?php
+            require "./include/functions/main.inc.php";
+            log_array();
         ?>
 
     </section>
