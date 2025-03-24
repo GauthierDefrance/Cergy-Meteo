@@ -53,6 +53,15 @@ require_once "./include/functions/increasePageNumber.php";
                     </a>
                 </li>
 
+                <li class="box">
+                    <a href="./images.php">
+                        <div class="nav-menu-button">
+                            <i class="fa-solid fa-images-2x"></i>
+                            <span>Images</span>
+                        </div>
+                    </a>
+                </li>
+
                 <li class="dropdown box">
                     <div class="nav-menu-button">
                         <i class="fa-solid fa-folder-open fa-2xl"></i>
