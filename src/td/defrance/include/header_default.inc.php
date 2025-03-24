@@ -32,26 +32,26 @@ if (isset($_GET['lang']) &&  $_GET['lang']=="en") {
     <a href='<?php
                 if(isset($_GET['style']) && $_GET['style']=="dark"){
                     echo explode('?',getCurrentUrl())[0]."?style=light"."&amp;lang=".$lang2load."'>";
-                    echo "<img src='/images/darkmode.png' alt='button darkmode'/></a>";
+                    echo "<img src='./images/darkmode.png' alt='button darkmode'/></a>";
                 }
                 else {
                     echo explode('?',getCurrentUrl())[0]."?style=dark"."&amp;lang=".$lang2load."'>";
-                    echo "<img src='/images/lightmode.png' alt='button lightmode'/></a>";
+                    echo "<img src='./images/lightmode.png' alt='button lightmode'/></a>";
                 }
                 ?>
 
     <a href='<?php
         if(isset($_GET['lang']) && $_GET['lang']=="fr"){
             echo explode('?',getCurrentUrl())[0]."?style=".$mode."&amp;lang=en"."'>";
-            echo "<img src='/images/french_flag.jpg' alt='flag french'/></a>";
+            echo "<img src='./images/french_flag.jpg' alt='flag french'/></a>";
         }
         elseif(isset($_GET['lang']) && $_GET['lang']=="en"){
             echo explode('?',getCurrentUrl())[0]."?style=".$mode."&amp;lang=fr"."'>";
-            echo "<img src='/images/england_flag.png' alt='flag england'/></a>";
+            echo "<img src='./images/england_flag.png' alt='flag england'/></a>";
         }
         else{
             echo explode('?',getCurrentUrl())[0]."?style=".$mode."&amp;lang=en"."'>";
-            echo "<img src='/images/french_flag.jpg' alt='flag french'/></a>";
+            echo "<img src='./images/french_flag.jpg' alt='flag french'/></a>";
         }
     ?>
     </nav>
