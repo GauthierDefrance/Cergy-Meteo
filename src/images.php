@@ -8,26 +8,31 @@ require "./include/header.inc.php";
     <section>
         <h2>PNG</h2>
         <figure>
-            <img src="./ressources/default.jpg" alt="image_png"/>
+            <img src="./ressources/expng.png" alt="image_png"/>
             <figcaption>Une image PNG</figcaption>
         </figure>
-        <p>Les images PNG sont....</p>
+        <p>Le format PNG (Portable Network Graphics) est un format de fichier image commun, conçu pour éviter les pertes dues à la compression utilisé
+            par d'autres algorithmes de compressions.
+        </p>
     </section>
     <section>
         <h2>JPEG</h2>
         <figure>
-            <img src="./ressources/default.jpg" alt="image_jpeg"/>
+            <img src="./ressources/exjpg.jpg" alt="image_jpeg"/>
             <figcaption>Une image JPEG</figcaption>
         </figure>
-        <p>Les images JPEG sont....</p>
+        <p>Le format JPEG (acronyme de Joint Photographic Experts Group) est l'un des formats d'images 
+        les plus utilisés, il utilise un algorithme de compression avec pertes, donc irréversible.</p>
     </section>
     <section>
         <h2>WEBP</h2>
         <figure>
-            <img src="./ressources/default.jpg" alt="image_webp"/>
+            <img src="./ressources/exwebp.webp" alt="image_webp"/>
             <figcaption>Une image WEBP</figcaption>
         </figure>
-        <p>Les images WEBP sont....</p>
+        <p>Le format WEBP est publié par Google en 2010, il est fait pour êtres plus éfficace
+            en terme d'espace que les autres formats de fichier images. Il comprend des pertes.
+        </p>
     </section>
 
 </main>
