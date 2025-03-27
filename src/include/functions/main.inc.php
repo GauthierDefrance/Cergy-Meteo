@@ -100,8 +100,14 @@ function villes_de_dep(string $departement):array{
  * @param string $ville Le nom de la ville.
  */
 function get_weather_data(string $region,string $departement,string $ville){
-
+    $searchUrl ="https://geocoding-api.open-meteo.com/v1/search?";
+    $weatherUrl = "https://api.open-meteo.com/v1/forecast?";
+    $name="name=".$ville;
+    $count="counter=20";
 }
+
+
+
 
 
 ?>
