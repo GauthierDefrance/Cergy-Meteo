@@ -20,12 +20,16 @@ body {
 }
 
 /* Nom de la page */
+
 #name {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
     font-family: "Saira Stencil One", sans-serif;
-    text-align: left;
     font-size: x-large;
     font-weight: bold;
-    margin: 0;
+    text-align: center;
+    white-space: nowrap;
 }
 
 header ul, footer ul {
@@ -33,13 +37,13 @@ header ul, footer ul {
 }
 
 
-/* Autres styles de nav comme tu les as déjà définis */
 .container {
-    margin-right: 10%;
-    margin-left: 10%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /* Place les blocs gauche et droit aux extrémités */
+    align-items: center; /* Centre verticalement */
+    width: 100%;
+    padding: 10px 0;
+    position: relative;
 }
 
 .box {
@@ -51,17 +55,23 @@ header ul, footer ul {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+    margin: 0 5px;
 }
 
-/* Bloc gauche : Accueil et Stats */
-.left-block {display: flex;align-items: center;}
+.left-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Aligner à gauche */
+    flex: 1; /* Permet d'occuper tout l'espace disponible à gauche */
+}
 
-.left-block .box {margin-right: 20px;}
-
-/* Bloc droit : Language et Style */
-.right-block {display: flex;align-items: center;}
-
-.right-block .box {margin-left: 20px;}
+.right-block {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Aligner à droite */
+    flex: 1; /* Permet d'occuper tout l'espace disponible à droite */
+    padding-right: 40px;
+}
 
 /* Retirer les décorations des liens */
 nav a {
@@ -77,7 +87,7 @@ nav a {
     display: none; /* Cache le menu déroulant par défaut */
     position: absolute;
     top: 100%; /* Place le menu juste en dessous de l'élément parent */
-    left: 0;
+    left: -70px;
     z-index: 10;
     border-radius: 5px;
     padding: 10px 0;
