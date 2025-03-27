@@ -69,5 +69,13 @@ function def_list_regions(){
 
 }
 
+function villes_de_dep(string $departement):array{
+
+}
+
+function get_weather_data(string $region,string $departement,string $ville){
+
+}
+
 
 ?>
