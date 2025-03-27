@@ -1,10 +1,18 @@
 <?php 
 /*Constantes*/
+
+/*Chemins*/
 define('REG_PATH', './data/v_region_2024.csv')  ;
 const DEP_PATH = './data/v_departement_2024.csv' ;
-const VIL_PATH = './data/villes.csv' ;
+const VIL_PATH = './data/cities.csv' ;
 
+/*Fonctions*/
 
+/**
+ * Convertit les données des régions et départements en un tableau associatif.
+ *
+ * @return array Tableau associatif associant le nom de la région à une liste de départements, composées d'un numéro et d'un nom.
+ */
 function reg_to_depart(){
     $csv = fopen(REG_PATH, "r");
     $reg = [];
@@ -49,12 +57,19 @@ function reg_to_depart(){
     }
     return $reg_to_deps;
 }
-
+/**
+ * Fonction de test du tableau associatif régions-départements.
+ * @return void
+ */
 function log_array(){
     $test_array=reg_to_depart();
     print_r($test_array);
 }
-
+/**
+ * Génère une liste de définitions HTML des régions et de leurs départements.
+ *
+ * @return string Un string HTML contenant la liste des régions et départements.
+ */
 function def_list_regions(){
     $reg_array=reg_to_depart();
     $html = "<dl>\n";
@@ -68,11 +83,22 @@ function def_list_regions(){
     return $html;
 
 }
-
+/**
+ * Récupère les villes d'un département donné.
+ *
+ * @param string $departement Le code du département.
+ * @return array Un tableau des villes appartenant au département.
+ */
 function villes_de_dep(string $departement):array{
 
 }
-
+/**
+ * Récupère les données météorologiques pour une ville donnée.
+ *
+ * @param string $region Le nom de la région.
+ * @param string $departement Le nom du département.
+ * @param string $ville Le nom de la ville.
+ */
 function get_weather_data(string $region,string $departement,string $ville){
 
 }
