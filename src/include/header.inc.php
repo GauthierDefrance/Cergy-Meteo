@@ -27,10 +27,6 @@ require_once "./include/functions/increasePageNumber.php";
 <body>
 <header id="PageHeader">
 
-    <p id="name">
-        <span>C</span><span>l</span><span>o</span><span>u</span><span>d</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span>
-    </p>
-
     <nav>
         <div class="container">
             <!-- Bloc gauche : Accueil et Stats -->
@@ -79,6 +75,10 @@ require_once "./include/functions/increasePageNumber.php";
                 </li>
 
             </ul>
+
+            <p id="name">
+                <span>C</span><span>l</span><span>o</span><span>u</span><span>d</span><span>W</span><span>a</span><span>t</span><span>c</span><span>h</span>
+            </p>
 
             <!-- Bloc droit : Language et Style -->
             <ul class="right-block">

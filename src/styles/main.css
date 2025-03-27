@@ -31,10 +31,14 @@ section header {
 }
 
 /*Sert à réduire la taille de l'image du jour*/
-.nasa {max-width: 40%;max-height: 480px;}
+.nasa {
+    max-width: 40%;max-height: 480px;
+}
 
 /*Paramètre la taille de l'image de la galerie*/
-.galery {border-radius: 10px;max-height: 400px;max-width: 80%;}
+.galery {
+    border-radius: 10px;max-height: 400px;max-width: 80%;
+}
 
 /* Texte spécial */
 .texte {
