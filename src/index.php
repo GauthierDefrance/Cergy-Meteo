@@ -97,6 +97,7 @@ require_once "./include/functions/cookieLoading.inc.php";
         "La-Reunion", "Corse", "Mayotte", "Guyane" ,"Martinique", "Guadeloupe"];
 
     const departements = ["Yvelines", "Rhône", "Alpes-Maritimes", "Seine-Maritime"];
+
     const villes = ["Lyon", "Marseille", "Rouen", "Nice"];
 
     function autocomplete(input, data, listId) {
