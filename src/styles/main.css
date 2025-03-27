@@ -84,3 +84,20 @@ dd {
 area {
     cursor: pointer;
 }
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    z-index: 1000;
+}
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+}
+.autocomplete-items div:hover {
+    background: #ddd;
+}
