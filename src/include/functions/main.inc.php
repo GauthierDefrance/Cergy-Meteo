@@ -55,5 +55,19 @@ function log_array(){
     print_r($test_array);
 }
 
+function def_list_regions(){
+    $reg_array=reg_to_depart();
+    $html = "<dl>\n";
+
+    foreach ($reg_array as $reg_array => $departments) {
+        $html .= "    <dt><strong>" . htmlspecialchars($reg_array) . "</strong></dt>\n";
+        foreach ($departments as $dept) {
+            $html .= "    <dd>" . htmlspecialchars($dept[0]) . " - " . htmlspecialchars($dept[1]) . "</dd>\n";
+        }
+    }
+    return $html;
+
+}
+
 
 ?>

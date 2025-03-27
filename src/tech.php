@@ -64,10 +64,10 @@ require "./include/header.inc.php";
 
     </section>
     <section>
-        <h2>TestCSV</h2>
+        <h2>TD 10 Exercice 5</h2>
         <?php
             require "./include/functions/main.inc.php";
-            log_array();
+            echo def_list_regions();
         ?>
 
     </section>

@@ -54,3 +54,24 @@ table {
 .logo-fac img{
     width: 100%;
 }
+
+dl {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+dt {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+dd {
+    margin-left: 20px;
+    padding: 5px;
+    font-size: 1em;
+}
