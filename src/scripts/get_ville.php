@@ -1,19 +1,51 @@
 <?php
+include_once "../include/functions/main.inc.php";
+
 header('Content-Type: application/json');
 
-$departements = [
-    "Île-de-France" => ["Paris", "Seine-et-Marne", "Yvelines"],
-    "Auvergne-Rhône-Alpes" => ["Rhône", "Isère", "Savoie"],
-    "Normandie" => ["Seine-Maritime", "Calvados", "Orne"]
-];
+/*
+ * Scripts qui renvoi les départements associé à une région.
+ */
 
-$region = $_GET['region'] ?? '';
+$TabAssociatifVille = reg_to_depart();
+
+$region = $_GET['regions'] ?? '';
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
 
-if (isset($departements[$region])) {
-    $result = array_filter($departements[$region], fn($dep) => str_contains(strtolower($dep), $q));
-    echo json_encode(array_values($result));
-} else {
-    echo json_encode([]);
+$departements = $TabAssociatifDepartements[$region] ?? [];
+
+$result="";
+
+/**
+ * Vérifie si la recherche donné match avec un département
+ * @param $departement
+ * @param $recherche
+ * @return bool
+ */
+function filtrerDepartements($departement, $recherche) {
+    $departement = strtolower($departement);
+    $recherche = strtolower($recherche);
+    return strpos($departement, $recherche) !== false;
 }
+
+/**
+ * Sorcellerie, trie l'array liste selon si elle match les conditions de filtrerDepartements
+ */
+$result = array_filter($departements, function($dep) use ($q) {
+    return filtrerDepartements($dep, $q);
+});
+
+
+if (empty($result)) {
+    echo json_encode([
+        "success" => false,
+        "data" => []
+    ]);
+} else {
+    echo json_encode([
+        "success" => true,
+        "data" => array_values($result)
+    ]);
+}
+
 ?>

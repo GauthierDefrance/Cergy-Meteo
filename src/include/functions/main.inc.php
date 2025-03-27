@@ -90,7 +90,7 @@ function def_list_regions(){
  * @return array Un tableau des villes appartenant au département.
  */
 function villes_de_dep(string $departement):array{
-
+    return [];
 }
 /**
  * Récupère les données météorologiques pour une ville donnée.

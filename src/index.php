@@ -66,7 +66,6 @@ require_once "./include/functions/cookieLoading.inc.php";
         </form>
 
 
-
     </section>
 
 </main>
