@@ -102,19 +102,15 @@ function villes_de_dep(string $departement):array{
         $a=0;
         //Parcours le fichier CSV
         while (($ligne = fgetcsv($csv, 50000, ",")) !== false) {
-            $start_time = hrtime(true);
             
             if($ligne[1]==$departement){
                 $villes[]=$ligne[4];
             }
-            $end_time = hrtime(true);
         }
         fclose($csv);
     } else {
         echo "Erreur lors de l'ouverture du fichier.";
     }
-    echo $a;
-    echo "Temps total : " . ($end_time-$start_time) . "nano secondes\n";
     return $villes;
 }
 /**

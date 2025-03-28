@@ -1,53 +1,86 @@
 <?php
-include_once "../include/functions/main.inc.php";
+include_once "./include/functions/main.inc.php";
 
 header('Content-Type: application/json');
 
 /*
- * Script qui renvoie les villes associées à un département.
+ * Script qui renvoie les villes associées à un département dans une région.
  */
 
+// Récupération des paramètres depuis l'URL
+$region = $_GET['region'] ?? '';
+$departement = $_GET['departement'] ?? '';
 
-$TabAssociatifVilles = villes_de_dep();
-
-if (!isset($_GET['departement']) || empty($_GET['departement'])) {
+// Si la région ou le département n'est pas spécifié, on retourne une erreur.
+if (empty($region) || empty($departement)) {
     echo json_encode([
         "success" => false,
-        "message" => "Département invalide ou non spécifié",
+        "message" => "Région ou département invalide ou non spécifié",
         "data" => []
     ]);
     exit;
 }
 
-$departement = $_GET['departement'] ?? '';
+// Récupérer les départements de la région via la fonction reg_to_depart()
+$tab = reg_to_depart();
 
+// Vérifier que la région existe
+if (!isset($tab[$region])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Région invalide",
+        "data" => []
+    ]);
+    exit;
+}
+
+// Récupérer les départements de la région spécifiée
+$departements = $tab[$region];
+
+// Vérifier que le département existe pour cette région
+// Vérifier que le département existe pour cette région
+$departementExistant = false;
+foreach ($departements as $dep) {
+    if ($dep[0] === $departement) {
+        $departementExistant = true;
+        break;
+    }
+}
+
+
+if (!$departementExistant) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Département invalide pour cette région",
+        "data" => []
+    ]);
+    exit;
+}
+
+// Récupérer la liste des villes du département
+$TabAssociatifVilles = villes_de_dep($departement);
+
+// Filtrage des villes si une recherche est fournie
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
+$result = [];
 
-
-$TabAssociatifVilles = $TabAssociatifVilles[$departement] ?? [];
-
-$result = "";
-
-/**
- * Filtrer les villes en fonction de la recherche.
- * @param $ville
- * @param $recherche
- * @return bool
- */
+// Fonction de filtrage des villes
 function filtrerVilles($ville, $recherche) {
     $ville = strtolower($ville);
     $recherche = strtolower($recherche);
     return strpos($ville, $recherche) !== false;
 }
 
-/**
- * Appliquer le filtre aux villes du département.
- */
-$result = array_filter($TabAssociatifVilles, function($ville) use ($q) {
-    return filtrerVilles($ville, $q);
-});
+// Appliquer le filtre aux villes
+if (!empty($q)) {
+    $result = array_filter($TabAssociatifVilles, function($ville) use ($q) {
+        return filtrerVilles($ville, $q);
+    });
+} else {
+    $result = $TabAssociatifVilles;
+}
 
-
+// Réponse JSON avec les villes filtrées
 if (empty($result)) {
     echo json_encode([
         "success" => false,
