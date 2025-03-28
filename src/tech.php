@@ -68,6 +68,8 @@ require "./include/header.inc.php";
         <?php
             require "./include/functions/main.inc.php";
             echo def_list_regions();
+            villes_de_dep('95');
+            log_array2(villes_de_dep('95'));
         ?>
 
     </section>

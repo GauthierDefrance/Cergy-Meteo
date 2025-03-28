@@ -83,6 +83,9 @@ function def_list_regions(){
     return $html;
 
 }
+
+
+
 /**
  * Récupère les villes d'un département donné.
  *
@@ -90,8 +93,38 @@ function def_list_regions(){
  * @return array Un tableau des villes appartenant au département.
  */
 function villes_de_dep(string $departement):array{
-    return [];
+    $csv = fopen(VIL_PATH, "r");
+    $villes = [];
+    if (($csv) !== false) {
+
+        //saute la première ligne
+        fgetcsv($csv);
+        $a=0;
+        //Parcours le fichier CSV
+        while (($ligne = fgetcsv($csv, 50000, ",")) !== false) {
+            $start_time = hrtime(true);
+            
+            if($ligne[1]==$departement){
+                $villes[]=$ligne[4];
+            }
+            $end_time = hrtime(true);
+        }
+        fclose($csv);
+    } else {
+        echo "Erreur lors de l'ouverture du fichier.";
+    }
+    echo $a;
+    echo "Temps total : " . ($end_time-$start_time) . "nano secondes\n";
+    return $villes;
 }
+/**
+ * Fonction de test de tableau .
+ * @return void
+ */
+function log_array2(array $test_array){
+    print_r($test_array);
+}
+
 /**
  * Récupère les données météorologiques pour une ville donnée.
  *
