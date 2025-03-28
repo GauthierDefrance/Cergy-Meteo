@@ -77,7 +77,13 @@ require_once "./include/functions/cookieLoading.inc.php";
         </form>
 
 
+        <?php
+        include_once "./scripts/meteo.php";
+        ?>
+
     </section>
+
+
 
 </main>
 

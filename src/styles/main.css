@@ -3,9 +3,10 @@
 main {
     text-align: center;
     border-radius: 10px;
-    margin: 0 auto; /* Centrage horizontal */
-    max-width: 1000px; /* Largeur maximale du contenu */
+    margin: 0 auto;
+    width: 80%;
 }
+
 main header {
 
 }
@@ -90,15 +91,15 @@ area {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    max-width: 800px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column; /* Aligner les éléments verticalement */
-    gap: 20px;
-    justify-content: center; /* Centrer verticalement */
-    align-items: center; /* Centrer horizontalement */
-    margin: 0 auto; /* Centrage horizontal */
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
 }
 
 /* Titre du formulaire */
@@ -109,11 +110,18 @@ area {
     font-size: 24px;
 }
 
-/* Champ de recherche */
 .autocomplete-container {
-    position: relative;
-    width: 100%; /* Laisser plus d'espace pour les champs d'entrée */
+    width: 100%;
     max-width: 400px; /* Largeur maximale des champs */
+    display: flex;
+    flex-direction: column; /* Aligner les éléments verticalement */
+    gap: 5px; /* Espace entre l'étiquette et le champ */
+    align-items: flex-start; /* Aligner à gauche (ou centré si nécessaire) */
+}
+
+.autocomplete-container label {
+    font-size: 1rem;
+    color: #333;
 }
 
 input[type="search"] {
@@ -167,7 +175,7 @@ input[type="submit"] {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 10px;
+    margin-top: 20px; /* Espacement supplémentaire pour le bouton */
 }
 
 input[type="submit"]:hover {
