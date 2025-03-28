@@ -71,6 +71,21 @@ require "./include/header.inc.php";
         ?>
 
     </section>
+    <section>
+        <h2>Test</h2>
+        <?php
+            
+            $suggestions = ["Paris", "Lyon", "Marseille", "Toulouse", "Nice"];
+            ?>
+            <label for="city">Ville :</label>
+            <input list="cities" id="city" name="city">
+            <datalist id="cities">
+                <?php foreach ($suggestions as $city) : ?>
+                    <option value="<?= htmlspecialchars($city) ?>">
+                <?php endforeach; ?>
+            </datalist>
+    </section>
+
 
 
 </main>
