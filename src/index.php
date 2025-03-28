@@ -88,6 +88,9 @@ require_once "./include/functions/cookieLoading.inc.php";
 </main>
 
 <script>
+    /**
+     * Map fonctionnement
+     */
     document.addEventListener("DOMContentLoaded", function() {
         const areas = document.querySelectorAll("map[name='france-map'] area");
         const regionInput = document.querySelector("input[name='region']");
@@ -116,6 +119,10 @@ require_once "./include/functions/cookieLoading.inc.php";
             let val = this.value;
             let listContainer = document.getElementById(listId);
             listContainer.innerHTML = "";  // Efface les anciennes suggestions
+            document.querySelector("input[name='departement']").value= "";
+            document.querySelector("input[name='ville']").value = "";
+            document.getElementById('departement-list').innerHTML = "";
+            document.getElementById('ville-list').innerHTML = "";
 
             if (!val) return;
 
@@ -206,16 +213,16 @@ require_once "./include/functions/cookieLoading.inc.php";
         const departementInput = document.getElementById("departement");
         const departementList = document.getElementById("departement-list");
 
+        /**
+         *
+         */
         departementInput.addEventListener('input', function () {
             const departementQuery = departementInput.value;
             const regionInputValue = document.getElementById('region').value;  // Récupère la région actuelle
-            document.querySelector("input[name='ville']").value = "";
 
-            document.getElementById('ville').innerHTML = "";
-            document.getElementById('departement').innerHTML = "";
-            document.getElementById('departement-list').innerHTML = "";
+            document.querySelector("input[name='ville']").value = "";
             document.getElementById('ville-list').innerHTML = "";
-            
+
             if (regionInputValue) {
                 // Vérifie si la région est valide avant d'envoyer la requête AJAX
                 const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionInputValue + '&q=';
