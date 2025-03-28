@@ -21,9 +21,9 @@ function reg_to_depart(){
         fgetcsv($csv);
         //Parcours le fichier CSV
         while (($ligne = fgetcsv($csv, 200, ",")) !== false) {
-            if (isset($ligne[0])&& isset($ligne[5])) {  
+            if (isset($ligne[0])&& isset($ligne[3])) {
                 //crée un tableau associatif associant numéro de région et nom de région
-                $reg[$ligne[0]] = $ligne[5];  
+                $reg[$ligne[0]] = $ligne[3];
             }
         }
         fclose($csv);

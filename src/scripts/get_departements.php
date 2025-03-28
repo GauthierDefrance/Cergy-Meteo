@@ -1,4 +1,20 @@
 <?php
+
+// Permet toutes les origines (peut être restreint à un domaine spécifique)
+header("Access-Control-Allow-Origin: *");
+
+// Permet les méthodes GET, POST et OPTIONS
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+// Permet les en-têtes spécifiques dans la requête
+header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
+
+// Si la méthode est OPTIONS (pré-vol), la réponse doit être immédiate
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 include_once "./include/functions/main.inc.php";
 
 header('Content-Type: application/json');

@@ -3,10 +3,9 @@
 main {
     text-align: center;
     border-radius: 10px;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin: 0 auto; /* Centrage horizontal */
+    max-width: 1000px; /* Largeur maximale du contenu */
 }
-
 main header {
 
 }
@@ -85,19 +84,96 @@ area {
     cursor: pointer;
 }
 
+/* Conteneur du formulaire */
+.searchbox {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column; /* Aligner les éléments verticalement */
+    gap: 20px;
+    justify-content: center; /* Centrer verticalement */
+    align-items: center; /* Centrer horizontalement */
+    margin: 0 auto; /* Centrage horizontal */
+}
+
+/* Titre du formulaire */
+.searchbox h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Champ de recherche */
+.autocomplete-container {
+    position: relative;
+    width: 100%; /* Laisser plus d'espace pour les champs d'entrée */
+    max-width: 400px; /* Largeur maximale des champs */
+}
+
+input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="search"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+/* Boîte de suggestions */
 .autocomplete-items {
     position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
     border: 1px solid #ccc;
     border-top: none;
     max-height: 150px;
     overflow-y: auto;
     background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    border-radius: 4px;
 }
+
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
+
 .autocomplete-items div:hover {
-    background: #ddd;
+    background: #f1f1f1;
+}
+
+/* Bouton de soumission */
+input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="submit"]:focus {
+    outline: none;
 }

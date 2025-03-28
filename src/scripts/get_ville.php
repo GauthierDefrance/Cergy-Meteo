@@ -1,4 +1,20 @@
 <?php
+
+// Permet toutes les origines (peut être restreint à un domaine spécifique)
+header("Access-Control-Allow-Origin: *");
+
+// Permet les méthodes GET, POST et OPTIONS
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+
+// Permet les en-têtes spécifiques dans la requête
+header("Access-Control-Allow-Headers: Content-Type, X-Requested-With");
+
+// Si la méthode est OPTIONS (pré-vol), la réponse doit être immédiate
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
 include_once "./include/functions/main.inc.php";
 
 header('Content-Type: application/json');
@@ -9,10 +25,10 @@ header('Content-Type: application/json');
 
 // Récupération des paramètres depuis l'URL
 $region = $_GET['region'] ?? '';
-$departement = $_GET['departement'] ?? '';
+$departementNom = $_GET['departement'] ?? '';
 
 // Si la région ou le département n'est pas spécifié, on retourne une erreur.
-if (empty($region) || empty($departement)) {
+if (empty($region) || empty($departementNom)) {
     echo json_encode([
         "success" => false,
         "message" => "Région ou département invalide ou non spécifié",
@@ -37,18 +53,18 @@ if (!isset($tab[$region])) {
 // Récupérer les départements de la région spécifiée
 $departements = $tab[$region];
 
-// Vérifier que le département existe pour cette région
-// Vérifier que le département existe pour cette région
-$departementExistant = false;
+// Trouver le code du département à partir de son nom
+$departementCode = null;
 foreach ($departements as $dep) {
-    if ($dep[0] === $departement) {
-        $departementExistant = true;
+    // Si le nom du département correspond au département passé en paramètre
+    if (strtolower($dep[1]) === strtolower($departementNom)) {
+        $departementCode = $dep[0];  // Récupère le code du département
         break;
     }
 }
 
-
-if (!$departementExistant) {
+// Vérifier que le département existe dans la région
+if (!$departementCode) {
     echo json_encode([
         "success" => false,
         "message" => "Département invalide pour cette région",
@@ -57,8 +73,8 @@ if (!$departementExistant) {
     exit;
 }
 
-// Récupérer la liste des villes du département
-$TabAssociatifVilles = villes_de_dep($departement);
+// Récupérer la liste des villes du département en utilisant son code
+$TabAssociatifVilles = villes_de_dep($departementCode);
 
 // Filtrage des villes si une recherche est fournie
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
