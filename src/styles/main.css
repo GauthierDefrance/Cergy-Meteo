@@ -111,12 +111,28 @@ area {
 }
 
 .autocomplete-container {
+    position: relative;
     width: 100%;
     max-width: 400px; /* Largeur maximale des champs */
     display: flex;
     flex-direction: column; /* Aligner les éléments verticalement */
     gap: 5px; /* Espace entre l'étiquette et le champ */
     align-items: flex-start; /* Aligner à gauche (ou centré si nécessaire) */
+}
+
+.autocomplete-items {
+    position: absolute;
+    top: 100%; /* Place la boîte juste en dessous de l'input */
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 4px;
 }
 
 .autocomplete-container label {
@@ -137,22 +153,6 @@ input[type="search"] {
 input[type="search"]:focus {
     border-color: #007bff;
     outline: none;
-}
-
-/* Boîte de suggestions */
-.autocomplete-items {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    border: 1px solid #ccc;
-    border-top: none;
-    max-height: 150px;
-    overflow-y: auto;
-    background: white;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-radius: 4px;
 }
 
 .autocomplete-items div {
