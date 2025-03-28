@@ -3,8 +3,8 @@
 main {
     text-align: center;
     border-radius: 10px;
-    margin-left: 15%;
-    margin-right: 15%;
+    margin: 0 auto;
+    width: 80%;
 }
 
 main header {
@@ -85,19 +85,156 @@ area {
     cursor: pointer;
 }
 
+/* Conteneur du formulaire */
+.searchbox {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Titre du formulaire */
+.searchbox h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+.autocomplete-container {
+    display: flex;
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Largeur maximale des champs */
+    flex-direction: column; /* Aligner les éléments verticalement */
+    gap: 5px; /* Espace entre l'étiquette et le champ */
+    align-items: flex-start; /* Aligner à gauche (ou centré si nécessaire) */
+}
+
 .autocomplete-items {
     position: absolute;
+    top: 100%; /* Place la boîte juste en dessous de l'input */
+    left: 0;
+    width: 100%;
     border: 1px solid #ccc;
     border-top: none;
     max-height: 150px;
     overflow-y: auto;
     background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     z-index: 1000;
+    border-radius: 4px;
 }
+
+.autocomplete-container label {
+    font-size: 1rem;
+    color: #333;
+}
+
+input[type="search"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="search"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
+    transition: background 0.3s ease;
 }
+
 .autocomplete-items div:hover {
-    background: #ddd;
+    background: #f1f1f1;
+}
+
+/* Bouton de soumission */
+input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px; /* Espacement supplémentaire pour le bouton */
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+input[type="submit"]:focus {
+    outline: none;
+}
+
+/* Conteneur du formulaire */
+.searchbox {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: relative; /* Nécessaire pour positionner le menu correctement */
+}
+
+/* Menu déroulant (initialement caché) */
+.autocomplete-items {
+    position: absolute;
+    top: 100%; /* Place la boîte juste en dessous de l'input */
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    display: none; /* Cacher par défaut */
+}
+
+/* Afficher le menu déroulant lorsqu'on interagit avec l'input ou le conteneur */
+.autocomplete-container:focus-within .autocomplete-items,
+.autocomplete-container:hover .autocomplete-items,
+input[type="search"]:focus + .autocomplete-items {
+    display: block; /* Affiche le menu lorsque l'input est en focus ou le conteneur est survolé */
+}
+
+/* Ajout de l'effet hover pour les éléments du menu */
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.autocomplete-items div:hover {
+    background: #f1f1f1;
 }
