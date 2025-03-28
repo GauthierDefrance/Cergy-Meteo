@@ -4,48 +4,61 @@ include_once "../include/functions/main.inc.php";
 header('Content-Type: application/json');
 
 /*
- * Scripts qui renvoi les départements associé à une région.
+ * Script qui renvoie les villes associées à un département.
  */
 
-$TabAssociatifVille = reg_to_depart();
 
-$region = $_GET['regions'] ?? '';
+$TabAssociatifVilles = villes_de_dep();
+
+if (!isset($_GET['departement']) || empty($_GET['departement'])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Département invalide ou non spécifié",
+        "data" => []
+    ]);
+    exit;
+}
+
+$departement = $_GET['departement'] ?? '';
+
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
 
-$departements = $TabAssociatifDepartements[$region] ?? [];
 
-$result="";
+$TabAssociatifVilles = $TabAssociatifVilles[$departement] ?? [];
+
+$result = "";
 
 /**
- * Vérifie si la recherche donné match avec un département
- * @param $departement
+ * Filtrer les villes en fonction de la recherche.
+ * @param $ville
  * @param $recherche
  * @return bool
  */
-function filtrerDepartements($departement, $recherche) {
-    $departement = strtolower($departement);
+function filtrerVilles($ville, $recherche) {
+    $ville = strtolower($ville);
     $recherche = strtolower($recherche);
-    return strpos($departement, $recherche) !== false;
+    return strpos($ville, $recherche) !== false;
 }
 
 /**
- * Sorcellerie, trie l'array liste selon si elle match les conditions de filtrerDepartements
+ * Appliquer le filtre aux villes du département.
  */
-$result = array_filter($departements, function($dep) use ($q) {
-    return filtrerDepartements($dep, $q);
+$result = array_filter($TabAssociatifVilles, function($ville) use ($q) {
+    return filtrerVilles($ville, $q);
 });
 
 
 if (empty($result)) {
     echo json_encode([
         "success" => false,
+        "message" => "Aucune ville trouvée",
         "data" => []
     ]);
 } else {
     echo json_encode([
         "success" => true,
+        "message" => "Villes trouvées",
         "data" => array_values($result)
     ]);
 }
-
 ?>

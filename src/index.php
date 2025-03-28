@@ -128,9 +128,76 @@ require_once "./include/functions/cookieLoading.inc.php";
     }
 
     autocomplete(document.getElementById("region"), regions, "region-list");
-    autocomplete(document.getElementById("departement"), departements, "departement-list");
-    autocomplete(document.getElementById("ville"), villes, "ville-list");
 
+    document.addEventListener('DOMContentLoaded', function () {
+        // Fonction pour effectuer une requête AJAX
+        function fetchData(url, query, callback) {
+            if (!query) return;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url + query, true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const data = JSON.parse(xhr.responseText);
+                    callback(data);
+                }
+            };
+            xhr.send();
+        }
+
+        // Fonction pour afficher les suggestions
+        function showSuggestions(inputElement, data, listElement) {
+            listElement.innerHTML = '';  // Efface les anciennes suggestions
+            if (data.success && data.data.length > 0) {
+                data.data.forEach(function (item) {
+                    const div = document.createElement('div');
+                    div.textContent = item;
+                    div.addEventListener('click', function () {
+                        inputElement.value = item;
+                        listElement.innerHTML = '';  // Vide la liste après sélection
+                    });
+                    listElement.appendChild(div);
+                });
+            } else {
+                const div = document.createElement('div');
+                div.textContent = 'Aucun résultat trouvé';
+                listElement.appendChild(div);
+            }
+        }
+
+        // Écouteur d'événements pour la région
+        const regionInput = document.getElementById('region');
+        const regionList = document.getElementById('region-list');
+        regionInput.addEventListener('input', function () {
+            const regionQuery = regionInput.value;
+            fetchData('https://hornung.alwaysdata.net/scripts/get_ville.php?region=', regionQuery, function (data) {
+                showSuggestions(regionInput, data, regionList);
+            });
+        });
+
+        // Écouteur d'événements pour le département
+        const departementInput = document.getElementById('departement');
+        const departementList = document.getElementById('departement-list');
+        departementInput.addEventListener('input', function () {
+            const departementQuery = departementInput.value;
+            fetchData('https://hornung.alwaysdata.net/scripts/get_departements.php?departement=', departementQuery, function (data) {
+                showSuggestions(departementInput, data, departementList);
+            });
+        });
+
+        // Écouteur d'événements pour la ville
+        const villeInput = document.getElementById('ville');
+        const villeList = document.getElementById('ville-list');
+        villeInput.addEventListener('input', function () {
+            const villeQuery = villeInput.value;
+            const regionValue = regionInput.value;  // Récupère la région actuelle
+            if (regionValue) {
+                fetchData('https://hornung.alwaysdata.net/scripts/get_ville.php?region=' + regionValue + '&q=', villeQuery, function (data) {
+                    showSuggestions(villeInput, data, villeList);
+                });
+            }
+        });
+    });
 </script>
 
 <?php

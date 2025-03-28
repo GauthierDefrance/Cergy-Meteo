@@ -9,7 +9,18 @@ header('Content-Type: application/json');
 
 $TabAssociatifDepartements = reg_to_depart();
 
+
+if (!isset($_GET['regions']) || empty($_GET['regions'])) {
+    echo json_encode([
+        "success" => false,
+        "message" => "Région invalide ou non spécifié",
+        "data" => []
+    ]);
+    exit;
+}
+
 $region = $_GET['regions'] ?? '';
+
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
 
 $departements = $TabAssociatifDepartements[$region] ?? [];
