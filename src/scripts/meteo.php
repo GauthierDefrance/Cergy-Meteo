@@ -114,11 +114,11 @@ class WeatherForecast {
 
     private function getDescImage($weatherCode): string
     {
-        $tab = $this->getWeatherDescription($weatherCode);
-        $output = "<div class='meteo-box'>";
+        $tab = $this->getWeatherInfo($weatherCode);
+        $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";
         if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' />";
         else $output .= "<img src='./ressources/airy/$weatherCode.png' />";
-        $output .= "<p>$output[1]</p>";
+        $output .= "<p>".$tab[0]."</p>";
         return $output;
     }
 
@@ -145,7 +145,7 @@ class WeatherForecast {
                             <td>$tempMin °C</td>
                             <td>$tempMax °C</td>
                             <td>$precipitation mm</td>
-                            <td>$this->getDescImage($weatherCode)</td>
+                            <td>".$this->getDescImage($weatherCode)."</td>
                          </tr>";
             }
 
