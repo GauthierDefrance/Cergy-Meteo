@@ -158,6 +158,8 @@ require_once "./include/functions/cookieLoading.inc.php";
         itemDiv.addEventListener("click", function() {
             input.value = this.textContent;
             listContainer.innerHTML = "";  // Vide la liste après sélection
+            // Actualiser les données après sélection
+            updateDataAfterSelection(input);
         });
         listContainer.appendChild(itemDiv);
     }
@@ -182,21 +184,55 @@ require_once "./include/functions/cookieLoading.inc.php";
 
         const xhr = new XMLHttpRequest();
         xhr.open('GET', url + query, true);
-        console.log("Valeur de la requête : ", url + query); // Vérifie l'URL
-        console.log("Type de callback : ", typeof callback); // Vérifie si le callback est bien une fonction
         xhr.onreadystatechange = function () {
             if (xhr.readyState === 4 && xhr.status === 200) {
                 const data = JSON.parse(xhr.responseText);
-                // Vérifie si callback est une fonction avant de l'exécuter
                 if (typeof callback === 'function') {
                     callback(data);
-                    console.log(data);
-                } else {
-                    console.error('Le callback n\'est pas une fonction');
                 }
             }
         };
         xhr.send();
+    }
+
+    // Fonction pour actualiser les données après la sélection d'un élément
+    function updateDataAfterSelection(input) {
+        const regionInput = document.getElementById('region');
+        const departementInput = document.getElementById('departement');
+        const villeInput = document.getElementById('ville');
+        const departementList = document.getElementById('departement-list');
+        const villeList = document.getElementById('ville-list');
+
+        // Si la région est sélectionnée
+        if (input === regionInput) {
+            const regionValue = regionInput.value;
+            departementInput.value = ""; // Réinitialise le champ département
+            villeInput.value = ""; // Réinitialise le champ ville
+            departementList.innerHTML = ""; // Vide la liste des départements
+            villeList.innerHTML = ""; // Vide la liste des villes
+
+            // Requête AJAX pour récupérer les départements pour la région sélectionnée
+            if (regionValue) {
+                const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionValue + '&q=';
+                fetchData(url, '', function(data) {
+                    showSuggestions(departementInput, data, departementList);
+                });
+            }
+        }
+        // Si le département est sélectionné
+        else if (input === departementInput) {
+            const departementValue = departementInput.value;
+            villeInput.value = ""; // Réinitialise le champ ville
+            villeList.innerHTML = ""; // Vide la liste des villes
+
+            // Requête AJAX pour récupérer les villes pour le département sélectionné
+            if (departementValue && regionInput.value) {
+                const url = 'https://hornung.alwaysdata.net/get_ville.php?region=' + encodeURIComponent(regionInput.value) + '&departement=' + encodeURIComponent(departementValue) + '&q=';
+                fetchData(url, '', function(data) {
+                    showSuggestions(villeInput, data, villeList);
+                });
+            }
+        }
     }
 
     // Initialisation des champs de recherche
@@ -213,9 +249,6 @@ require_once "./include/functions/cookieLoading.inc.php";
         const departementInput = document.getElementById("departement");
         const departementList = document.getElementById("departement-list");
 
-        /**
-         *
-         */
         departementInput.addEventListener('input', function () {
             const departementQuery = departementInput.value;
             const regionInputValue = document.getElementById('region').value;  // Récupère la région actuelle
@@ -224,7 +257,7 @@ require_once "./include/functions/cookieLoading.inc.php";
             document.getElementById('ville-list').innerHTML = "";
 
             if (regionInputValue) {
-                // Vérifie si la région est valide avant d'envoyer la requête AJAX
+                // Effectue la requête pour les départements
                 const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionInputValue + '&q=';
                 fetchData(url, departementQuery ,function (data) {
                     showSuggestions(departementInput, data, departementList);
@@ -244,8 +277,8 @@ require_once "./include/functions/cookieLoading.inc.php";
             const departementValue = departementInputValue.value; // Récupère le département actuel
 
             if (regionValue && departementValue) {
-                // On envoie les deux paramètres : région et département
-                const url = 'https://hornung.alwaysdata.net/get_ville.php?region=' + encodeURIComponent(regionValue) + '&departement=' + encodeURIComponent(departementValue) + '&q=' ;
+                // Envoie la requête pour les villes
+                const url = 'https://hornung.alwaysdata.net/get_ville.php?region=' + encodeURIComponent(regionValue) + '&departement=' + encodeURIComponent(departementValue) + '&q=';
                 fetchData(url, villeQuery, function (data) {
                     showSuggestions(villeInput, data, villeList);
                 });
