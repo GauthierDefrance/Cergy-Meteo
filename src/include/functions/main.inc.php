@@ -9,11 +9,11 @@ const VIL_PATH = './data/cities.csv' ;
 /*Fonctions*/
 
 /**
- * Convertit les données des régions et départements en un tableau associatif.
+ * Associe les numéros des régions à leur noms.
  *
- * @return array Tableau associatif associant le nom de la région à une liste de départements, composées d'un numéro et d'un nom.
+ * @return array Tableau associatif associant le numéro d'une région à son nom.
  */
-function reg_to_depart(){
+function reg_num_correspondance(){
     $csv = fopen(REG_PATH, "r");
     $reg = [];
     if (($csv) !== false) {
@@ -30,6 +30,17 @@ function reg_to_depart(){
     } else {
         echo "Erreur lors de l'ouverture du fichier.";
     }
+    return $reg;
+
+}
+
+/**
+ * Convertit les données des régions et départements en un tableau associatif.
+ *
+ * @return array Tableau associatif associant le nom de la région à une liste de départements, composées d'un numéro et d'un nom.
+ */
+function reg_to_depart(){
+    $reg= reg_dep_correspondance();
     $csv = fopen(DEP_PATH, "r");
     $reg_to_deps = [];
     if (($csv) !== false) {
@@ -57,6 +68,8 @@ function reg_to_depart(){
     }
     return $reg_to_deps;
 }
+
+
 /**
  * Fonction de test du tableau associatif régions-départements.
  * @return void
@@ -99,22 +112,17 @@ function villes_de_dep(string $departement):array{
 
         //saute la première ligne
         fgetcsv($csv);
-        $a=0;
         //Parcours le fichier CSV
         while (($ligne = fgetcsv($csv, 50000, ",")) !== false) {
-            $start_time = hrtime(true);
             
             if($ligne[1]==$departement){
                 $villes[]=$ligne[4];
             }
-            $end_time = hrtime(true);
         }
         fclose($csv);
     } else {
         echo "Erreur lors de l'ouverture du fichier.";
     }
-    echo $a;
-    echo "Temps total : " . ($end_time-$start_time) . "nano secondes\n";
     return $villes;
 }
 /**
