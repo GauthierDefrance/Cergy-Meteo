@@ -87,6 +87,16 @@ require "./include/header.inc.php";
                 <?php endforeach; ?>
             </datalist>
     </section>
+    <section>
+        <h2>Test geolocation</h2>
+        <?php
+            $dep='08';
+            $ville='Viel-Saint-Remy';
+            echo get_ville_latitude($dep,$ville);
+            echo get_ville_longitude($dep,$ville);
+            ?>
+
+    </section>
 
 
 

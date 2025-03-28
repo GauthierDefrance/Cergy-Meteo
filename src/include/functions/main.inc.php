@@ -40,7 +40,7 @@ function reg_num_correspondance(){
  * @return array Tableau associatif associant le nom de la région à une liste de départements, composées d'un numéro et d'un nom.
  */
 function reg_to_depart(){
-    $reg= reg_dep_correspondance();
+    $reg= reg_num_correspondance();
     $csv = fopen(DEP_PATH, "r");
     $reg_to_deps = [];
     if (($csv) !== false) {
@@ -126,11 +126,64 @@ function villes_de_dep(string $departement):array{
     return $villes;
 }
 /**
+ * Récupère les informations des villes d'un département sélectionné.
+ *
+ * @param string $departement Le code du département.
+ * @return array Un tableau associatif associant le nom d'une ville d'un département à sa localisation.
+ */
+function villes_de_dep_location(string $departement):array{
+    $csv = fopen(VIL_PATH, "r");
+    $villes = [];
+    if (($csv) !== false) {
+
+        //saute la première ligne
+        fgetcsv($csv);
+        //Parcours le fichier CSV
+        while (($ligne = fgetcsv($csv, 50000, ",")) !== false) {
+            
+            if($ligne[1]==$departement){
+                $villes[$ligne[4]]=[$ligne[6],$ligne[7]];
+            }
+        }
+        fclose($csv);
+    } else {
+        echo "Erreur lors de l'ouverture du fichier.";
+    }
+    return $villes;
+}
+
+/**
  * Fonction de test de tableau .
  * @return void
  */
 function log_array2(array $test_array){
     print_r($test_array);
+}
+
+/**
+ * Récupère la latitude d'une ville donnée.
+ *
+ * @param string $departement Le nom du département.
+ * @param string $ville Le nom de la ville.
+ * @return string la latitude de la ville
+ */
+function get_ville_latitude(string $departement,string $ville){
+    $villes=villes_de_dep_location($departement);
+    $latitude=$villes[$ville][0];
+    return $latitude;
+}
+
+/**
+ * Récupère la longitude d'une ville donnée.
+ *
+ * @param string $departement Le nom du département.
+ * @param string $ville Le nom de la ville.
+ * @return string la longitude de la ville
+ */
+function get_ville_longitude(string $departement,string $ville){
+    $villes=villes_de_dep_location($departement);
+    $longitude=$villes[$ville][1];
+    return $longitude;
 }
 
 /**
@@ -141,11 +194,12 @@ function log_array2(array $test_array){
  * @param string $ville Le nom de la ville.
  */
 function get_weather_data(string $region,string $departement,string $ville){
-    $searchUrl ="https://geocoding-api.open-meteo.com/v1/search?";
     $weatherUrl = "https://api.open-meteo.com/v1/forecast?";
     $name="name=".$ville;
     $count="counter=20";
 }
+
+
 
 
 
