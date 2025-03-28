@@ -70,7 +70,7 @@ require_once "./include/functions/cookieLoading.inc.php";
 
             <div class="autocomplete-container">
                 <label for="ville">Ville</label>
-            <input type="search" id="ville" name="Ville" placeholder="Ville" autocomplete="off" />
+            <input type="search" id="ville" name="ville" placeholder="Ville" autocomplete="off" />
             <div id="ville-list" class="autocomplete-items"></div></div>
 
             <input type="submit" value="Rechercher"/>
@@ -101,6 +101,8 @@ require_once "./include/functions/cookieLoading.inc.php";
                     regionInput.value = regionName;
                     document.querySelector("input[name='departement']").value= "";
                     document.querySelector("input[name='ville']").value = "";
+                    document.getElementById('departement-list').innerHTML = "";
+                    document.getElementById('ville-list').innerHTML = "";
                 }
             });
         });
@@ -193,10 +195,10 @@ require_once "./include/functions/cookieLoading.inc.php";
     // Initialisation des champs de recherche
     document.addEventListener('DOMContentLoaded', function () {
         // Autocomplétion pour les régions avec une liste locale
-        const regions = ["GUADELOUPE", "MARTINIQUE", "GUYANE", "LA REUNION",
-        "MAYOTTE", "ILE DE FRANCE", "CENTRE VAL DE LOIRE", "BOURGOGNE FRANCHE COMTE",
-        "NORMANDIE", "HAUTS DE FRANCE", "GRAND EST", "PAYS DE LA LOIRE", "BRETAGNE",
-        "NOUVELLE AQUITAINE", "OCCITANIE", "AUVERGNE RHONE ALPES", "PROVENCE ALPES COTE D AZUR", "CORSE"];
+        const regions = ["AUVERGNE RHONE ALPES", "BOURGOGNE FRANCHE COMTE", "BRETAGNE", "CENTRE VAL DE LOIRE",
+            "CORSE", "GUADELOUPE", "GRAND EST", "GUYANE", "HAUTS DE FRANCE", "ILE DE FRANCE", "LA REUNION",
+            "MARTINIQUE", "MAYOTTE", "NORMANDIE", "NOUVELLE AQUITAINE", "OCCITANIE", "PAYS DE LA LOIRE",
+            "PROVENCE ALPES COTE D AZUR"];
 
         autocomplete(document.getElementById("region"), regions, "region-list", null);
 
@@ -207,7 +209,13 @@ require_once "./include/functions/cookieLoading.inc.php";
         departementInput.addEventListener('input', function () {
             const departementQuery = departementInput.value;
             const regionInputValue = document.getElementById('region').value;  // Récupère la région actuelle
+            document.querySelector("input[name='ville']").value = "";
 
+            document.getElementById('ville').innerHTML = "";
+            document.getElementById('departement').innerHTML = "";
+            document.getElementById('departement-list').innerHTML = "";
+            document.getElementById('ville-list').innerHTML = "";
+            
             if (regionInputValue) {
                 // Vérifie si la région est valide avant d'envoyer la requête AJAX
                 const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionInputValue + '&q=';

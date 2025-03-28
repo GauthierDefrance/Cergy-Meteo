@@ -111,10 +111,10 @@ area {
 }
 
 .autocomplete-container {
+    display: flex;
     position: relative;
     width: 100%;
     max-width: 400px; /* Largeur maximale des champs */
-    display: flex;
     flex-direction: column; /* Aligner les éléments verticalement */
     gap: 5px; /* Espace entre l'étiquette et le champ */
     align-items: flex-start; /* Aligner à gauche (ou centré si nécessaire) */
@@ -184,4 +184,57 @@ input[type="submit"]:hover {
 
 input[type="submit"]:focus {
     outline: none;
+}
+
+/* Conteneur du formulaire */
+.searchbox {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    position: relative; /* Nécessaire pour positionner le menu correctement */
+}
+
+/* Menu déroulant (initialement caché) */
+.autocomplete-items {
+    position: absolute;
+    top: 100%; /* Place la boîte juste en dessous de l'input */
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-top: none;
+    max-height: 150px;
+    overflow-y: auto;
+    background: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    display: none; /* Cacher par défaut */
+}
+
+/* Afficher le menu déroulant lorsqu'on interagit avec l'input ou le conteneur */
+.autocomplete-container:focus-within .autocomplete-items,
+.autocomplete-container:hover .autocomplete-items,
+input[type="search"]:focus + .autocomplete-items {
+    display: block; /* Affiche le menu lorsque l'input est en focus ou le conteneur est survolé */
+}
+
+/* Ajout de l'effet hover pour les éléments du menu */
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.autocomplete-items div:hover {
+    background: #f1f1f1;
 }
