@@ -1,9 +1,15 @@
 :root {
-    --primary-color: rgb(109, 234, 133);
-    --hover-color: rgba(175, 175, 175, 0.15);
-    --icon-hover-color: rgba(40, 40, 40, 0.78);
-    --text-color: #333;
-    --bg-color-light: #f9f9f9;
+    /* Couleurs principales */
+    --primary-color: #082BCB;  /* Bleu principal */
+    --secondary-color: #2599FB;  /* Bleu clair */
+    --bg-color-light: #AAD9F9;  /* Arrière-plan léger */
+    --accent-color: #FEF503;  /* Jaune accent */
+    --accent-color-dark: #FEC606;  /* Jaune foncé accent */
+    --text-color: #333;  /* Couleur de texte sombre */
+    --bg-color-section: white;  /* Arrière-plan des sections */
+    --box-shadow-color: lightgray;  /* Ombres légères */
+    --text-link-color: black;  /* Couleur du texte des liens */
+    --footer-text-color: #000000;  /* Couleur du texte du footer */
 }
 
 /* Header & Footer */
@@ -12,12 +18,12 @@
 }
 
 header, footer {
-    background-color: rgba(109, 234, 133, 0.7);
+    background-color: rgba(8, 43, 203, 0.7); /* Bleu principal en transparence */
 }
 
 /* Footer */
 #PageFooter {
-    color: #000000;
+    color: var(--footer-text-color);
 }
 
 /* Nom de la page */
@@ -25,54 +31,61 @@ header, footer {
     color: var(--text-color);
 }
 
+/* Liens */
 header a, footer a {
-    color: black;
+    color: var(--text-link-color);
 }
 
+/* Hover effets */
 .box:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--accent-color-dark); /* Jaune foncé sur le survol */
 }
 
 .dropdown-menu {
-    background-color: #fff;
+    background-color: var(--bg-color-section);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .dropdown-menu button {
-    background-color: #f1f1f1;
+    background-color: var(--bg-color-light);
 }
 
 .dropdown-menu button:hover {
-    background-color: #ddd;
+    background-color: var(--secondary-color);  /* Bleu clair sur le survol */
 }
 
 /* Optionnel : style pour le li */
 .dropdown:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--accent-color-dark); /* Jaune foncé sur le survol */
 }
 
+/* Corps de page */
 main {
-    background-color: #79f3a3;
+    background-color: var(--bg-color-light);  /* Bleu pâle pour le fond */
 }
 
+/* Section */
 section {
-    box-shadow: 5px 5px 5px lightgray;
-    background-color: white;
+    box-shadow: 5px 5px 5px var(--box-shadow-color);
+    background-color: var(--bg-color-section);
 }
 
 .texte {
-    border: 2px solid rgba(0, 0, 0, 0.3);
-    background-color: #edffe8;
+    border: 2px solid var(--accent-color-dark); /* Jaune foncé pour les bordures */
+    background-color: var(--bg-color-light);  /* Bleu pâle pour le fond */
 }
 
-/* Table détouré */
+/* Table */
 table {
-    background-color: darkgrey;
+    background-color: var(--primary-color);  /* Bleu principal pour le fond */
     border: solid 2px black;
-    box-shadow: 5px 5px 5px lightgray;
+    box-shadow: 5px 5px 5px var(--box-shadow-color);
 }
-th, td {background-color: white}
+
+th, td {
+    background-color: var(--bg-color-section);  /* Fond blanc pour les cellules */
+}
 
 section ul li a {
-    color: black;
+    color: var(--text-link-color);  /* Couleur du texte des liens */
 }

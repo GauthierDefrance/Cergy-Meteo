@@ -34,7 +34,7 @@ require_once "./include/functions/increasePageNumber.php";
                 <li class="box">
                     <a href="./index.php">
                         <div class="nav-menu-button">
-                            <i class="fa-solid fa-house-chimney fa-2xl"></i>
+                            <i class="fa-solid fa-house-chimney fa-xl"></i>
                             <span>Accueil</span>
                         </div>
                     </a>
@@ -43,7 +43,7 @@ require_once "./include/functions/increasePageNumber.php";
                 <li class="box">
                     <a href="./stats.php">
                         <div class="nav-menu-button">
-                            <i class="fa-solid fa-chart-simple fa-2xl"></i>
+                            <i class="fa-solid fa-chart-simple fa-xl"></i>
                             <span>Stats</span>
                         </div>
                     </a>
@@ -52,7 +52,7 @@ require_once "./include/functions/increasePageNumber.php";
                 <li class="box">
                     <a href="./images.php">
                         <div class="nav-menu-button">
-                            <i class="fa-solid fa-images fa-2xl"></i>
+                            <i class="fa-solid fa-images fa-xl"></i>
                             <span>Images</span>
                         </div>
                     </a>
@@ -60,7 +60,7 @@ require_once "./include/functions/increasePageNumber.php";
 
                 <li class="dropdown box">
                     <div class="nav-menu-button">
-                        <i class="fa-solid fa-folder-open fa-2xl"></i>
+                        <i class="fa-solid fa-folder-open fa-xl"></i>
                         <span>TD</span>
                     </div>
                     <div class="dropdown-menu">
@@ -84,7 +84,7 @@ require_once "./include/functions/increasePageNumber.php";
             <ul class="right-block">
                 <li class="dropdown box">
                     <div class="nav-menu-button">
-                        <i class="fa-solid fa-language fa-2xl"></i>
+                        <i class="fa-solid fa-language fa-xl"></i>
                         <span>Language</span>
                     </div>
 
@@ -100,7 +100,7 @@ require_once "./include/functions/increasePageNumber.php";
 
                 <li class="dropdown box">
                     <div class="nav-menu-button">
-                        <i class="fa-solid fa-palette fa-2xl"></i>
+                        <i class="fa-solid fa-palette fa-xl"></i>
                         <span>Style</span>
                     </div>
                     <div class="dropdown-menu">

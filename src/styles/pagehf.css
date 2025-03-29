@@ -6,11 +6,13 @@ body {
     padding: 0;
 }
 
-/* Header sticky effect */
+/* Réduction du padding du header */
 #PageHeader {
+    height: 4%; /* Réduit la hauteur du header */
+    padding: 10px 0; /* Réduit l'espace à l'intérieur du header */
     position: sticky;
     top: 0;
-    z-index: 10; /* S'assurer que l'en-tête reste au-dessus du contenu */
+    z-index: 10;
 }
 
 /* Footer */
@@ -21,15 +23,17 @@ body {
 
 /* Nom de la page */
 
+/* Réduction de la taille de la police du nom */
 #name {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-family: "Saira Stencil One", sans-serif;
-    font-size: x-large;
+    font-size: x-large; /* Réduit la taille de la police */
     font-weight: bold;
     text-align: center;
     white-space: nowrap;
+    margin: 0; /* Retire toute marge autour du texte */
 }
 
 header ul, footer ul {
@@ -46,16 +50,17 @@ header ul, footer ul {
     position: relative;
 }
 
+/* Réduction des tailles et marges dans les boxes */
 .box {
     font-family: "Saira Stencil One", sans-serif;
-    width: 80px;
-    height: 80px;
+    width: 80px; /* Réduit la taille de la box */
+    height: 80px; /* Réduit la taille de la box */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-    margin: 0 5px;
+    margin: 0 4px; /* Réduit l'espace entre les boxes */
 }
 
 .left-block {
@@ -72,6 +77,12 @@ header ul, footer ul {
     flex: 1; /* Permet d'occuper tout l'espace disponible à droite */
     padding-right: 40px;
 }
+
+nav {
+    width: 100%;
+    height: 100%;
+}
+
 
 /* Retirer les décorations des liens */
 nav a {
@@ -119,3 +130,19 @@ nav a {
 } .nav-menu-button span {
     margin-top: 10px;
   }
+
+/* Réduction des paddings dans le container du header */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0; /* Réduit l'espace vertical dans le header */
+    position: relative;
+}
+
+
+
+
+
+
