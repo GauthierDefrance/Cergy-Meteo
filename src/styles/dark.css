@@ -101,3 +101,63 @@ main a:visited {
 section ul li a {
     color: black;
 }
+
+.searchbox {
+    background-color: black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.autocomplete-items {
+    background: black;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.autocomplete-items div:hover {
+    background: black;
+}
+
+/* Conteneur du formulaire */
+.searchbox {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+}
+
+/* Titre du formulaire */
+.searchbox h2 {
+    color: #e0e0e0; /* Texte clair pour le titre */
+}
+
+.autocomplete-items {
+    border: 1px solid #444; /* Bordure plus sombre */
+    background: #2b2b2b; /* Fond sombre */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+}
+
+.autocomplete-container label {
+    color: #e0e0e0; /* Texte clair pour le label */
+}
+
+input[type="search"] {
+    border: 1px solid #555; /* Bordure plus foncée */
+    background-color: #3b3b3b; /* Fond sombre pour le champ de recherche */
+    color: #e0e0e0; /* Texte clair */
+}
+
+input[type="search"]:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+
+.autocomplete-items div:hover {
+    background: #3a3a3a; /* Légère modification de fond lors du survol */
+}
+
+/* Bouton de soumission */
+input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
