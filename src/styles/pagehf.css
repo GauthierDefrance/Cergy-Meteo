@@ -19,6 +19,8 @@ body {
 #PageFooter {
     padding: 20px 0;
     text-align: center;
+    position: relative;
+    z-index: 10;
 }
 
 /* Nom de la page */

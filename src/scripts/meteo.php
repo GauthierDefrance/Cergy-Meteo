@@ -45,7 +45,7 @@ class WeatherForecast {
     // Fonction pour récupérer les données météo depuis l'API Open Meteo
     private function fetchWeatherData() {
 
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation_probability,pressure_msl&timezone=auto";
         $response = file_get_contents($url);
 
         if ($response === FALSE) {
@@ -248,6 +248,10 @@ class WeatherForecast {
         }
     }
 
+//    public function displayDailyForecast(string $selectedDay) : string {
+//
+//    }
+
 
 }
 
@@ -255,6 +259,7 @@ if (isset($_GET["ville"])) {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
     echo $weatherForecast->displayForecast();
+
 } else {
     $cityName = "";
 }

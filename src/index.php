@@ -4,10 +4,21 @@ require "./include/header.inc.php";
 require_once "./include/functions/cookieLoading.inc.php";
 ?>
 
+<div>
+    <nav class="internal-nav">
+        <ul>
+            <li><a href="#Presentation">Présentation</a></li>
+            <li><a href="#Projet">Projet</a></li>
+            <li><a href="#Recherche">Recherche</a></li>
+        </ul>
+    </nav>
+</div>
+
 <main>
+
     <h1>Accueil</h1>
     <section>
-        <h2>Présentation</h2>
+        <h2 id="Présentation">Présentation</h2>
         <?php
             require_once "./include/functions/randomImage.php";
             echo getRandomImage();
@@ -16,7 +27,7 @@ require_once "./include/functions/cookieLoading.inc.php";
     </section>
 
     <section>
-        <h2>Projet</h2>
+        <h2 id="Projet">Projet</h2>
         <p>Le but de notre projet est de crée un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France. 
         Nous combinerons des données géographiques sur la France, obtenue à partir de plusieurs fichiers CSV trouvés sur Internet, avec une carte des régions de France, ainsi que 
         des API renvoyant des informations météorologiques, pour crée un système de recherche permettant à un utilisteur de trouver la météo à l'endroit désiré. 
@@ -26,7 +37,7 @@ require_once "./include/functions/cookieLoading.inc.php";
     </section>
 
     <section>
-        <h2>Recherche</h2>
+        <h2 id="Recherche">Recherche</h2>
 
         <figure>
             <img src="./ressources/carte-france.png" usemap="#france-map" alt="Carte de la France">

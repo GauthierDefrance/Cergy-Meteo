@@ -210,3 +210,31 @@ input[type="search"]:focus + .autocomplete-items {
     cursor: pointer;
     transition: background 0.3s ease;
 }
+
+
+.internal-nav {
+    position: fixed; /* Pour qu'elle reste à droite lors du scroll */
+    top: 150px;      /* Ajustez selon votre header */
+    right: 20px;     /* Distance du bord droit */
+    width: 200px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+.internal-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.internal-nav ul li {
+    margin-bottom: 10px;
+}
+
+.internal-nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
