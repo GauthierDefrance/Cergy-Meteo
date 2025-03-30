@@ -45,7 +45,7 @@ class WeatherForecast {
     // Fonction pour récupérer les données météo depuis l'API Open Meteo
     private function fetchWeatherData() {
 
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon";
         $response = file_get_contents($url);
 
         if ($response === FALSE) {
@@ -113,6 +113,28 @@ class WeatherForecast {
         }
     }
 
+    private function getCardinalDirection($degrees) {
+        if ($degrees >= 0 && $degrees < 22.5) {
+            return 'Nord';
+        } elseif ($degrees >= 22.5 && $degrees < 67.5) {
+            return 'Nord-Est';
+        } elseif ($degrees >= 67.5 && $degrees < 112.5) {
+            return 'Est';
+        } elseif ($degrees >= 112.5 && $degrees < 157.5) {
+            return 'Sud-Est';
+        } elseif ($degrees >= 157.5 && $degrees < 202.5) {
+            return 'Sud';
+        } elseif ($degrees >= 202.5 && $degrees < 247.5) {
+            return 'Sud-Ouest';
+        } elseif ($degrees >= 247.5 && $degrees < 292.5) {
+            return 'Ouest';
+        } elseif ($degrees >= 292.5 && $degrees < 337.5) {
+            return 'Nord-Ouest';
+        } else {
+            return 'Nord';
+        }
+    }
+
     private function getDescImage($weatherCode): string
     {
         $tab = $this->getWeatherInfo($weatherCode);
@@ -123,12 +145,40 @@ class WeatherForecast {
         return $output;
     }
 
+    public function generateDayButtons(): string {
+        // Mapping des jours en anglais vers le français
+        $daysMapping = [
+            "Monday"    => "Lundi",
+            "Tuesday"   => "Mardi",
+            "Wednesday" => "Mercredi",
+            "Thursday"  => "Jeudi",
+            "Friday"    => "Vendredi",
+            "Saturday"  => "Samedi",
+            "Sunday"    => "Dimanche"
+        ];
+
+        $output = "<div class='day-buttons'>";
+        for ($i = 0; $i < 5; $i++) {
+            // Calcule la date du jour i (0 pour aujourd'hui, 1 pour demain, etc.)
+            $dateTimestamp = strtotime("+$i day");
+            // Récupère le nom du jour en anglais
+            $englishDay = date("l", $dateTimestamp);
+            // Convertit en français grâce au mapping
+            $frenchDay = $daysMapping[$englishDay] ?? $englishDay;
+            // Ajoute un bouton pour ce jour
+            $output .= "<button>$frenchDay</button>";
+        }
+        $output .= "</div>";
+
+        return $output;
+    }
 
     public function displayForecast() : string {
         // Si les données météo sont disponibles
         if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
             $output = "<h1>Prévisions météo sur 7 jours pour {$this->cityName}</h1>";
+            $output .= "<div>".$this->generateDayButtons()."</div>";
             $output .= "<table style='border-collapse: collapse; text-align: center;'>";
             $output .= "<tr><th>Catégorie</th>";
 
@@ -165,6 +215,27 @@ class WeatherForecast {
                 $output .= "<td>".$this->getDescImage($weatherCode)."</td>";
             }
             $output .= "</tr>";
+
+            if (isset($this->weatherData['daily']['winddirection_10m_dominant'])) {
+                $output .= "<tr><th>Vent (direction)</th>";
+                foreach ($this->weatherData['daily']['winddirection_10m_dominant'] as $index => $windDirection) {
+                    $cardinal = $this->getCardinalDirection($windDirection);
+                    $output .= "<td>$cardinal</td>";
+                }
+                $output .= "</tr>";
+            } else {
+                $output .= "<tr><th>Vent (direction)</th><td>N/A</td></tr>";
+            }
+
+            if (isset($this->weatherData['daily']['windspeed_10m_max'])) {
+                $output .= "<tr><th>Vent (vitesse)</th>";
+                foreach ($this->weatherData['daily']['windspeed_10m_max'] as $index => $windSpeed) {
+                    $output .= "<td>".$windSpeed." km/h</td>";
+                }
+                $output .= "</tr>";
+            } else {
+                $output .= "<tr><th>Vent vitesse max</th><td>N/A</td></tr>";
+            }
 
             // On ferme la table
             $output .= "</table>";
