@@ -99,6 +99,7 @@ nav a {
     transition: background-color 0.3s ease;
     font-family: Arial, sans-serif;
     font-size: 14px;
+    padding: 7px 0;
 }
 
 .dropdown-menu a.button-style:hover {
