@@ -97,7 +97,15 @@ function def_list_regions(){
 
 }
 
+/**
+ * Récupère le code d'un département grâce à son nom.
+ *
+ * @param string $departement Le nom du département.
+ * @return string le code correspondant du département.
+ */
+function nom_to_code_dep(string $departement){
 
+}
 
 /**
  * Récupère les villes d'un département donné.
@@ -160,6 +168,47 @@ function log_array2(array $test_array){
     print_r($test_array);
 }
 
+function region_data_list(string $region){
+    $depart=reg_to_depart()[$region];
+    $html='<label for="departement">Entrez votre département :</label>';
+    $html.='<input list="departements" id="departement" name="departement">';
+    $html.='<datalist id="departements">';
+    foreach ($depart as $key => $dep){
+        $html.='<option value="'.htmlspecialchars($dep[1]).'">';
+    }
+    $html.='</datalist>';
+    return $html;
+}
+
+function departements_scrolling_list(string $region){
+    $departs=reg_to_depart()[$region];
+    $html='<form action="weather.php" method="get" >
+    <label for="departement">Choisissez un département :</label>
+    <select name="departement" id="departement">';
+    foreach ($departs as $key => $dep){
+        $html.= '<option value="'.htmlspecialchars($dep[0]).'">'.htmlspecialchars($dep[1]).'</option>';
+        }
+    $html.='</select>
+    <button type="submit">Envoyer</button>
+    </form>';
+    return $html;
+}
+
+function villes_scrolling_list(string $depart_code){
+    $villes=villes_de_dep($depart_code);
+    $html='<form action="weather.php" method="get" >
+    <input type="hidden" name="departement" value="'.$depart_code.'">
+    <label for="ville">Choisissez une ville :</label>
+    <select name="ville" id="ville">';
+    foreach ($villes as $key => $ville){
+        $html.= '<option value="'.htmlspecialchars($ville).'">'.htmlspecialchars($ville).'</option>';
+        }
+    $html.='</select>
+    <button type="submit">Envoyer</button>
+    </form>';
+    return $html;
+}
+
 /**
  * Récupère la latitude d'une ville donnée.
  *
@@ -188,15 +237,26 @@ function get_ville_longitude(string $departement,string $ville){
 
 /**
  * Récupère les données météorologiques pour une ville donnée.
- *
+ * Utilise l'API open météo à laquelle la latitude et longitude correspondantes sont données.
+ * 
  * @param string $region Le nom de la région.
  * @param string $departement Le nom du département.
  * @param string $ville Le nom de la ville.
+ * @return array un tableau obtenu à partir du JSON contenant des données météo
  */
-function get_weather_data(string $region,string $departement,string $ville){
+function get_weather_data(string $departement,string $ville){
     $weatherUrl = "https://api.open-meteo.com/v1/forecast?";
-    $name="name=".$ville;
-    $count="counter=20";
+    $latitude=get_ville_latitude($departement,$ville);
+    $longitude=get_ville_longitude($departement,$ville);
+    $hourly="hourly=temperature_2m";
+    $weatherUrl .= "latitude=".$latitude."&longitude=".$longitude."&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,weathercode&timezone=Europe%2FParis";
+    $response = file_get_contents($weatherUrl);
+
+    if ($response === FALSE) {
+        echo('Erreur lors de la récupération des données météo');
+    }
+
+    return json_decode($response, true);
 }
 
 
