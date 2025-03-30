@@ -3,7 +3,7 @@
     --primary-color: #23d2ff;  /* Bleu principal */
     --secondary-color: #daeefc;  /* Bleu clair */
     --bg-color-light: #87e4ff;  /* Arrière-plan léger */
-    --accent-color: #FEF503;  /* Jaune accent */
+    --accent-color: rgba(0,0,0,0.1);  /* Jaune accent */
     --accent-color-dark: #FEC606;  /* Jaune foncé accent */
     --text-color: #333;  /* Couleur de texte sombre */
     --bg-color-section: white;  /* Arrière-plan des sections */
@@ -82,7 +82,6 @@ section {
 /* Table */
 table {
     background-color: var(--primary-color);  /* Bleu principal pour le fond */
-    border: solid 2px black;
     box-shadow: 5px 5px 5px var(--box-shadow-color);
 }
 

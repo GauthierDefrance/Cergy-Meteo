@@ -44,7 +44,8 @@ class WeatherForecast {
 
     // Fonction pour récupérer les données météo depuis l'API Open Meteo
     private function fetchWeatherData() {
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=temperature_2m_min,temperature_2m_max,precipitation_sum,weathercode&timezone=Europe%2FParis";
+
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,relative_humidity_2m,precipitation,weathercode,windspeed_10m,winddirection_10m&timezone=Europe%2FLondon";
         $response = file_get_contents($url);
 
         if ($response === FALSE) {
@@ -125,32 +126,48 @@ class WeatherForecast {
 
     public function displayForecast() : string {
         // Si les données météo sont disponibles
-        if (isset($this->weatherData['daily'])) {
+        if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
             $output = "<h1>Prévisions météo sur 7 jours pour {$this->cityName}</h1>";
-            $output .= "<table>";
-            $output .= "<thead><tr><th>Date</th><th>Température Min (°C)</th><th>Température Max (°C)</th><th>Précipitations (mm)</th><th>Conditions Météo</th></tr></thead><tbody";
+            $output .= "<table style='border-collapse: collapse; text-align: center;'>";
+            $output .= "<tr><th>Catégorie</th>";
 
-            // On parcourt les prévisions météo sur 7 jours
-            foreach ($this->weatherData['daily']['time'] as $index => $date) {
-                $tempMin = $this->weatherData['daily']['temperature_2m_min'][$index];
-                $tempMax = $this->weatherData['daily']['temperature_2m_max'][$index];
-                $precipitation = $this->weatherData['daily']['precipitation_sum'][$index];
-                $weatherCode = $this->weatherData['daily']['weathercode'][$index];
-                $weatherDescription = $this->getWeatherDescription($weatherCode);
-
-                // Ajouter une ligne à la table HTML pour chaque jour
-                $output .= "<tr>
-                            <td>$date</td>
-                            <td>$tempMin °C</td>
-                            <td>$tempMax °C</td>
-                            <td>$precipitation mm</td>
-                            <td>".$this->getDescImage($weatherCode)."</td>
-                         </tr>";
+            // Ajouter les dates en en-tête horizontale
+            foreach ($this->weatherData['daily']['time'] as $date) {
+                $output .= "<th>$date</th>";
             }
+            $output .= "</tr>";
+
+            // Ajouter les températures minimales
+            $output .= "<tr><th>Température Min (°C)</th>";
+            foreach ($this->weatherData['daily']['temperature_2m_min'] as $tempMin) {
+                $output .= "<td>$tempMin °C</td>";
+            }
+            $output .= "</tr>";
+
+            // Ajouter les températures maximales
+            $output .= "<tr><th>Température Max (°C)</th>";
+            foreach ($this->weatherData['daily']['temperature_2m_max'] as $tempMax) {
+                $output .= "<td>$tempMax °C</td>";
+            }
+            $output .= "</tr>";
+
+            // Ajouter les précipitations
+            $output .= "<tr><th>Précipitations (mm)</th>";
+            foreach ($this->weatherData['daily']['precipitation_sum'] as $precipitation) {
+                $output .= "<td>$precipitation mm</td>";
+            }
+            $output .= "</tr>";
+
+            // Ajouter les conditions météo
+            $output .= "<tr><th>Conditions Météo</th>";
+            foreach ($this->weatherData['daily']['weathercode'] as $weatherCode) {
+                $output .= "<td>".$this->getDescImage($weatherCode)."</td>";
+            }
+            $output .= "</tr>";
 
             // On ferme la table
-            $output .= "</tbody></table>";
+            $output .= "</table>";
 
             // Retourner le code HTML généré
             return $output;
@@ -159,6 +176,8 @@ class WeatherForecast {
             return "Données météo non disponibles.";
         }
     }
+
+
 }
 
 if (isset($_GET["ville"])) {
