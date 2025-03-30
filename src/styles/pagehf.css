@@ -89,6 +89,23 @@ nav a {
     text-decoration: none;
 }
 
+.dropdown-menu a.button-style {
+    display: block;
+    border: none;
+    text-align: center;
+    width: 90%;
+    margin: 0 auto;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.dropdown-menu a.button-style:hover {
+    background-color: #aad9f9;
+    color: #000000
+}
+
 /* Styles de base pour le dropdown */
 .dropdown {
     position: relative; /* Nécessaire pour que le dropdown-menu soit positionné par rapport à ce li */

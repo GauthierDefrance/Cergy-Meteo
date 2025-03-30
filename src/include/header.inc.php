@@ -64,13 +64,13 @@ require_once "./include/functions/increasePageNumber.php";
                         <span>TD</span>
                     </div>
                     <div class="dropdown-menu">
-                        <a href="./td/hornung/index.php">
-                            <button>Thomas Hornung</button>
-                        </a>
-                        <a href="./td/defrance/index.php">
-                            <button>Gauthier Defrance</button>
+                        <a href="./td/hornung/index.php" class="button-style">
+                            Thomas Hornung
                         </a>
 
+                        <a href="./td/defrance/index.php" class="button-style">
+                            Gauthier Defrance
+                        </a>
                     </div>
                 </li>
 

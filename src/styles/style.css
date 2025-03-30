@@ -208,15 +208,10 @@ th, td {
     border-bottom: 1px solid #ddd;
 }
 
-.dropdown-menu li:hover {
-    background-color: rgba(158, 255, 142, 0.55);
-    display:block;
-}
-
 .dropdown-menu a {
     text-decoration: none;
     text-align: center;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 /* Effet de survol pour les éléments de la navigation */
