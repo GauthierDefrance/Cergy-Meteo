@@ -119,7 +119,7 @@ function nom_to_code_dep(string $departement){
 }
 
 /**
- * Récupère les villes d'un département donné.
+ * Récupère les villes d'un département donné. 
  *
  * @param string $departement Le code du département.
  * @return array Un tableau des villes appartenant au département.
