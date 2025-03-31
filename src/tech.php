@@ -62,15 +62,15 @@ require "./include/header.inc.php";
             echo getUserLocalisation();
         ?>
 
-    </section>
-    <section>
-        <h2>TD 10 Exercice 5</h2>
-        <?php
-            require "./include/functions/main.inc.php";
-            echo def_list_regions();
-        ?>
-
-    </section>
+   </section>
+<!--    <section>-->
+<!--        <h2>TD 10 Exercice 5</h2>-->
+<!--        --><?php
+//            require "./include/functions/main.inc.php";
+//            echo def_list_regions();
+//        ?>
+<!---->
+<!--    </section>-->
     <section>
         <h2>Votre météo en PHP!</h2>
         <p>Cette page est temporaire, elle sert d'option simplifiée de recherche météo, utilisant uniquement PHP, des scrolling lists et des chargements de pages.</p>

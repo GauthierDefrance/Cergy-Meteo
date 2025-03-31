@@ -1,8 +1,8 @@
 :root {
     /* Couleurs principales */
     --primary-color: #23d2ff;  /* Bleu principal */
-    --secondary-color: #daeefc;  /* Bleu clair */
-    --bg-color-light: #87e4ff;  /* Arrière-plan léger */
+    --secondary-color: #7fcaff;  /* Bleu clair */
+    --bg-color-light: #36d2fd;  /* Arrière-plan léger */
     --accent-color: rgba(0,0,0,0.1);  /* Jaune accent */
     --accent-color-dark: #FEC606;  /* Jaune foncé accent */
     --text-color: #333;  /* Couleur de texte sombre */
@@ -18,10 +18,14 @@ body {
 }
 
 /* Header & Footer */
-#PageHeader, #PageFooter {
+#PageHeader {
     /*background-color: var(--primary-color);*/
     background: linear-gradient(0, lightskyblue, lightcyan);
-}
+} #PageFooter {
+      /*background-color: var(--primary-color);*/
+      background: linear-gradient(0, lightcyan, lightskyblue);
+  }
+
 
 header, footer {
     background-color: rgba(8, 43, 203, 0.7); /* Bleu principal en transparence */
