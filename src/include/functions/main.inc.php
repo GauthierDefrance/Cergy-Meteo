@@ -1,5 +1,16 @@
 <?php 
-/*Constantes*/
+/**
+ * @file main.inc.php
+ * @brief Gestion des données géographiques et météorologiques.
+ *
+ * Ce fichier définit des fonctions permettent de récuperer des informations sur les régions, 
+ * départements et villes de France dans des fichiers CSV, et de les retourner 
+ * sous différentes formes pour un accès facile. 
+ * Il contient aussi des fonctions appellant l'API renvoyant des données météorologiques.
+ * 
+ * @author Thomas Hornung
+ * @date 2025-20-03
+ */
 
 /*Chemins*/
 define('REG_PATH', './data/v_region_2024.csv')  ;

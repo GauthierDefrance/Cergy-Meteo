@@ -4,3 +4,5 @@ out/
 .json
 /src/protected/
 /src/td/
+/src/Doxyfile
+/src/docu/

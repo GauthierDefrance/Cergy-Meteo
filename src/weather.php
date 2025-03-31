@@ -86,16 +86,7 @@ require "./include/header.inc.php";
         
 
     }
-    
-    
-    
-    
     ?>
-    <section>
-        <h2>Votre météo pour la région <?=$region?> en PHP!</h2>
-        <p>Cette page est temporaire, elle sert d'option simplifié de recherche météo, utilisant uniquement PHP, des datalists et des chargements de pages.</p>
-        <img src="./ressources/enconstruction.jpg" alt="en_construction" />
-    </section>
 
 </main>
 

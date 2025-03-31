@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * @file randomImage.php
+ * @brief Fonctions en relation avec le retrait d'images aléatoires.
+ *
+ * Ces fonctions permettent de trouver des fichiers images dans un dossier et 
+ * d'en choisir une aléatoirement à renvoyer.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-20-03
+ */
 const IMAGES = [
     "bleu_ciel.webp" => "bleu ciel",
     "ciel-etoile.webp" => "ciel etoile",

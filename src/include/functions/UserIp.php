@@ -1,5 +1,16 @@
 <?php
+/**
+ * @file UserIp.php
+ * @brief Fonctions en relation avec le retrait d'addresse IP.
+ *
+ * Ces fonctions trouvent l'IP et la localisation de l'utilisateur par 
+ * les informations de son navigateur, ainsi que l'API geoplugin.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-20-03
+ */
 
+ 
 /**
  * Méthode qui calcule l'IP de l'utilisateur actuel.
  * @return String IP de l'utilisateur courant.

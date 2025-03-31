@@ -1,5 +1,17 @@
 <?php 
 declare(strict_types=1);
+
+/**
+ * @file cookieLoading.php
+ * @brief Gestion du mode d'affichage via cookie ou paramètre GET.
+ *
+ * Ce fichier définit et récupère le mode d'affichage ("light" ou "dark") en utilisant
+ * un cookie persistant ou une requête GET.
+ *
+ * @author Thomas Hornung
+ * @date 2025-20-03
+ */
+
 /**
  * Définit le cookie de mode d'affichage en fonction de celui fourni en argument.
  * Le cookie a une date d'expiration de 30 jours.

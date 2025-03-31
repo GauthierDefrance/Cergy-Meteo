@@ -1,5 +1,13 @@
 <?php
-
+/**
+ * @file Hits.php
+ * @brief Gestion nombre de chargements d'une page.
+ *
+ * Classe gérant le calcul et la récupération de données dans le hits.csv
+ *
+ * @author Gauthier Defrance
+ * @date 2025-20-03
+ */
 
 /**
  * Classe gérant la gestion du calcul et récupération de données dans le hits.csv
