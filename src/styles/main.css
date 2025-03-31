@@ -3,7 +3,7 @@
 main {
     text-align: center;
     border-radius: 10px;
-    margin: 0 auto;
+    margin-left: 2%;
     width: 80%;
 }
 
@@ -214,9 +214,9 @@ input[type="search"]:focus + .autocomplete-items {
 
 .internal-nav {
     position: fixed; /* Pour qu'elle reste à droite lors du scroll */
-    top: 150px;      /* Ajustez selon votre header */
-    right: 20px;     /* Distance du bord droit */
-    width: 200px;
+    top: 140px;      /* Ajustez selon votre header */
+    right: 0px;     /* Distance du bord droit */
+    width: 15%;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
     padding: 10px;
@@ -224,17 +224,25 @@ input[type="search"]:focus + .autocomplete-items {
 }
 
 .internal-nav ul {
+    width: 100%;
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
 .internal-nav ul li {
+    width: 100%;
     margin-bottom: 10px;
+    border-bottom: 1px solid gray;
 }
 
 .internal-nav ul li a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
+}
+
+.internal-nav .galery {
+    width: 100%;;
+    height: 100%;
 }

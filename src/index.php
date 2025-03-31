@@ -4,12 +4,16 @@ require "./include/header.inc.php";
 require_once "./include/functions/cookieLoading.inc.php";
 ?>
 
-<div>
+<div style="width: 100%;">
     <nav class="internal-nav">
         <ul>
-            <li><a href="#Presentation">Présentation</a></li>
             <li><a href="#Projet">Projet</a></li>
             <li><a href="#Recherche">Recherche</a></li>
+            <li>Image aléatoire</li>
+            <?php
+            require_once "./include/functions/randomImage.php";
+            echo getRandomImage();
+            ?>
         </ul>
     </nav>
 </div>
@@ -17,14 +21,6 @@ require_once "./include/functions/cookieLoading.inc.php";
 <main>
 
     <h1>Accueil</h1>
-    <section>
-        <h2 id="Présentation">Présentation</h2>
-        <?php
-            require_once "./include/functions/randomImage.php";
-            echo getRandomImage();
-        ?>
-        <p>Bienvenue sur notre site CloudWatch dédié à la météo de France. Ce site fait partie d'un projet de développement web dans le carde d'une licence en informatique à CY Cergy Paris Université.</p>
-    </section>
 
     <section>
         <h2 id="Projet">Projet</h2>
