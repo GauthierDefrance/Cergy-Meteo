@@ -359,7 +359,15 @@ if (isset($_GET["ville"])) {
     echo $weatherForecast->displayDayForecast();
     echo $weatherForecast->displayWeeksForecast();
 
-} else {
+}
+elseif(isset($_COOKIE["lastViewed"])){
+    $last = last_viewed();
+    $cityName = $last["ville"];
+    $weatherForecast = new WeatherForecast($cityName);
+    echo $weatherForecast->displayDayForecast();
+    echo $weatherForecast->displayWeeksForecast();
+}
+ else {
     $cityName = "";
 }
 
