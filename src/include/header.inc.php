@@ -1,10 +1,12 @@
 <?php
 require_once "./include/functions/cookieLoading.inc.php";
+require_once "./include/functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
 if(isset($_GET['ville']) && isset($_GET['departement'])){
     set_last_viewed($_GET['ville'],$_GET['departement']);
+    increase_ville_hits($_GET['ville'],$_GET['departement']);
 }
 
 require_once "./include/functions/increasePageNumber.php";
