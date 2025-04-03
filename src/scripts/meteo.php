@@ -283,24 +283,26 @@ class WeatherForecast {
         $output = "<table>
                      <thead>
                         <tr>
-                            <th></th>
+                            <th rowspan='2'></th>
                             <th colspan='$DayFourth'>Nuit</th> 
                             <th colspan='$DayFourth'>Matinée</th> 
                             <th colspan='$DayFourth'>Après-midi</th> 
                             <th colspan='$DayFourth'>Soirée</th>
                         </tr>";
 
-        $output .= "<tr><th></th>";
+        $output .= "<tr>";
         for($k=0; $k<DayHour ; $k+=$HourStep){
             $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
         }$output .= "</tr></thead><tbody>";
-
 
         foreach (ElemDataDayList as $elem){
             $output .= "<tr>";
             $output .= "<td>$elem</td>";
             for($k=0; $k<DayHour ; $k+=$HourStep){
                 $tmp="Erreur";
+                if(isset($data['hourly'][$elem][$k+($day*24)])) {
+                    $tmp = $data['hourly'][$elem][$k+($day*24)];
+                }
                 $output .= "<td>$tmp</td>";
             }
             $output .= "</tr>";
