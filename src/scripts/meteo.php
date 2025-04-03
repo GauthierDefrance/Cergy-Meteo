@@ -403,7 +403,7 @@ function calculateWindChill($temperature, $windSpeed) : string {
 if (isset($_GET["ville"])&&$_GET["ville"]!="") {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast()."/n";
+    echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 
 }
@@ -411,7 +411,7 @@ elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast()."/n";
+    echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 }
  else {
