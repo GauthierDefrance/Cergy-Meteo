@@ -1,5 +1,11 @@
 <?php
 
+
+
+
+const ElemDataDayList = Array("temperature_2m", "weather_code", "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m", "precipitation_probability", "pressure_msl");
+const DayHour = 24;
+
 class WeatherForecast {
 
     private $cityName;
@@ -173,12 +179,11 @@ class WeatherForecast {
         return $output;
     }
 
-    public function displayForecast() : string {
+    public function displayWeeksForecast() : string {
         // Si les données météo sont disponibles
         if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
-            $output = "<h1>Prévisions météo sur 7 jours pour {$this->cityName}</h1>";
-            $output .= "<div>".$this->generateDayButtons()."</div>";
+            $output = "<h2>Prévisions météo sur 7 jours pour {$this->cityName}</h2>";
             $output .= "<table style='border-collapse: collapse; text-align: center;'>";
             $output .= "<tr><th>Catégorie</th>";
 
@@ -248,6 +253,66 @@ class WeatherForecast {
         }
     }
 
+    /**
+     * @return string
+     */
+    public function displayDayForecast(): string {
+        return $this->getDayTable(0);
+    }
+
+
+    /**
+     * Can predict the meteo at up to 7 days on a specific location.
+     * Take 0-6 int. 0 = today, 1 = tomorrow ...
+     *
+     * @return string
+     */
+    private function getDayTable(int $day, int $HourStep=2): string {
+        /* temperature_2m,
+         weather_code,
+        wind_speed_10m,
+        wind_direction_10m,
+        wind_gusts_10m,
+        precipitation_probability,
+        pressure_msl
+         */
+        $data = $this->weatherData;
+
+        $DayFourth = (DayHour/$HourStep)/4;
+
+        $output = "<table>
+                     <thead>
+                        <tr>
+                            <th></th>
+                            <th colspan='$DayFourth'>Nuit</th> 
+                            <th colspan='$DayFourth'>Matinée</th> 
+                            <th colspan='$DayFourth'>Après-midi</th> 
+                            <th colspan='$DayFourth'>Soirée</th>
+                        </tr>";
+
+        $output .= "<tr><th></th>";
+        for($k=0; $k<DayHour ; $k+=$HourStep){
+            $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
+        }$output .= "</tr></thead><tbody>";
+
+
+        foreach (ElemDataDayList as $elem){
+            $output .= "<tr>";
+            $output .= "<td>$elem</td>";
+            for($k=0; $k<DayHour ; $k+=$HourStep){
+                $tmp="Erreur";
+                $output .= "<td>$tmp</td>";
+            }
+            $output .= "</tr>";
+        }
+
+        $output .= "</tbody></table>";
+        return $output;
+    }
+
+
+
+
 //    public function displayDailyForecast(string $selectedDay) : string {
 //
 //    }
@@ -258,7 +323,8 @@ class WeatherForecast {
 if (isset($_GET["ville"])) {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayForecast();
+    echo $weatherForecast->displayDayForecast();
+    echo $weatherForecast->displayWeeksForecast();
 
 } else {
     $cityName = "";
