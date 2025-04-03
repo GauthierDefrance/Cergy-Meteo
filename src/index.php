@@ -27,7 +27,7 @@ require_once "./include/functions/cookieLoading.inc.php";
         <p>Le but de notre projet est de crée un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France. 
         Nous combinerons des données géographiques sur la France, obtenue à partir de plusieurs fichiers CSV trouvés sur Internet, avec une carte des régions de France, ainsi que 
         des API renvoyant des informations météorologiques, pour crée un système de recherche permettant à un utilisteur de trouver la météo à l'endroit désiré. 
-        Dans la section ci-dessous, vous trouverez la première version du moteur de recherche météo. Pour l'instant, elle n'est pas fonctionelle.
+        Dans la section ci-dessous, vous trouverez la première version du moteur de recherche météo. Elle est fonctionelle.
 
         </p>
     </section>

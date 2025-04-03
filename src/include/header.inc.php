@@ -3,6 +3,9 @@ require_once "./include/functions/cookieLoading.inc.php";
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
+if(isset($_GET['ville']) && isset($_GET['departement'])){
+    set_last_viewed($_GET['ville'],$_GET['departement']);
+}
 
 require_once "./include/functions/increasePageNumber.php";
 
