@@ -68,16 +68,25 @@ require_once "./include/functions/cookieLoading.inc.php";
             <div class="autocomplete-container">
                 <label for="region">Région</label>
             <input type="search" id="region" name="region" placeholder="Région" autocomplete="off" />
+            <datalist id="region-list">
+                <!-- Les options seront ajoutées par JavaScript -->
+            </datalist>
             <div id="region-list" class="autocomplete-items"></div></div>
 
             <div class="autocomplete-container">
             <label for="departement">Département</label>
             <input type="search" id="departement" name="departement" placeholder="Département" autocomplete="off" />
+                <datalist id="departement-list">
+                    <!-- Les options seront ajoutées par JavaScript -->
+                </datalist>
             <div id="departement-list" class="autocomplete-items"></div></div>
 
             <div class="autocomplete-container">
                 <label for="ville">Ville</label>
             <input type="search" id="ville" name="ville" placeholder="Ville" autocomplete="off" />
+                <datalist id="ville-list">
+                    <!-- Les options seront ajoutées par JavaScript -->
+                </datalist>
             <div id="ville-list" class="autocomplete-items"></div></div>
 
             <input type="submit" value="Rechercher"/>
