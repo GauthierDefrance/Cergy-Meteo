@@ -19,8 +19,8 @@ class WeatherForecast {
     public function __construct($cityName) {
         $this->cityName = $cityName;
         $this->gpsCoord = $this->getGpsCoordinates($cityName);
-        $this->latitude = $this->gpsCoord['latitude'];
-        $this->longitude = $this->gpsCoord['longitude'];
+        $this->latitude = $this->gpsCoord['latitude'] ?? 0;
+        $this->longitude = $this->gpsCoord['longitude'] ?? 0;
         $this->weatherData = $this->fetchWeatherData();
     }
 
@@ -314,20 +314,21 @@ class WeatherForecast {
         $tmp = $data['hourly'][$elem][$k + ($day * 24)] ?? "";
         $output = "-";
 
-        if ("temperature_2m"==$elem) {
+        if ("temperature_2m"==$elem&&(is_numeric($tmp))) {
             $var = $this->temperatureToColor($tmp,-10, 30);
             $output="<span style='background-color:$var;'>".$tmp."</span>";
-        } else if ("Humidex"==$elem) {
+
+        } else if ("Humidex"==$elem&&(is_numeric($tmp))) {
             $tmp = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]) ?? "-";
-            $var = $this->temperatureToColor($tmp,-10, 30) ?? "-";
+            $var = $this->temperatureToColor($tmp,-10, 30);
             if ($var=="-"){
                 $output= $var;
             } else {
                 $output= "<span style='background-color:$var;'>".$tmp."</span>";;
             }
-        } else if ("Windchill"==$elem) {
+        } else if ("Windchill"==$elem&&(is_numeric($tmp))) {
             $tmp = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]) ?? "-";
-            $var = $this->temperatureToColor($tmp,-10, 30) ?? "-";
+            $var = $this->temperatureToColor($tmp,-10, 30);
             if ($var=="-"){
                 $output= $var;
             } else {
@@ -336,7 +337,7 @@ class WeatherForecast {
         }
         else if ("weather_code"==$elem) {
             $output=$this->getDescImage($tmp);
-        } else if ("wind_speed_10m"==$elem) {
+        } else if ("wind_speed_10m"==$elem&&(is_numeric($tmp))) {
             $var = $this->temperatureToColor($tmp,-10, 30);
             $output=$tmp;
         }else if ("wind_direction_10m"==$elem) {
@@ -403,7 +404,7 @@ function calculateWindChill($temperature, $windSpeed) : string {
 if (isset($_GET["ville"])&&$_GET["ville"]!="") {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast()."/n";
+    echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 
 }
@@ -411,7 +412,7 @@ elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast()."/n";
+    echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 }
  else {

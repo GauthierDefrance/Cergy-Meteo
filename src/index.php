@@ -67,45 +67,45 @@ require_once "./include/functions/cookieLoading.inc.php";
 
             <div class="autocomplete-container">
                 <label for="region">Région</label>
-            <input type="search" id="region" name="region" placeholder="Région" autocomplete="off" />
-            <datalist id="region-list">
-                <option value="AUVERGNE RHONE ALPES"></option>
-                <option value="BOURGOGNE"></option>
-                <option value="FRANCHE COMTE"></option>
-                <option value="BRETAGNE"></option>
-                <option value="CENTRE VAL DE LOIRE"></option>
-                <option value="CORSE"></option>
-                <option value="GUADELOUPE"></option>
-                <option value="GRAND EST"></option>
-                <option value="GUYANE"></option>
-                <option value="HAUTS DE FRANCE"></option>
-                <option value="ILE DE FRANCE"></option>
-                <option value="LA REUNION"></option>
-                <option value="MARTINIQUE"></option>
-                <option value="MAYOTTE"></option>
-                <option value="NORMANDIE"></option>
-                <option value="NOUVELLE AQUITAINE"></option>
-                <option value="OCCITANIE"></option>
-                <option value="PAYS DE LA LOIRE"></option>
-                <option value="PROVENCE ALPES COTE D AZUR"></option>
-            </datalist>
+            <input type="search" id="region" name="region" list="region-list" placeholder="Région" autocomplete="off" />
+                <datalist id="region-list">
+                    <option value="AUVERGNE RHONE ALPES">Auvergne Rhône-Alpes</option>
+                    <option value="BOURGOGNE">Bourgogne</option>
+                    <option value="FRANCHE COMTE">Franche-Comté</option>
+                    <option value="BRETAGNE">Bretagne</option>
+                    <option value="CENTRE VAL DE LOIRE">Centre-Val de Loire</option>
+                    <option value="CORSE">Corse</option>
+                    <option value="GUADELOUPE">Guadeloupe</option>
+                    <option value="GRAND EST">Grand Est</option>
+                    <option value="GUYANE">Guyane</option>
+                    <option value="HAUTS DE FRANCE">Hauts-de-France</option>
+                    <option value="ILE DE FRANCE">Île-de-France</option>
+                    <option value="LA REUNION">La Réunion</option>
+                    <option value="MARTINIQUE">Martinique</option>
+                    <option value="MAYOTTE">Mayotte</option>
+                    <option value="NORMANDIE">Normandie</option>
+                    <option value="NOUVELLE AQUITAINE">Nouvelle-Aquitaine</option>
+                    <option value="OCCITANIE">Occitanie</option>
+                    <option value="PAYS DE LA LOIRE">Pays de la Loire</option>
+                    <option value="PROVENCE ALPES COTE D AZUR">Provence-Alpes-Côte d'Azur</option>
+                </datalist>
+
+
             <div id="region-list" class="autocomplete-items"></div></div>
 
             <div class="autocomplete-container">
             <label for="departement">Département</label>
-            <input type="search" id="departement" name="departement" placeholder="Département" autocomplete="off" />
+            <input type="search" id="departement" name="departement" placeholder="Département" list="departement-list" autocomplete="off" />
                 <datalist id="departement-list">
                     <!-- Les options seront ajoutées par JavaScript -->
                 </datalist>
-            <div id="departement-list" class="autocomplete-items"></div></div>
 
             <div class="autocomplete-container">
-                <label for="ville">Ville</label>
-            <input type="search" id="ville" name="ville" placeholder="Ville" autocomplete="off" />
+            <label for="ville">Ville</label>
+            <input type="search" id="ville" name="ville" placeholder="Ville" list="ville-list"  autocomplete="off" />
                 <datalist id="ville-list">
                     <!-- Les options seront ajoutées par JavaScript -->
                 </datalist>
-            <div id="ville-list" class="autocomplete-items"></div></div>
 
             <input type="submit" value="Rechercher"/>
         </form>
@@ -122,6 +122,7 @@ require_once "./include/functions/cookieLoading.inc.php";
 </main>
 
 <script>
+
     /**
      * Map fonctionnement
      */
@@ -147,202 +148,93 @@ require_once "./include/functions/cookieLoading.inc.php";
 </script>
 
 <script>
-    // Fonction pour l'auto-complétion avec gestion de la liste
-    function autocomplete(input, data, listId, fetchDataCallback) {
-        input.addEventListener("input", function() {
-            let val = this.value;
-            let listContainer = document.getElementById(listId);
-            listContainer.innerHTML = "";  // Efface les anciennes suggestions
-            document.querySelector("input[name='departement']").value= "";
-            document.querySelector("input[name='ville']").value = "";
-            document.getElementById('departement-list').innerHTML = "";
-            document.getElementById('ville-list').innerHTML = "";
+    const regList = ["AUVERGNE RHONE ALPES", "BOURGOGNE", "FRANCHE COMTE", "BRETAGNE", "CENTRE VAL DE LOIRE", "CORSE", "GUADELOUPE", "GRAND EST", "GUYANE", "HAUTS DE FRANCE", "ILE DE FRANCE", "LA REUNION", "MARTINIQUE", "MAYOTTE", "NORMANDIE", "NOUVELLE AQUITAINE", "OCCITANIE", "PAYS DE LA LOIRE", "PROVENCE ALPES COTE D AZUR"];
 
-            if (!val) return;
 
-            // Si des données locales sont disponibles, les filtrer et afficher
-            if (data) {
-                data.forEach(item => {
-                    if (item.toLowerCase().includes(val.toLowerCase())) {
-                        createSuggestion(item, input, listContainer);
-                    }
-                });
-            }
+    document.getElementById('region').addEventListener('input', function() {
+        const userInput = this.value;
 
-            // Si aucun résultat local, utiliser une requête AJAX
-            if (fetchDataCallback) {
-                fetchDataCallback(val, function (responseData) {
-                    showSuggestions(input, responseData, listContainer);
-                });
-            }
-        });
-
-        // Fermer la liste des suggestions si l'utilisateur clique à l'extérieur
-        document.addEventListener("click", function(e) {
-            if (!input.contains(e.target) && !document.getElementById(listId).contains(e.target)) {
-                document.getElementById(listId).innerHTML = "";
-            }
-        });
-    }
-
-    // Fonction pour créer un élément de suggestion
-    function createSuggestion(item, input, listContainer) {
-        const itemDiv = document.createElement("div");
-        itemDiv.textContent = item;
-        itemDiv.addEventListener("click", function() {
-            input.value = this.textContent;
-            listContainer.innerHTML = "";  // Vide la liste après sélection
-            // Actualiser les données après sélection
-            updateDataAfterSelection(input);
-        });
-        listContainer.appendChild(itemDiv);
-    }
-
-    // Fonction pour afficher les suggestions provenant d'une requête AJAX
-    function showSuggestions(inputElement, data, listElement) {
-        listElement.innerHTML = '';  // Efface les anciennes suggestions
-        if (data.success && data.data.length > 0) {
-            data.data.forEach(function (item) {
-                createSuggestion(item, inputElement, listElement);
-            });
-        } else {
-            const div = document.createElement('div');
-            div.textContent = 'Aucun résultat trouvé';
-            listElement.appendChild(div);
+        if (isOptionSelected(userInput, regList)) {
+            updateDepartments(userInput);  // Appeler la fonction pour mettre à jour les départements
         }
-    }
+    });
 
-    // Fonction pour effectuer une requête AJAX
-    function fetchData(url, query, callback) {
-        if (!query) return;
+    document.getElementById('departement').addEventListener('input', function() {
+        const regionInput = document.getElementById('region').value;
+        const departementInput = this.value;
 
-        const xhr = new XMLHttpRequest();
-        xhr.open('GET', url + query, true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4 && xhr.status === 200) {
-                const data = JSON.parse(xhr.responseText);
-                if (typeof callback === 'function') {
-                    callback(data);
-                }
-            }
-        };
-        xhr.send();
-    }
-
-    // Fonction pour actualiser les données après la sélection d'un élément
-    function updateDataAfterSelection(input) {
-        const regionInput = document.getElementById('region');
-        const departementInput = document.getElementById('departement');
-        const villeInput = document.getElementById('ville');
-        const departementList = document.getElementById('departement-list');
-        const villeList = document.getElementById('ville-list');
-
-        // Si la région est sélectionnée
-        if (input === regionInput) {
-            const regionValue = regionInput.value;
-            departementInput.value = ""; // Réinitialise le champ département
-            villeInput.value = ""; // Réinitialise le champ ville
-            departementList.innerHTML = ""; // Vide la liste des départements
-            villeList.innerHTML = ""; // Vide la liste des villes
-
-            // Requête AJAX pour récupérer les départements pour la région sélectionnée
-            if (regionValue) {
-                const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionValue + '&q=';
-                fetchData(url, '', function(data) {
-                    showSuggestions(departementInput, data, departementList);
-                });
-            }
+        if (isOptionSelected(departementInput, regList)) {
+            updateCity(regionInput, departementInput);  // Mettre à jour les villes en fonction du département et de la région
         }
-        // Si le département est sélectionné
-        else if (input === departementInput) {
-            const departementValue = departementInput.value;
-            villeInput.value = ""; // Réinitialise le champ ville
-            villeList.innerHTML = ""; // Vide la liste des villes
+    });
 
-            // Requête AJAX pour récupérer les villes pour le département sélectionné
-            if (departementValue && regionInput.value) {
-                const url = 'https://hornung.alwaysdata.net/get_ville.php?region=' + encodeURIComponent(regionInput.value) + '&departement=' + encodeURIComponent(departementValue) + '&q=';
-                fetchData(url, '', function(data) {
-                    showSuggestions(villeInput, data, villeList);
-                });
-            }
-        }
+    document.getElementById('ville').addEventListener('input', function() {
+        // On peut ajouter des actions ici si nécessaire après la sélection d'une ville
+        console.log('Ville sélectionnée:', this.value);
+    });
+
+    function isOptionSelected(input, optionsList) {return optionsList.includes(input);}
+
+    function updateRegion(){
+        const region = document.getElementById("region");
+        const departement = document.getElementById("departement");
+        const ville = document.getElementById("ville");
+
+        const departementList = document.getElementById("departement-list");
+        const villeList = document.getElementById("ville-list");
+
+        departement.innerHTML = "";
+        ville.innerHTML = "";
     }
 
-    // Initialisation des champs de recherche
-    document.addEventListener('DOMContentLoaded', function () {
-        // Autocomplétion pour les régions avec une liste locale
-        const regions = ["AUVERGNE RHONE ALPES", "BOURGOGNE FRANCHE COMTE", "BRETAGNE", "CENTRE VAL DE LOIRE",
-            "CORSE", "GUADELOUPE", "GRAND EST", "GUYANE", "HAUTS DE FRANCE", "ILE DE FRANCE", "LA REUNION",
-            "MARTINIQUE", "MAYOTTE", "NORMANDIE", "NOUVELLE AQUITAINE", "OCCITANIE", "PAYS DE LA LOIRE",
-            "PROVENCE ALPES COTE D AZUR"];
-
-        autocomplete(document.getElementById("region"), regions, "region-list", null);
-
-        // Autocomplétion pour les départements en fonction de la région
-        const departementInput = document.getElementById("departement");
+    function updateDepartments(region) {
         const departementList = document.getElementById("departement-list");
 
-        departementInput.addEventListener('input', function () {
-            const departementQuery = departementInput.value;
-            const regionInputValue = document.getElementById('region').value;  // Récupère la région actuelle
+        // Vider la liste des départements avant de la remplir
+        departementList.innerHTML = "";
 
-            document.querySelector("input[name='ville']").value = "";
-            document.getElementById('ville-list').innerHTML = "";
-
-            if (regionInputValue) {
-                // Effectue la requête pour les départements
-                const url = 'https://hornung.alwaysdata.net/get_departements.php?region=' + regionInputValue + '&q=';
-                fetchData(url, departementQuery ,function (data) {
-                    showSuggestions(departementInput, data, departementList);
-                });
-            }
-        });
-
-        // Autocomplétion pour les villes avec requête AJAX
-        const villeInput = document.getElementById('ville');
-        const villeList = document.getElementById('ville-list');
-        const regionInput = document.getElementById('region'); // Récupère l'input pour la région
-        const departementInputValue = document.getElementById('departement'); // Récupère l'input pour le département
-
-        villeInput.addEventListener('input', function () {
-            const villeQuery = villeInput.value;
-            const regionValue = regionInput.value;  // Récupère la région actuelle
-            const departementValue = departementInputValue.value; // Récupère le département actuel
-
-            if (regionValue && departementValue) {
-                // Envoie la requête pour les villes
-                const url = 'https://hornung.alwaysdata.net/get_ville.php?region=' + encodeURIComponent(regionValue) + '&departement=' + encodeURIComponent(departementValue) + '&q=';
-                fetchData(url, villeQuery, function (data) {
-                    showSuggestions(villeInput, data, villeList);
-                });
-            }
-        });
-    });
-
-    document.addEventListener("DOMContentLoaded", function () {
-        let radios = document.querySelectorAll(".day-radio");
-        let panels = document.querySelectorAll(".panel");
-
-        function updatePanels() {
-            panels.forEach(panel => panel.style.display = "none");
-            let selectedRadio = document.querySelector(".day-radio:checked");
-            if (selectedRadio) {
-                let panelId = "panel-" + selectedRadio.id;
-                let selectedPanel = document.getElementById(panelId);
-                if (selectedPanel) {
-                    selectedPanel.style.display = "table";
+        // Faire une requête fetch pour obtenir les départements pour la région sélectionnée
+        fetch(`https://hornung.alwaysdata.net/get_departements.php?region=${region}`)
+            .then(response => response.json())  // On suppose que la réponse est un JSON
+            .then(data => {
+                console.log(data);  // Ajoute cette ligne pour vérifier la réponse
+                if (data && Array.isArray(data.departements)) {
+                    data.departements.forEach(departement => {
+                        let option = document.createElement("option");
+                        option.value = departement;
+                        departementList.appendChild(option);
+                    });
                 }
-            }
-        }
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des départements:', error);
+            });
+    }
 
-        radios.forEach(radio => {
-            radio.addEventListener("change", updatePanels);
-        });
+    function updateCity(region,departement) {
+        const villeList = document.getElementById("ville-list");
 
-        // Afficher le premier panneau au chargement
-        updatePanels();
-    });
+        // Vider la liste des villes avant de la remplir
+        villeList.innerHTML = "";
+
+        // Faire une requête pour récupérer les villes pour ce département (ajoute l'URL appropriée)
+        fetch(`https://hornung.alwaysdata.net/get_ville.php?region=${region}&departement=${departement}`)
+            .then(response => response.json())  // On suppose une réponse en JSON
+            .then(data => {
+                if (data && Array.isArray(data.villes)) {
+                    data.villes.forEach(ville => {
+                        let option = document.createElement("option");
+                        option.value = ville;
+                        villeList.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Erreur lors de la récupération des villes:', error);
+            });
+
+    }
+
 
 </script>
 
