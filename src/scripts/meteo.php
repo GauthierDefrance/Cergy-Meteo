@@ -3,7 +3,8 @@
 
 
 
-const ElemDataDayList = Array("temperature_2m", "weather_code", "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m", "precipitation_probability", "pressure_msl");
+const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "weather_code"=>"état du ciel", "wind_speed_10m"=>"Vitesse du vent (km/h)", "wind_direction_10m"=>"Direction du vent", "wind_gusts_10m"=>"Rafale de vent (km/h)", "precipitation_probability"=>"Probabilité de pluie", "pressure_msl"=>"Pression Atm");
+
 const DayHour = 24;
 
 class WeatherForecast {
@@ -141,13 +142,12 @@ class WeatherForecast {
         }
     }
 
-    private function getDescImage($weatherCode): string
-    {
+    private function getDescImage($weatherCode): string {
         $tab = $this->getWeatherInfo($weatherCode);
         $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";
-        if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' />";
-        else $output .= "<img src='./ressources/airy/$weatherCode.png' />";
-        $output .= "<p>".$tab[0]."</p>";
+        if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' alt='Erreur'/>";
+        else $output .= "<img src='./ressources/airy/$weatherCode.png' alt='Erreur'/>";
+        $output .= "<p>".$tab[0]."</p></div>";
         return $output;
     }
 
@@ -257,7 +257,8 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        return $this->getDayTable(0);
+        $output = "<h2>Prévision sur 24h</h2>";
+        return $output.$this->getDayTable(0);
     }
 
 
@@ -280,7 +281,7 @@ class WeatherForecast {
 
         $DayFourth = (DayHour/$HourStep)/4;
 
-        $output = "<table>
+        $output = "<table style='border-collapse: collapse; text-align: center;'>
                      <thead>
                         <tr>
                             <th rowspan='2'></th>
@@ -295,13 +296,13 @@ class WeatherForecast {
             $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
         }$output .= "</tr></thead><tbody>";
 
-        foreach (ElemDataDayList as $elem){
+        foreach (array_keys(ElemDataDayList) as $elem) {
             $output .= "<tr>";
-            $output .= "<td>$elem</td>";
+            $output .= "<td>".ElemDataDayList[$elem]."</td>";
             for($k=0; $k<DayHour ; $k+=$HourStep){
-                $tmp="Erreur";
+                $tmp="-";
                 if(isset($data['hourly'][$elem][$k+($day*24)])) {
-                    $tmp = $data['hourly'][$elem][$k+($day*24)];
+                    $tmp = $this->transformDataHourly($elem, $k, $day);
                 }
                 $output .= "<td>$tmp</td>";
             }
@@ -309,6 +310,37 @@ class WeatherForecast {
         }
 
         $output .= "</tbody></table>";
+        return $output;
+    }
+
+    private function transformDataHourly(string $elem, int $k, int $day) : string{
+        $data = $this->weatherData;
+        $tmp = $data['hourly'][$elem][$k+($day*24)];
+        $output = "-";
+        switch ($elem) {
+            case "temperature_2m":
+                $output=$tmp;
+
+            case "weather_code":
+                $output=$this->getDescImage($tmp);
+
+            case "wind_speed_10m":
+                $output=$tmp;
+
+            case "wind_direction_10m":
+                $output = $this->getCardinalDirection($tmp);
+
+            case "wind_gusts_10m":
+                $output=$tmp;
+
+            case "precipitation_probability":
+                $output=$tmp;
+
+            case "pressure_msl":
+                $output=$tmp;
+
+        }
+
         return $output;
     }
 
@@ -322,7 +354,7 @@ class WeatherForecast {
 
 }
 
-if (isset($_GET["ville"])) {
+if (isset($_GET["ville"])&&$_GET["ville"]!="") {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
     echo $weatherForecast->displayDayForecast();
@@ -333,7 +365,7 @@ elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast();
+    echo $weatherForecast->displayDayForecast()."/n";
     echo $weatherForecast->displayWeeksForecast();
 }
  else {
