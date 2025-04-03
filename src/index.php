@@ -319,6 +319,31 @@ require_once "./include/functions/cookieLoading.inc.php";
             }
         });
     });
+
+    document.addEventListener("DOMContentLoaded", function () {
+        let radios = document.querySelectorAll(".day-radio");
+        let panels = document.querySelectorAll(".panel");
+
+        function updatePanels() {
+            panels.forEach(panel => panel.style.display = "none");
+            let selectedRadio = document.querySelector(".day-radio:checked");
+            if (selectedRadio) {
+                let panelId = "panel-" + selectedRadio.id;
+                let selectedPanel = document.getElementById(panelId);
+                if (selectedPanel) {
+                    selectedPanel.style.display = "table";
+                }
+            }
+        }
+
+        radios.forEach(radio => {
+            radio.addEventListener("change", updatePanels);
+        });
+
+        // Afficher le premier panneau au chargement
+        updatePanels();
+    });
+
 </script>
 
 

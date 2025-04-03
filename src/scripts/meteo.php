@@ -3,7 +3,7 @@
 
 
 
-const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "weather_code"=>"état du ciel", "wind_speed_10m"=>"Vitesse du vent (km/h)", "wind_direction_10m"=>"Direction du vent", "wind_gusts_10m"=>"Rafale de vent (km/h)", "precipitation_probability"=>"Probabilité de pluie", "pressure_msl"=>"Pression Atm");
+const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "Humidex"=>"Humidex", "Windchill"=>"Windchill", "weather_code"=>"état du ciel", "wind_speed_10m"=>"Vitesse du vent (km/h)", "wind_direction_10m"=>"Direction du vent", "wind_gusts_10m"=>"Rafale de vent (km/h)", "precipitation_probability"=>"Probabilité de pluie", "pressure_msl"=>"Pression Atm", "relative_humidity_2m"=>"Humidité (%)");
 
 const DayHour = 24;
 
@@ -52,7 +52,7 @@ class WeatherForecast {
     // Fonction pour récupérer les données météo depuis l'API Open Meteo
     private function fetchWeatherData() {
 
-        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation_probability,pressure_msl&timezone=auto";
+        $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation_probability,pressure_msl,relative_humidity_2m&timezone=auto";
         $response = file_get_contents($url);
 
         if ($response === FALSE) {
@@ -61,30 +61,6 @@ class WeatherForecast {
 
         return json_decode($response, true);
     }
-
-    // Fonction pour convertir le code météo en description lisible
-    private function getWeatherDescription($weatherCode) {
-        switch ($weatherCode) {
-            case 0:
-                return 'Ciel clair';
-            case 1:
-            case 2:
-                return 'Quelques nuages';
-            case 3:
-                return 'Nuageux';
-            case 4:
-                return 'Pluie légère';
-            case 5:
-                return 'Pluie modérée';
-            case 6:
-                return 'Pluie forte';
-            case 7:
-                return 'Neige';
-            default:
-                return 'Code météo inconnu';
-        }
-    }
-
 
     function getWeatherInfo($code) : array {
         switch ($code) {
@@ -151,7 +127,7 @@ class WeatherForecast {
         return $output;
     }
 
-    public function generateDayButtons(): string {
+    public function generateDayButtons(int $n=5): string {
         // Mapping des jours en anglais vers le français
         $daysMapping = [
             "Monday"    => "Lundi",
@@ -163,8 +139,15 @@ class WeatherForecast {
             "Sunday"    => "Dimanche"
         ];
 
-        $output = "<div class='day-buttons'>";
-        for ($i = 0; $i < 5; $i++) {
+        $output = "<form class='day-buttons'>";
+
+
+        $dateTimestamp = strtotime("+0 day");
+        $englishDay = date("l", $dateTimestamp);
+        $frenchDay = $daysMapping[$englishDay] ?? $englishDay;
+        $output .= "<input type='radio' id='jour0' name='jour' class='day-radio' checked>\n";
+        $output .= "<label for='jour0' class='day-btn'>$frenchDay</label>\n";
+        for ($i = 1; $i < $n; $i++) {
             // Calcule la date du jour i (0 pour aujourd'hui, 1 pour demain, etc.)
             $dateTimestamp = strtotime("+$i day");
             // Récupère le nom du jour en anglais
@@ -172,13 +155,19 @@ class WeatherForecast {
             // Convertit en français grâce au mapping
             $frenchDay = $daysMapping[$englishDay] ?? $englishDay;
             // Ajoute un bouton pour ce jour
-            $output .= "<button>$frenchDay</button>";
+            $output .= "<input type='radio' id='jour$i' name='jour' class='day-radio'>\n";
+            $output .= "<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
+            //$output .= "<button class='day-btn' id='jour$i'>$frenchDay</button>";
         }
-        $output .= "</div>";
+        $output .= "</form>";
 
         return $output;
     }
 
+    /**
+     *
+     * @return string
+     */
     public function displayWeeksForecast() : string {
         // Si les données météo sont disponibles
         if (isset($this->weatherData['daily']['time'])) {
@@ -257,8 +246,15 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        $output = "<h2>Prévision sur 24h</h2>";
-        return $output.$this->getDayTable(0);
+        $output = "<h2>Prévision sur 24h</h2>\n";
+        $output .= $this->generateDayButtons(7);
+
+        $output .= "<div class='panels'>\n";
+        for ($k=0; $k<7; $k++){
+            $output .= $this->getDayTable($k);
+        } $output .= "</div>\n";
+
+        return $output;
     }
 
 
@@ -281,7 +277,7 @@ class WeatherForecast {
 
         $DayFourth = (DayHour/$HourStep)/4;
 
-        $output = "<table style='border-collapse: collapse; text-align: center;'>
+        $output = "<table id='panel-jour$day' class='panel' style='text-align: center;'>
                      <thead>
                         <tr>
                             <th rowspan='2'></th>
@@ -289,75 +285,125 @@ class WeatherForecast {
                             <th colspan='$DayFourth'>Matinée</th> 
                             <th colspan='$DayFourth'>Après-midi</th> 
                             <th colspan='$DayFourth'>Soirée</th>
-                        </tr>";
+                        </tr>\n";
 
         $output .= "<tr>";
         for($k=0; $k<DayHour ; $k+=$HourStep){
             $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
-        }$output .= "</tr></thead><tbody>";
+        }$output .= "</tr></thead>\n<tbody>";
 
         foreach (array_keys(ElemDataDayList) as $elem) {
             $output .= "<tr>";
             $output .= "<td>".ElemDataDayList[$elem]."</td>";
             for($k=0; $k<DayHour ; $k+=$HourStep){
                 $tmp="-";
-                if(isset($data['hourly'][$elem][$k+($day*24)])) {
+                if(isset($data['hourly'][$elem][$k+($day*24)])||$elem=="Humidex"||$elem=="Windchill") {
                     $tmp = $this->transformDataHourly($elem, $k, $day);
                 }
                 $output .= "<td>$tmp</td>";
             }
-            $output .= "</tr>";
+            $output .= "</tr>\n";
         }
 
-        $output .= "</tbody></table>";
+        $output .= "</tbody>\n</table>";
         return $output;
     }
 
     private function transformDataHourly(string $elem, int $k, int $day) : string{
         $data = $this->weatherData;
-        $tmp = $data['hourly'][$elem][$k+($day*24)];
+        $tmp = $data['hourly'][$elem][$k + ($day * 24)] ?? "";
         $output = "-";
-        switch ($elem) {
-            case "temperature_2m":
-                $output=$tmp;
 
-            case "weather_code":
-                $output=$this->getDescImage($tmp);
-
-            case "wind_speed_10m":
-                $output=$tmp;
-
-            case "wind_direction_10m":
-                $output = $this->getCardinalDirection($tmp);
-
-            case "wind_gusts_10m":
-                $output=$tmp;
-
-            case "precipitation_probability":
-                $output=$tmp;
-
-            case "pressure_msl":
-                $output=$tmp;
-
+        if ("temperature_2m"==$elem) {
+            $var = $this->temperatureToColor($tmp,-10, 30);
+            $output="<span style='background-color:$var;'>".$tmp."</span>";
+        } else if ("Humidex"==$elem) {
+            $tmp = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]) ?? "-";
+            $var = $this->temperatureToColor($tmp,-10, 30) ?? "-";
+            if ($var=="-"){
+                $output= $var;
+            } else {
+                $output= "<span style='background-color:$var;'>".$tmp."</span>";;
+            }
+        } else if ("Windchill"==$elem) {
+            $tmp = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]) ?? "-";
+            $var = $this->temperatureToColor($tmp,-10, 30) ?? "-";
+            if ($var=="-"){
+                $output= $var;
+            } else {
+                $output= "<span style='background-color:$var;'>".$tmp."</span>";;
+            }
         }
-
+        else if ("weather_code"==$elem) {
+            $output=$this->getDescImage($tmp);
+        } else if ("wind_speed_10m"==$elem) {
+            $var = $this->temperatureToColor($tmp,-10, 30);
+            $output=$tmp;
+        }else if ("wind_direction_10m"==$elem) {
+            $output = $this->getCardinalDirection($tmp);
+        }else if ("wind_gusts_10m"==$elem) {
+            $output=$tmp;
+        }else if ("precipitation_probability"==$elem) {
+            $output=$tmp;
+        } else if ("relative_humidity_2m"==$elem) {
+            $output=$tmp;
+        }
+        else if ("pressure_msl"==$elem) {
+            $output=$tmp;
+        }
         return $output;
     }
 
+    function temperatureToColor($temp, $cold, $hot) : string {
+        // Définition des températures extrêmes
 
+        // Normalisation de la température entre 0 et 1
+        $normalized = max(0, min(1, ($temp - $cold) / ($hot - $cold)));
 
+        // Déterminer la couleur (dégradé du bleu au rouge en passant par le vert et le jaune)
+        $r = min(255, max(0, 255 * $normalized));
+        $g = min(255, max(0, 255 * (1 - abs($normalized - 0.5) * 2))); // Vert au milieu
+        $b = min(255, max(0, 255 * (1 - $normalized)));
 
-//    public function displayDailyForecast(string $selectedDay) : string {
-//
-//    }
-
+        return sprintf("#%02X%02X%02X", $r, $g, $b);
+    }
 
 }
+
+function calculateHumidex($temperature, $humidity) : string {
+    if ($humidity <= 0 || $humidity > 100) return "-";
+
+    // Calcul du point de rosée (Td)
+    $ln_humidity = log($humidity / 100);
+    $td = (237.7 * ($ln_humidity + (7.5 * $temperature) / (237.7 + $temperature))) /
+        (7.5 - $ln_humidity - (7.5 * $temperature) / (237.7 + $temperature));
+
+    // Calcul de la pression de vapeur saturante
+    $e = 6.11 * pow(10, (7.5 * $td / (237.7 + $td)));
+
+    // Calcul de l'humidex
+    $humidex = $temperature + 0.5555 * ($e - 10);
+
+    return round($humidex, 1);
+}
+
+function calculateWindChill($temperature, $windSpeed) : string {
+    // Windchill s'applique seulement si T ≤ 10°C et vent ≥ 5 km/h
+    if ($temperature > 10 || $windSpeed < 5) return $temperature;
+
+    // Formule de refroidissement éolien
+    $windChill = 13.12 + 0.6215 * $temperature
+        - 11.37 * pow($windSpeed, 0.16)
+        + 0.3965 * $temperature * pow($windSpeed, 0.16);
+
+    return round($windChill, 1);
+}
+
 
 if (isset($_GET["ville"])&&$_GET["ville"]!="") {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast();
+    echo $weatherForecast->displayDayForecast()."/n";
     echo $weatherForecast->displayWeeksForecast();
 
 }
