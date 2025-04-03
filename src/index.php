@@ -70,7 +70,7 @@ require_once "./include/functions/cookieLoading.inc.php";
             <input type="search" id="region" name="region" list="region-list" placeholder="Région" autocomplete="off" />
                 <datalist id="region-list">
                     <option value="AUVERGNE RHONE ALPES">Auvergne Rhône-Alpes</option>
-                    <option value="BOURGOGNE">Bourgogne</option>
+                    <option value="BOURGOGNE FRANCHE COMTE">Bourgogne France Compte</option>
                     <option value="FRANCHE COMTE">Franche-Comté</option>
                     <option value="BRETAGNE">Bretagne</option>
                     <option value="CENTRE VAL DE LOIRE">Centre-Val de Loire</option>
@@ -138,17 +138,20 @@ require_once "./include/functions/cookieLoading.inc.php";
                     document.querySelector("input[name='ville']").value = "";
                     document.getElementById('departement-list').innerHTML = "";
                     document.getElementById('ville-list').innerHTML = "";
+                    updateDepartments(regionName);
                 }
             });
         });
     });
-</script>
-
-<script>
 
     document.getElementById('region').addEventListener('input', function() {
         const userInput = this.value;
         console.log("Région vivante");
+
+        document.querySelector("input[name='departement']").value= "";
+        document.querySelector("input[name='ville']").value = "";
+        document.getElementById('departement-list').innerHTML = "";
+        document.getElementById('ville-list').innerHTML = "";
 
         if (isOptionSelected(this, "region-list")) {
             updateDepartments(userInput);
@@ -161,6 +164,9 @@ require_once "./include/functions/cookieLoading.inc.php";
         console.log("Depart vivante");
         const regionInput = document.getElementById('region');
         const departementInput = this;
+
+        document.querySelector("input[name='ville']").value = "";
+        document.getElementById('ville-list').innerHTML = "";
 
         console.log(departementInput);
         console.log(regionInput);
@@ -262,6 +268,40 @@ require_once "./include/functions/cookieLoading.inc.php";
         const options = datalist.querySelectorAll('option');
         return Array.from(options).map(option => option.value);  // Récupère les valeurs des options
     }
+
+    // Attendre que le DOM soit complètement chargé avant d'exécuter le script
+    document.addEventListener("DOMContentLoaded", function() {
+        // Fonction pour afficher ou masquer les tableaux en fonction du jour sélectionné
+        function afficherTableau() {
+            // Récupérer toutes les cases à cocher radio
+            const jours = document.querySelectorAll('.day-radio');
+
+            // Masquer tous les tableaux
+            for (let i = 0; i < jours.length; i++) {
+                const panel = document.getElementById('panel-jour' + i);
+                if (panel) {
+                    panel.style.display = 'none';
+                }
+            }
+
+            // Afficher le tableau associé à la case radio sélectionnée
+            const jourSelectionne = document.querySelector('.day-radio:checked');
+            const index = jourSelectionne ? jourSelectionne.id.replace('jour', '') : 0;
+            const tableauSelectionne = document.getElementById('panel-jour' + index);
+            if (tableauSelectionne) {
+                tableauSelectionne.style.display = 'block';
+            }
+        }
+
+        // Ajouter un événement pour chaque bouton radio
+        const boutonsRadio = document.querySelectorAll('.day-radio');
+        boutonsRadio.forEach(function(bouton) {
+            bouton.addEventListener('change', afficherTableau);
+        });
+
+        // Appeler la fonction une fois au chargement de la page pour afficher le tableau initial
+        afficherTableau();
+    });
 
 </script>
 

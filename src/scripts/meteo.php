@@ -248,7 +248,7 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        $output = "<h2>Prévision sur 24h</h2>\n";
+        $output = "<h2>Prévision sur 24h</h2><p>(des jours prochains)</p>\n";
         $output .= $this->generateDayButtons(7);
 
         $output .= "<div class='panels'>\n";
@@ -403,13 +403,14 @@ function calculateWindChill($temperature, $windSpeed) : string {
 }
 
 
-if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"])&&$_GET["departement"]!="") {
+if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="") {
     $cityName = $_GET["ville"];
+    $departement = $_GET["departement"];
     $weatherForecast = new WeatherForecast($cityName, $departement);
     echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
-
 }
+
 elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
