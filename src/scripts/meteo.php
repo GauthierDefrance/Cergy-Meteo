@@ -9,9 +9,9 @@ class WeatherForecast {
     private $weatherData;
 
     // Constructeur pour initialiser la ville
-    public function __construct($cityName) {
+    public function __construct($cityName,$departName) {
         $this->cityName = $cityName;
-        $this->gpsCoord = $this->getGpsCoordinates($cityName);
+        $this->gpsCoord = $this->getGpsCoordinates($cityName,$departName);
         $this->latitude = $this->gpsCoord['latitude'];
         $this->longitude = $this->gpsCoord['longitude'];
         $this->weatherData = $this->fetchWeatherData();
@@ -22,7 +22,10 @@ class WeatherForecast {
      * @param $cityName
      * @return array|void|null
      */
-    function getGpsCoordinates($cityName) {
+    function getGpsCoordinates($cityName,$departName) {
+        require_once('./include/functions/main.inc.php');
+        //$latitude=get_ville_latitude($departName,$cityName);
+        //$longitude=get_ville_longitude($departName,$cityName);
         $file = './data/cities.csv';
         if (!file_exists($file) || !is_readable($file)) {
             die("Le fichier n'existe pas ou n'est pas lisible.");
@@ -255,9 +258,10 @@ class WeatherForecast {
 
 }
 
-if (isset($_GET["ville"])) {
+if (isset($_GET["ville"]) && isset($_GET["departement"])) {
     $cityName = $_GET["ville"];
-    $weatherForecast = new WeatherForecast($cityName);
+    $departName =$_GET ["departement"];
+    $weatherForecast = new WeatherForecast($cityName,$departName);
     echo $weatherForecast->displayForecast();
 
 } else {

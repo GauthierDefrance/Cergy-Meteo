@@ -223,7 +223,7 @@ function villes_scrolling_list(string $depart_code){
 /**
  * Récupère la latitude d'une ville donnée.
  *
- * @param string $departement Le nom du département.
+ * @param string $departement Le numero du département.
  * @param string $ville Le nom de la ville.
  * @return string la latitude de la ville
  */
@@ -236,7 +236,7 @@ function get_ville_latitude(string $departement,string $ville){
 /**
  * Récupère la longitude d'une ville donnée.
  *
- * @param string $departement Le nom du département.
+ * @param string $departement Le numero du département.
  * @param string $ville Le nom de la ville.
  * @return string la longitude de la ville
  */
