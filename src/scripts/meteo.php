@@ -145,9 +145,9 @@ class WeatherForecast {
     private function getDescImage($weatherCode): string {
         $tab = $this->getWeatherInfo($weatherCode);
         $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";
-        if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' />";
-        else $output .= "<img src='./ressources/airy/$weatherCode.png' />";
-        $output .= "<p>".$tab[0]."</p>";
+        if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' alt='Erreur'/>";
+        else $output .= "<img src='./ressources/airy/$weatherCode.png' alt='Erreur'/>";
+        $output .= "<p>".$tab[0]."</p></div>";
         return $output;
     }
 
@@ -257,7 +257,8 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        return $this->getDayTable(0);
+        $output = "<h2>Prévision sur 24h</h2>";
+        return $output.$this->getDayTable(0);
     }
 
 
@@ -280,7 +281,7 @@ class WeatherForecast {
 
         $DayFourth = (DayHour/$HourStep)/4;
 
-        $output = "<table>
+        $output = "<table style='border-collapse: collapse; text-align: center;'>
                      <thead>
                         <tr>
                             <th rowspan='2'></th>
@@ -321,7 +322,7 @@ class WeatherForecast {
                 $output=$tmp;
 
             case "weather_code":
-                $output=$this->getDescImage($tmp)."</div>";
+                $output=$this->getDescImage($tmp);
 
             case "wind_speed_10m":
                 $output=$tmp;
@@ -353,7 +354,7 @@ class WeatherForecast {
 
 }
 
-if (isset($_GET["ville"])) {
+if (isset($_GET["ville"])&&$_GET["ville"]!="") {
     $cityName = $_GET["ville"];
     $weatherForecast = new WeatherForecast($cityName);
     echo $weatherForecast->displayDayForecast();
@@ -364,7 +365,7 @@ elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
     $weatherForecast = new WeatherForecast($cityName);
-    echo $weatherForecast->displayDayForecast();
+    echo $weatherForecast->displayDayForecast()."/n";
     echo $weatherForecast->displayWeeksForecast();
 }
  else {
