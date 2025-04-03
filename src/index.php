@@ -69,7 +69,25 @@ require_once "./include/functions/cookieLoading.inc.php";
                 <label for="region">Région</label>
             <input type="search" id="region" name="region" placeholder="Région" autocomplete="off" />
             <datalist id="region-list">
-                <!-- Les options seront ajoutées par JavaScript -->
+                <option value="AUVERGNE RHONE ALPES"></option>
+                <option value="BOURGOGNE"></option>
+                <option value="FRANCHE COMTE"></option>
+                <option value="BRETAGNE"></option>
+                <option value="CENTRE VAL DE LOIRE"></option>
+                <option value="CORSE"></option>
+                <option value="GUADELOUPE"></option>
+                <option value="GRAND EST"></option>
+                <option value="GUYANE"></option>
+                <option value="HAUTS DE FRANCE"></option>
+                <option value="ILE DE FRANCE"></option>
+                <option value="LA REUNION"></option>
+                <option value="MARTINIQUE"></option>
+                <option value="MAYOTTE"></option>
+                <option value="NORMANDIE"></option>
+                <option value="NOUVELLE AQUITAINE"></option>
+                <option value="OCCITANIE"></option>
+                <option value="PAYS DE LA LOIRE"></option>
+                <option value="PROVENCE ALPES COTE D AZUR"></option>
             </datalist>
             <div id="region-list" class="autocomplete-items"></div></div>
 
