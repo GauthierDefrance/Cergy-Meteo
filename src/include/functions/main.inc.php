@@ -268,6 +268,42 @@ function get_weather_data(string $departement,string $ville){
     }
 
     return json_decode($response, true);
+
+}
+
+function increase_ville_hits(string $ville,string $departement){
+    $filepath = './data/hits_villes.csv';
+
+    //read mode, grab toutes les lignes du fichiers, peu éfficace sur des grands fichiers
+    if (($file = fopen($filepath, 'r')) !== false) {
+        $data = [];
+    
+        while (($ligne = fgetcsv($file)) !== false) {
+            $data[] = $ligne;
+        }
+        fclose($file);
+    
+        if (($file = fopen($filepath, 'w')) !== false) {
+            $exists = false;
+            foreach ($data as $ligne) {
+                if($ligne[0]===$ville && $ligne[1]===$departement){
+                    $ligne[2]+=1;
+                    $exists= true;
+                }
+                fputcsv($file, $ligne);
+            }
+            if($exists===false){
+                $newLigne = [$ville,$departement,1];
+                fputcsv($file, $newLigne);
+            }
+            
+            fclose($file);
+        } else {
+            echo "Erreur d'écriture du fichier.";
+        }
+    } else {
+        echo "Erreur de lecture du fichier.";
+    }
 }
 
 
