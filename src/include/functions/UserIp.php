@@ -10,10 +10,10 @@
  * @date 2025-20-03
  */
 
- 
+
 /**
  * Méthode qui calcule l'IP de l'utilisateur actuel.
- * @return String IP de l'utilisateur courant.
+ * @return string IP de l'utilisateur courant.
  */
 function getUserIP() {
     if (isset($_SERVER['HTTP_X_FORWARDED_FOR'])) {
