@@ -3,7 +3,8 @@
 
 
 
-const ElemDataDayList = Array("temperature_2m", "weather_code", "wind_speed_10m", "wind_direction_10m", "wind_gusts_10m", "precipitation_probability", "pressure_msl");
+const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "weather_code"=>"état du ciel", "wind_speed_10m"=>"Vitesse du vent (km/h)", "wind_direction_10m"=>"Direction du vent", "wind_gusts_10m"=>"Rafale de vent (km/h)", "precipitation_probability"=>"Probabilité de pluie", "pressure_msl"=>"Pression Atm");
+
 const DayHour = 24;
 
 class WeatherForecast {
@@ -141,8 +142,7 @@ class WeatherForecast {
         }
     }
 
-    private function getDescImage($weatherCode): string
-    {
+    private function getDescImage($weatherCode): string {
         $tab = $this->getWeatherInfo($weatherCode);
         $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";
         if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' />";
@@ -295,13 +295,13 @@ class WeatherForecast {
             $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
         }$output .= "</tr></thead><tbody>";
 
-        foreach (ElemDataDayList as $elem){
+        foreach (array_keys(ElemDataDayList) as $elem) {
             $output .= "<tr>";
-            $output .= "<td>$elem</td>";
+            $output .= "<td>".ElemDataDayList[$elem]."</td>";
             for($k=0; $k<DayHour ; $k+=$HourStep){
-                $tmp="Erreur";
+                $tmp="-";
                 if(isset($data['hourly'][$elem][$k+($day*24)])) {
-                    $tmp = $data['hourly'][$elem][$k+($day*24)];
+                    $tmp = $this->transformDataHourly($elem, $k, $day);
                 }
                 $output .= "<td>$tmp</td>";
             }
@@ -309,6 +309,37 @@ class WeatherForecast {
         }
 
         $output .= "</tbody></table>";
+        return $output;
+    }
+
+    private function transformDataHourly(string $elem, int $k, int $day) : string{
+        $data = $this->weatherData;
+        $tmp = $data['hourly'][$elem][$k+($day*24)];
+        $output = "-";
+        switch ($elem) {
+            case "temperature_2m":
+                $output=$tmp;
+
+            case "weather_code":
+                $output=$this->getDescImage($tmp)."</div>";
+
+            case "wind_speed_10m":
+                $output=$tmp;
+
+            case "wind_direction_10m":
+                $output = $this->getCardinalDirection($tmp);
+
+            case "wind_gusts_10m":
+                $output=$tmp;
+
+            case "precipitation_probability":
+                $output=$tmp;
+
+            case "pressure_msl":
+                $output=$tmp;
+
+        }
+
         return $output;
     }
 
