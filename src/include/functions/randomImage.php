@@ -9,6 +9,11 @@
  * @author Gauthier Defrance
  * @date 2025-20-03
  */
+
+/**
+ * Constante tableau associatif servant UNIQUEMENT à obtenir une description de certaines images. Ne fournit
+ * pas un chemin aux fonctions récupérant ces images.
+ */
 const IMAGES = [
     "bleu_ciel.webp" => "bleu ciel",
     "ciel-etoile.webp" => "ciel etoile",

@@ -179,6 +179,13 @@ function log_array2(array $test_array){
     print_r($test_array);
 }
 
+/**
+ * Crée une datalist html des départements d'une région de France.
+ *
+ * @param string $region Le nom de la région.
+ * @return string $html une datalist html des noms des départements de la région.
+ */
+
 function region_data_list(string $region){
     $depart=reg_to_depart()[$region];
     $html='<label for="departement">Entrez votre département :</label>';
@@ -190,6 +197,13 @@ function region_data_list(string $region){
     $html.='</datalist>';
     return $html;
 }
+
+/**
+ * Crée une scrolling list html des départements d'une région de France.
+ *
+ * @param string $region Le nom de la région.
+ * @return string $html une scrolling list html des noms des départements de la région.
+ */
 
 function departements_scrolling_list(string $region){
     $departs=reg_to_depart()[$region];
@@ -204,6 +218,13 @@ function departements_scrolling_list(string $region){
     </form>';
     return $html;
 }
+
+/**
+ * Crée une scrolling list html des villes d'un département de France.
+ *
+ * @param string $depart_code Le code du département.
+ * @return string $html une scrolling list html des noms des villes du département.
+ */
 
 function villes_scrolling_list(string $depart_code){
     $villes=villes_de_dep($depart_code);
@@ -268,6 +289,50 @@ function get_weather_data(string $departement,string $ville){
     }
 
     return json_decode($response, true);
+
+}
+
+/**
+ * Augmente de 1 le nombre de hits de la ville en paramètre sur un fichier csv.
+ * Crée une nouvelle ligne pour la ville si elle n'existe pas déjà.
+ * 
+ * @param string $departement Le numéro du département de ka ville.
+ * @param string $ville Le nom de la ville.
+ * @return void
+ */
+function increase_ville_hits(string $ville,string $departement){
+    $filepath = './data/hits_villes.csv';
+
+    //read mode, grab toutes les lignes du fichiers, peu éfficace sur des grands fichiers
+    if (($file = fopen($filepath, 'r')) !== false) {
+        $data = [];
+    
+        while (($ligne = fgetcsv($file)) !== false) {
+            $data[] = $ligne;
+        }
+        fclose($file);
+    
+        if (($file = fopen($filepath, 'w')) !== false) {
+            $exists = false;
+            foreach ($data as $ligne) {
+                if($ligne[0]===$ville && $ligne[1]===$departement){
+                    $ligne[2]+=1;
+                    $exists= true;
+                }
+                fputcsv($file, $ligne);
+            }
+            if($exists===false){
+                $newLigne = [$ville,$departement,1];
+                fputcsv($file, $newLigne);
+            }
+            
+            fclose($file);
+        } else {
+            echo "Erreur d'écriture du fichier.";
+        }
+    } else {
+        echo "Erreur de lecture du fichier.";
+    }
 }
 
 
