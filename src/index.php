@@ -88,21 +88,21 @@ require_once "./include/functions/cookieLoading.inc.php";
                     <option value="OCCITANIE">Occitanie</option>
                     <option value="PAYS DE LA LOIRE">Pays de la Loire</option>
                     <option value="PROVENCE ALPES COTE D AZUR">Provence-Alpes-Côte d'Azur</option>
-                </datalist>
+                </datalist></div>
 
             <div class="autocomplete-container">
             <label for="departement">Département</label>
             <input type="search" id="departement" name="departement" placeholder="Département" list="departement-list" autocomplete="off" />
                 <datalist id="departement-list">
                     <!-- Les options seront ajoutées par JavaScript -->
-                </datalist>
+                </datalist></div>
 
             <div class="autocomplete-container">
             <label for="ville">Ville</label>
             <input type="search" id="ville" name="ville" placeholder="Ville" list="ville-list"  autocomplete="off" />
                 <datalist id="ville-list">
                     <!-- Les options seront ajoutées par JavaScript -->
-                </datalist>
+                </datalist></div>
 
             <input type="submit" value="Rechercher"/>
         </form>
@@ -212,7 +212,7 @@ require_once "./include/functions/cookieLoading.inc.php";
                     data.data.forEach(departement => {
                         // Créer une option pour chaque département
                         let option = document.createElement("option");
-                        option.value = departement.name; // Utilise le numéro du département comme valeur
+                        option.value = departement.number; // Utilise le code du département comme valeur
                         option.textContent = departement.name; // Utilise le nom du département comme texte
                         departementList.appendChild(option);
                     });
