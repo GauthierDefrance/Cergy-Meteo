@@ -1,13 +1,5 @@
 <?php 
 declare(strict_types=1);
-function light_to_dark():void{
-    setcookie('mode', 'dark', time() + (86400 * 30), "/");
-}
-
-function dark_to_light():void{
-    setcookie('mode', 'light', time() + (86400 * 30), "/");
-} 
-//peut êtres a effacer ces deux fonctions au dessus, à voir comment on décide d'implémenter
 function set_mode(string $mode):void{
     setcookie('mode', $mode, time() + (86400 * 30), "/");
 }
@@ -21,6 +13,29 @@ function mode():string{
     return ($mode==='dark') ? 'dark' : 'light';
 }
 
+function set_last_viewed(string $ville,string $departement):void{
+    $date = date("Y-m-d"); //peut êtres à mettre en francais une autre fois?
+    $lastViewed = [
+        "ville" => $ville,
+        "departement" => $departement,
+        "date" => $date
+    ];
+    setcookie("lastViewed", json_encode($lastViewed), time() + (86400 * 90), "/");
+}
+
+function last_viewed():array{
+    if (isset($_COOKIE["lastViewed"])) {
+        $ville = json_decode($_COOKIE["lastViewed"], true); // Convert JSON back to array
+    }
+    else{
+        $ville = [
+            "ville" => "none",
+            "departement" => "none",
+            "date" => "none"
+        ];
+    }
+    return $ville;
+}
 
 
 ?>
