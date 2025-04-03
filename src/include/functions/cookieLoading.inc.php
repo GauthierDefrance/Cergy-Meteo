@@ -23,9 +23,10 @@ function set_last_viewed(string $ville,string $departement):void{
     setcookie("lastViewed", json_encode($lastViewed), time() + (86400 * 90), "/");
 }
 
+
 function last_viewed():array{
     if (isset($_COOKIE["lastViewed"])) {
-        $ville = json_decode($_COOKIE["lastViewed"], true); // Convert JSON back to array
+        $ville = json_decode($_COOKIE["lastViewed"], true);
     }
     else{
         $ville = [
