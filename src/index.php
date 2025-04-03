@@ -90,9 +90,6 @@ require_once "./include/functions/cookieLoading.inc.php";
                     <option value="PROVENCE ALPES COTE D AZUR">Provence-Alpes-Côte d'Azur</option>
                 </datalist>
 
-
-            <div id="region-list" class="autocomplete-items"></div></div>
-
             <div class="autocomplete-container">
             <label for="departement">Département</label>
             <input type="search" id="departement" name="departement" placeholder="Département" list="departement-list" autocomplete="off" />
@@ -148,32 +145,36 @@ require_once "./include/functions/cookieLoading.inc.php";
 </script>
 
 <script>
-    const regList = ["AUVERGNE RHONE ALPES", "BOURGOGNE", "FRANCHE COMTE", "BRETAGNE", "CENTRE VAL DE LOIRE", "CORSE", "GUADELOUPE", "GRAND EST", "GUYANE", "HAUTS DE FRANCE", "ILE DE FRANCE", "LA REUNION", "MARTINIQUE", "MAYOTTE", "NORMANDIE", "NOUVELLE AQUITAINE", "OCCITANIE", "PAYS DE LA LOIRE", "PROVENCE ALPES COTE D AZUR"];
-
 
     document.getElementById('region').addEventListener('input', function() {
         const userInput = this.value;
+        console.log("Région vivante");
 
-        if (isOptionSelected(userInput, regList)) {
-            updateDepartments(userInput);  // Appeler la fonction pour mettre à jour les départements
+        if (isOptionSelected(this, "region-list")) {
+            updateDepartments(userInput);
+        } else {
+            console.log("Région invalide");
         }
     });
 
     document.getElementById('departement').addEventListener('input', function() {
-        const regionInput = document.getElementById('region').value;
-        const departementInput = this.value;
+        console.log("Depart vivante");
+        const regionInput = document.getElementById('region');
+        const departementInput = this;
 
-        if (isOptionSelected(departementInput, regList)) {
-            updateCity(regionInput, departementInput);  // Mettre à jour les villes en fonction du département et de la région
+        console.log(departementInput);
+        console.log(regionInput);
+        if (isOptionSelected(departementInput, "departement-list")) {
+            updateCities(departementInput, regionInput);  // Mettre à jour les villes en fonction du département et de la région
         }
     });
 
     document.getElementById('ville').addEventListener('input', function() {
+        console.log("Ville vivante");
         // On peut ajouter des actions ici si nécessaire après la sélection d'une ville
         console.log('Ville sélectionnée:', this.value);
     });
 
-    function isOptionSelected(input, optionsList) {return optionsList.includes(input);}
 
     function updateRegion(){
         const region = document.getElementById("region");
@@ -188,6 +189,7 @@ require_once "./include/functions/cookieLoading.inc.php";
     }
 
     function updateDepartments(region) {
+        console.log("Maj du departement :", region);
         const departementList = document.getElementById("departement-list");
 
         // Vider la liste des départements avant de la remplir
@@ -197,13 +199,19 @@ require_once "./include/functions/cookieLoading.inc.php";
         fetch(`https://hornung.alwaysdata.net/get_departements.php?region=${region}`)
             .then(response => response.json())  // On suppose que la réponse est un JSON
             .then(data => {
-                console.log(data);  // Ajoute cette ligne pour vérifier la réponse
-                if (data && Array.isArray(data.departements)) {
-                    data.departements.forEach(departement => {
+                console.log(data);  // Affiche la réponse pour vérifier la structure
+
+                // Vérifier si la réponse contient un attribut 'data' et si c'est un tableau
+                if (data && data.data && Array.isArray(data.data)) {
+                    data.data.forEach(departement => {
+                        // Créer une option pour chaque département
                         let option = document.createElement("option");
-                        option.value = departement;
+                        option.value = departement.name; // Utilise le numéro du département comme valeur
+                        option.textContent = departement.name; // Utilise le nom du département comme texte
                         departementList.appendChild(option);
                     });
+                } else {
+                    console.error("Les données des départements sont manquantes ou mal formées");
                 }
             })
             .catch(error => {
@@ -211,30 +219,49 @@ require_once "./include/functions/cookieLoading.inc.php";
             });
     }
 
-    function updateCity(region,departement) {
-        const villeList = document.getElementById("ville-list");
+    function updateCities(departement, regions) {
+        console.log("Maj des villes :", departement);
+        const cityList = document.getElementById("ville-list");
 
         // Vider la liste des villes avant de la remplir
-        villeList.innerHTML = "";
+        cityList.innerHTML = "";
 
-        // Faire une requête pour récupérer les villes pour ce département (ajoute l'URL appropriée)
-        fetch(`https://hornung.alwaysdata.net/get_ville.php?region=${region}&departement=${departement}`)
-            .then(response => response.json())  // On suppose une réponse en JSON
+        console.log(`https://hornung.alwaysdata.net/get_ville.php?region=${encodeURIComponent(regions.value)}&departement=${encodeURIComponent(departement.value)}`);
+        // Faire une requête fetch pour obtenir les villes pour le département sélectionné
+        fetch(`https://hornung.alwaysdata.net/get_ville.php?region=${encodeURIComponent(regions.value)}&departement=${encodeURIComponent(departement.value)}`)
+            .then(response => response.json())  // On suppose que la réponse est un JSON
             .then(data => {
-                if (data && Array.isArray(data.villes)) {
-                    data.villes.forEach(ville => {
+                console.log(data);  // Affiche la réponse pour vérifier la structure
+
+                // Vérifier si la réponse contient un attribut 'data' et si c'est un tableau
+                if (data && data.data && Array.isArray(data.data)) {
+                    data.data.forEach(ville => {
+                        // Créer une option pour chaque ville
                         let option = document.createElement("option");
-                        option.value = ville;
-                        villeList.appendChild(option);
+                        option.value = ville; // Utilise le nom de la ville comme valeur
+                        option.textContent = ville; // Utilise le nom de la ville comme texte
+                        cityList.appendChild(option);
                     });
+                } else {
+                    console.error("Les données des villes sont manquantes ou mal formées");
                 }
             })
             .catch(error => {
                 console.error('Erreur lors de la récupération des villes:', error);
             });
-
     }
 
+    function isOptionSelected(inputElement, datalistId) {
+        const inputValue = inputElement.value.trim().toLowerCase();  // Récupère la valeur entrée par l'utilisateur
+        const options = getDatalistOptions(datalistId);  // Récupère toutes les options du datalist
+        return options.some(option => option.toLowerCase() === inputValue);  // Vérifie si l'option existe
+    }
+
+    function getDatalistOptions(datalistId) {
+        const datalist = document.getElementById(datalistId);
+        const options = datalist.querySelectorAll('option');
+        return Array.from(options).map(option => option.value);  // Récupère les valeurs des options
+    }
 
 </script>
 

@@ -78,11 +78,17 @@ if (empty($result)) {
         "data" => []
     ]);
 } else {
+    // Modifié pour inclure le numéro de département avec le nom
+    $departmentsWithNumbers = array_map(function($dep) {
+        return [
+            "number" => $dep[0], // Le numéro du département
+            "name" => $dep[1]    // Le nom du département
+        ];
+    }, array_values($result));
+
     echo json_encode([
         "success" => true,
-        "data" => array_map(function($dep) {
-            return $dep[1];
-        }, array_values($result))
+        "data" => $departmentsWithNumbers
     ]);
 }
 ?>

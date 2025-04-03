@@ -10,14 +10,16 @@ const DayHour = 24;
 class WeatherForecast {
 
     private $cityName;
+    private $departement;
     private $latitude;
     private $longitude;
     private $gpsCoord;
     private $weatherData;
 
     // Constructeur pour initialiser la ville
-    public function __construct($cityName) {
+    public function __construct($cityName, $departement) {
         $this->cityName = $cityName;
+        $this->departement = $departement;
         $this->gpsCoord = $this->getGpsCoordinates($cityName);
         $this->latitude = $this->gpsCoord['latitude'] ?? 0;
         $this->longitude = $this->gpsCoord['longitude'] ?? 0;
@@ -401,9 +403,9 @@ function calculateWindChill($temperature, $windSpeed) : string {
 }
 
 
-if (isset($_GET["ville"])&&$_GET["ville"]!="") {
+if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"])&&$_GET["departement"]!="") {
     $cityName = $_GET["ville"];
-    $weatherForecast = new WeatherForecast($cityName);
+    $weatherForecast = new WeatherForecast($cityName, $departement);
     echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 
@@ -411,7 +413,7 @@ if (isset($_GET["ville"])&&$_GET["ville"]!="") {
 elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
-    $weatherForecast = new WeatherForecast($cityName);
+    $weatherForecast = new WeatherForecast($cityName, $departement);
     echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
 }
