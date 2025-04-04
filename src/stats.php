@@ -7,8 +7,9 @@ require "./include/functions/stats.inc.php";
 <div style="width: 100%;">
     <nav class="internal-nav">
         <ul>
+            <li><a href="#Stats">Statistiques</a></li>
             <li><a href="#Stats-Pages">Stats Pages</a></li>
-            <li><a href="#Stats-Ville">Stats Ville</a></li>
+            <li><a href="#Stats-Ville">Stats Villes</a></li>
             <li>Image aléatoire</li>
             <?php
             require_once "./include/functions/randomImage.php";
@@ -22,21 +23,25 @@ require "./include/functions/stats.inc.php";
     <h1>Stats</h1>
 
     <section>
-        <h2 id="Stats-Pages">Pages les plus recherché</h2>
-        <p>Nombres total de visites : <strong><?= getDataListNBTotalVisits() ?></strong></p>
-        <?php echo getDataListMostVisitedPages(); ?>
-        <div class="graph">
-            <canvas id="pagesChart" width="100" height="100"></canvas>
-        </div>
+        <h2 id="Stats">Statistiques du Site</h2>
 
-    </section>
+        <article>
+            <h3 id="Stats-Pages">Pages les plus recherché</h3>
+            <p>Nombres total de visites : <strong><?= getDataListNBTotalVisits() ?></strong></p>
+            <?php echo getDataListMostVisitedPages(); ?>
+            <div class="graph">
+                <canvas id="pagesChart" width="100" height="100"></canvas>
+            </div>
+        </article>
 
-    <section>
-        <h2 id="Stats-Ville">Villes les plus recherché</h2>
-        <?php echo getDataListMostSearchedCities(10); ?>
-        <div class="graph">
-            <canvas id="citiesChart" width="100" height="100"></canvas>
-        </div>
+        <article>
+            <h3 id="Stats-Ville">Villes les plus recherché</h3>
+            <?php echo getDataListMostSearchedCities(10); ?>
+            <div class="graph">
+                <canvas id="citiesChart" width="100" height="100"></canvas>
+            </div>
+        </article>
+
     </section>
 
 </main>
@@ -71,8 +76,8 @@ require "./include/functions/stats.inc.php";
             labels: pagesData.map(page => page.name),
             datasets: [{
                 data: pagesData.map(page => page.value),
-                backgroundColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33FF', '#FF8C00'],
-                borderColor: ['#FF5733', '#33FF57', '#3357FF', '#FF33FF', '#FF8C00'],
+                backgroundColor: ["red", "green","blue","orange","brown"],
+                borderColor: ["red", "green","blue","orange","brown"],
                 borderWidth: 1
             }]
         },
