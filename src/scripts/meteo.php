@@ -248,7 +248,7 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        $output = "<h2>Prévision sur 24h</h2>\n";
+        $output = "<h2>Prévision sur 24h pour {$this->cityName}</h2><p>(des jours prochains)</p>\n";
         $output .= $this->generateDayButtons(7);
 
         $output .= "<div class='panels'>\n";
@@ -320,22 +320,10 @@ class WeatherForecast {
             $var = $this->temperatureToColor($tmp,-10, 30);
             $output="<span style='background-color:$var;'>".$tmp."</span>";
 
-        } else if ("Humidex"==$elem&&(is_numeric($tmp))) {
-            $tmp = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]) ?? "-";
-            $var = $this->temperatureToColor($tmp,-10, 30);
-            if ($var=="-"){
-                $output= $var;
-            } else {
-                $output= "<span style='background-color:$var;'>".$tmp."</span>";;
-            }
-        } else if ("Windchill"==$elem&&(is_numeric($tmp))) {
-            $tmp = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]) ?? "-";
-            $var = $this->temperatureToColor($tmp,-10, 30);
-            if ($var=="-"){
-                $output= $var;
-            } else {
-                $output= "<span style='background-color:$var;'>".$tmp."</span>";;
-            }
+        } else if ("Humidex"==$elem) {
+            $output = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]);
+        } else if ("Windchill"==$elem) {
+            $output = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]);
         }
         else if ("weather_code"==$elem) {
             $output=$this->getDescImage($tmp);
@@ -403,16 +391,18 @@ function calculateWindChill($temperature, $windSpeed) : string {
 }
 
 
-if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"])&&$_GET["departement"]!="") {
+if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="") {
     $cityName = $_GET["ville"];
+    $departement = $_GET["departement"];
     $weatherForecast = new WeatherForecast($cityName, $departement);
     echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();
-
 }
+
 elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
+    $departement = $last["departement"];
     $weatherForecast = new WeatherForecast($cityName, $departement);
     echo $weatherForecast->displayDayForecast()."\n";
     echo $weatherForecast->displayWeeksForecast();

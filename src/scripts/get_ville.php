@@ -25,56 +25,10 @@ header('Content-Type: application/json');
 
 // Récupération des paramètres depuis l'URL
 $region = $_GET['region'] ?? '';
-$departementNom = $_GET['departement'] ?? '';
-
-// Si la région ou le département n'est pas spécifié, on retourne une erreur.
-if (empty($region) || empty($departementNom)) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Région ou département invalide ou non spécifié",
-        "data" => []
-    ]);
-    exit;
-}
-
-// Récupérer les départements de la région via la fonction reg_to_depart()
-$tab = reg_to_depart();
-
-// Vérifier que la région existe
-if (!isset($tab[$region])) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Région invalide",
-        "data" => []
-    ]);
-    exit;
-}
-
-// Récupérer les départements de la région spécifiée
-$departements = $tab[$region];
-
-// Trouver le code du département à partir de son nom
-$departementCode = null;
-foreach ($departements as $dep) {
-    // Si le nom du département correspond au département passé en paramètre
-    if (strtolower($dep[1]) === strtolower($departementNom)) {
-        $departementCode = $dep[0];  // Récupère le code du département
-        break;
-    }
-}
-
-// Vérifier que le département existe dans la région
-if (!$departementCode) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Département invalide pour cette région",
-        "data" => []
-    ]);
-    exit;
-}
+$departementNum = $_GET['departement'] ?? '';
 
 // Récupérer la liste des villes du département en utilisant son code
-$TabAssociatifVilles = villes_de_dep($departementCode);
+$TabAssociatifVilles = villes_de_dep($departementNum);
 
 // Filtrage des villes si une recherche est fournie
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
