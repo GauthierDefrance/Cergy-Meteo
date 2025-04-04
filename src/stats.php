@@ -16,6 +16,8 @@ require "./include/functions/stats.inc.php";
 
 </main>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"> </script>
+
 <?php
 require "./include/footer.inc.php";
 ?>
