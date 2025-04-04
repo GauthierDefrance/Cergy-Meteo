@@ -4,24 +4,32 @@ require "./include/header.inc.php";
 require "./include/functions/stats.inc.php";
 ?>
 
+<div style="width: 100%;">
+    <nav class="internal-nav">
+        <ul>
+            <li><a href="#Stats-Pages">Stats Pages</a></li>
+            <li><a href="#Stats-Ville">Stats Ville</a></li>
+            <li>Image aléatoire</li>
+            <?php
+            require_once "./include/functions/randomImage.php";
+            echo getRandomImage();
+            ?>
+        </ul>
+    </nav>
+</div>
+
 <main>
     <h1>Stats</h1>
-    <section>
-        <h2>Page en Construction!</h2>
-        <p>Page contenant les statistiques utiles relative au site web</p>
-        <p><?php most_searched_cities();?></p>
-        <p><?php most_visited_pages(); ?></p>
-    </section>
 
     <section>
-        <h2>Pages les plus recherché</h2>
+        <h2 id="Stats-Pages">Pages les plus recherché</h2>
         <p>Nombres total de visites : <strong><?= getDataListNBTotalVisits() ?></strong></p>
         <?php echo getDataListMostVisitedPages(); ?>
         <canvas id="pagesChart" width="100" height="100"></canvas>
     </section>
 
     <section>
-        <h2>Villes les plus recherché</h2>
+        <h2 id="Stats-Ville">Villes les plus recherché</h2>
         <?php echo getDataListMostSearchedCities(10); ?>
         <canvas id="citiesChart" width="100" height="100"></canvas>
     </section>
@@ -42,7 +50,7 @@ require "./include/functions/stats.inc.php";
         console.log(options);
         return Array.from(options).map(option => ({
             value: option.getAttribute('value'), // Conversion en nombre
-            name: option.getAttribute('name') || option.getAttribute('ville') // Récupération de l'attribut 'name' ou 'ville'
+            name: option.getAttribute('name') || option.getAttribute('ville')+"("+option.getAttribute('departement')+")" // Récupération de l'attribut 'name' ou 'ville'
         }));
     }
 
