@@ -25,13 +25,18 @@ require "./include/functions/stats.inc.php";
         <h2 id="Stats-Pages">Pages les plus recherché</h2>
         <p>Nombres total de visites : <strong><?= getDataListNBTotalVisits() ?></strong></p>
         <?php echo getDataListMostVisitedPages(); ?>
-        <canvas id="pagesChart" width="100" height="100"></canvas>
+        <div class="graph">
+            <canvas id="pagesChart" width="100" height="100"></canvas>
+        </div>
+
     </section>
 
     <section>
         <h2 id="Stats-Ville">Villes les plus recherché</h2>
         <?php echo getDataListMostSearchedCities(10); ?>
-        <canvas id="citiesChart" width="100" height="100"></canvas>
+        <div class="graph">
+            <canvas id="citiesChart" width="100" height="100"></canvas>
+        </div>
     </section>
 
 </main>
