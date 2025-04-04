@@ -321,8 +321,8 @@ function increase_ville_hits(string $ville,string $departement){
                 }
                 fputcsv($file, $ligne);
             }
-            if($exists===false){
-                $newLigne = [$ville,$departement,1];
+            if ($exists === false && !empty($ville) && !empty($departement)) {
+                $newLigne = [$ville, $departement, 1];
                 fputcsv($file, $newLigne);
             }
             
