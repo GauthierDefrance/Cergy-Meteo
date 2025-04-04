@@ -41,7 +41,6 @@ function most_searched_cities(){
         });
 
         $top = array_slice($data,0,TOPN +1);
-        print_r($top);
 
         fclose($file);
     }
@@ -74,7 +73,6 @@ function most_visited_pages(){
         });
 
         $top = array_slice($data,0,TOPN +1);
-        print_r($top);
 
         fclose($file);
     }
@@ -88,18 +86,18 @@ function most_visited_pages(){
  */
 function getDataListMostSearchedCities(int $n=10) : string
 {
-    $result = '<datalist id="MostSearchedCities">\n';
+    $result = '<datalist id="MostSearchedCities">';
     $data = most_searched_cities();
     if(sizeof($data)<$n) {
         $n = sizeof($data);
         for ($k=0; $k<$n; $k++) {
             $myMap = $data[$k];
-            $result .= "\t<options value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></options>";
+            $result .= "<options value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></options>";
         } $result .= '</datalist>';
     } else {
         $data = getTopSearchedCities($data, $n);
         foreach ($data as $myMap) {
-            $result .= "\t<options value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></options>";
+            $result .= "<options value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></options>";
         }$result .= '</datalist>';
     }
     return $result;
@@ -112,15 +110,34 @@ function getDataListMostSearchedCities(int $n=10) : string
 function getDataListMostVisitedPages() : string {
     $data = most_visited_pages();
 
-    $result = '<datalist id="MostSearchedPages">\n';
+    $result = "<datalist id='MostSearchedPages'>";
 
     foreach ($data as $myMap) {
-        $result .= "\t<options value='{$myMap['visites']}' name ='{$myMap['page']}' ></options>";
+        $result .= "<options value='{$myMap['visites']}' name ='{$myMap['page']}' ></options>";
     }$result .= '</datalist>';
 
     return $result;
 }
 
+/**
+ * Calcul le nombre total de requetes faites à des pages.
+ * @return int
+ */
+function getDataListNBTotalVisits() : int {
+    $data = most_visited_pages();
+    $k=0;
+    foreach ($data as $myMap) {
+        if(is_numeric($myMap['visites'])) $k+=(int) $myMap['visites'];
+    }
+    return $k;
+}
+
+/**
+ * Utilise la fonction génial usort pour obtenir avec un trie le TOP N des villes les plus visité.
+ * @param array $data
+ * @param int $n
+ * @return array
+ */
 function getTopSearchedCities(array $data, int $n = 10) : array
 {
     // Trier le tableau en fonction de la clé 'recherches' dans chaque élément

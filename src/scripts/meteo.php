@@ -248,7 +248,7 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        $output = "<h2>Prévision sur 24h</h2><p>(des jours prochains)</p>\n";
+        $output = "<h2>Prévision sur 24h pour {$this->cityName}</h2><p>(des jours prochains)</p>\n";
         $output .= $this->generateDayButtons(7);
 
         $output .= "<div class='panels'>\n";
