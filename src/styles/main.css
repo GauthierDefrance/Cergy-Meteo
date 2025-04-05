@@ -246,6 +246,23 @@ input[type="search"]:focus + .autocomplete-items {
     height: 100%;
 }
 
+.internal-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.galery {
+    width: 100%;  /* L'image prend 100% de la largeur disponible */
+    height: auto; /* La hauteur est ajustée pour conserver les proportions */
+}
+
+figcaption {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
 .day-btn {
     padding: 10px 20px;
     font-size: 16px;

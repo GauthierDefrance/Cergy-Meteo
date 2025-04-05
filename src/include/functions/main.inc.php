@@ -144,6 +144,22 @@ function villes_de_dep(string $departement):array{
     }
     return $villes;
 }
+
+/**
+ * Vérifie si une ville appartient à un département.
+ *
+ * @param string $ville Le nom de la ville à vérifier.
+ * @param string $departement Le code du département dans lequel vérifier.
+ * @return bool Retourne true si la ville appartient au département, sinon false.
+ */
+function ville_dans_departement(string $ville, string $departement): bool {
+    // Récupère les villes et leurs localisations dans le département spécifié
+    $villes = villes_de_dep_location($departement);
+
+    // Vérifie si la ville est présente dans le tableau des villes
+    return isset($villes[$ville]);
+}
+
 /**
  * Récupère les informations des villes d'un département sélectionné.
  *
@@ -335,7 +351,29 @@ function increase_ville_hits(string $ville,string $departement){
     }
 }
 
+/**
+ * Vérifie si un numéro de département se trouve dans une région donnée.
+ *
+ * @param string $num_departement Le numéro du département à vérifier.
+ * @param string $nom_region Le nom de la région dans laquelle vérifier.
+ * @return bool Retourne vrai si le département est dans la région, sinon faux.
+ */
+function est_departement_dans_region($num_departement, $nom_region) {
+    // Appel à la fonction reg_to_depart() pour récupérer le tableau associatif
+    $reg_to_deps = reg_to_depart();
 
+    // Vérifie si la région existe dans le tableau
+    if (isset($reg_to_deps[$nom_region])) {
+        // Parcours des départements de la région
+        foreach ($reg_to_deps[$nom_region] as $dep) {
+            // Le code du département est dans le premier élément du tableau $dep
+            if ($dep[0] === $num_departement) {
+                return true; // Le département est trouvé dans cette région
+            }
+        }
+    }
+    return false; // Le département n'est pas trouvé dans cette région
+}
 
 
 

@@ -15,9 +15,8 @@ declare(strict_types=1);
 /**
  * Crée un cookie 'mode' pendant 30 jours.
  * @param string $mode la valeure (sombre ou clair) du mode d'affichage qu'on souhaite stocker.
- * @return void
  */
-function set_mode(string $mode):void{
+function set_mode(string $mode){
     setcookie('mode', $mode, time() + (86400 * 30), "/");
 }
 
@@ -38,14 +37,14 @@ function mode():string{
  * Crée un cookie 'lastViewed' pendant 90 jours, contant le dernière ville recherché, son département, et la date du stockage.
  * @param string $ville la ville recherché.
  * @param string $departement le département de la ville recherché.
- * @return void
  */
 
-function set_last_viewed(string $ville,string $departement):void{
+function set_last_viewed(string $ville,string $departement, string $region) {
     $date = date("Y-m-d"); //peut êtres à mettre en francais une autre fois?
     $lastViewed = [
         "ville" => $ville,
         "departement" => $departement,
+        "region" => $region,
         "date" => $date
     ];
     setcookie("lastViewed", json_encode($lastViewed), time() + (86400 * 90), "/");
@@ -63,6 +62,7 @@ function last_viewed():array{
         $ville = [
             "ville" => "none",
             "departement" => "none",
+            "region" => "none",
             "date" => "none"
         ];
     }

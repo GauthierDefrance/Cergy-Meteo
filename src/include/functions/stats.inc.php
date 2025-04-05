@@ -56,7 +56,7 @@ function most_visited_pages(){
     $filepath=HITS_STATS_PATH;
     if (($file = fopen($filepath, 'r')) !== false) {
         $data = [];
-    
+        fgetcsv($file, 5000, ';');
         while (($ligne = fgetcsv($file, 5000, ';')) !== FALSE) {
             if (isset($ligne[0]) && isset($ligne[1])) {
                 $page = $ligne[0];

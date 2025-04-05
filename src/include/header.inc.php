@@ -4,8 +4,8 @@ require_once "./include/functions/main.inc.php"; //a retirer, idéalement mettre
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
-if(isset($_GET['ville']) && isset($_GET['departement'])){
-    set_last_viewed($_GET['ville'],$_GET['departement']);
+if(isset($_GET['ville']) && isset($_GET['departement']) && isset($_GET['region'])){
+    set_last_viewed($_GET['ville'],$_GET['departement'], $_GET['region']);
     increase_ville_hits($_GET['ville'],$_GET['departement']);
 }
 

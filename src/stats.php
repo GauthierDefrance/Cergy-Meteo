@@ -76,8 +76,8 @@ require "./include/functions/stats.inc.php";
             labels: pagesData.map(page => page.name),
             datasets: [{
                 data: pagesData.map(page => page.value),
-                backgroundColor: ["red", "green","blue","orange","brown"],
-                borderColor: ["red", "green","blue","orange","brown"],
+                backgroundColor: ["red", "green","blue","orange","brown","yellow"],
+                borderColor: ["red", "green","blue","orange","brown","yellow"],
                 borderWidth: 1
             }]
         },

@@ -1,6 +1,6 @@
 <?php
 
-
+include_once "./include/functions/main.inc.php";
 
 
 const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "Humidex"=>"Humidex", "Windchill"=>"Windchill", "weather_code"=>"état du ciel", "wind_speed_10m"=>"Vitesse du vent (km/h)", "wind_direction_10m"=>"Direction du vent", "wind_gusts_10m"=>"Rafale de vent (km/h)", "precipitation_probability"=>"Probabilité de pluie", "pressure_msl"=>"Pression Atm", "relative_humidity_2m"=>"Humidité (%)");
@@ -125,7 +125,8 @@ class WeatherForecast {
         $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";
         if($tab[0]=="Unknow") $output .= "<img src='./ressources/airy/unknow.png' alt='Erreur'/>";
         else $output .= "<img src='./ressources/airy/$weatherCode.png' alt='Erreur'/>";
-        $output .= "<p>".$tab[0]."</p></div>";
+        //$output .= "<p>".$tab[0]."</p></div>";
+        $output .= "</div>";
         return $output;
     }
 
@@ -175,7 +176,7 @@ class WeatherForecast {
         if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
             $output = "<h2>Prévisions météo sur 7 jours pour {$this->cityName}</h2>";
-            $output .= "<table style='border-collapse: collapse; text-align: center;'>";
+            $output .= "<table style='text-align: center;'>";
             $output .= "<tr><th>Catégorie</th>";
 
             // Ajouter les dates en en-tête horizontale
@@ -321,15 +322,19 @@ class WeatherForecast {
             $output="<span style='background-color:$var;'>".$tmp."</span>";
 
         } else if ("Humidex"==$elem) {
-            $output = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]);
+            $tmp = calculateHumidex($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["relative_humidity_2m"][$k + ($day * 24)]);
+            $var = $this->temperatureToColor($tmp,-10, 30);
+            $output="<span style='background-color:$var;'>".$tmp."</span>";
         } else if ("Windchill"==$elem) {
-            $output = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]);
+            $tmp = calculateWindChill($data['hourly']["temperature_2m"][$k + ($day * 24)], $data['hourly']["wind_speed_10m"][$k + ($day * 24)]);
+            $var = $this->temperatureToColor($tmp,-10, 30);
+            $output="<span style='background-color:$var;'>".$tmp."</span>";
         }
         else if ("weather_code"==$elem) {
             $output=$this->getDescImage($tmp);
         } else if ("wind_speed_10m"==$elem&&(is_numeric($tmp))) {
             $var = $this->temperatureToColor($tmp,-10, 30);
-            $output=$tmp;
+            $output="<span style='background-color:$var;'>".$tmp."</span>";
         }else if ("wind_direction_10m"==$elem) {
             $output = $this->getCardinalDirection($tmp);
         }else if ("wind_gusts_10m"==$elem) {
@@ -391,24 +396,39 @@ function calculateWindChill($temperature, $windSpeed) : string {
 }
 
 
-if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="") {
+if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="" &&$_GET["region"] && $_GET["region"]!="") {
+
     $cityName = $_GET["ville"];
     $departement = $_GET["departement"];
-    $weatherForecast = new WeatherForecast($cityName, $departement);
-    echo $weatherForecast->displayDayForecast()."\n";
-    echo $weatherForecast->displayWeeksForecast();
+    $region = $_GET["region"];
+
+    $region_list = reg_to_depart();
+    if(est_departement_dans_region($departement, $region) && ville_dans_departement( $cityName, $departement)){
+
+        $weatherForecast = new WeatherForecast($cityName, $departement);
+        echo $weatherForecast->displayDayForecast()."\n";
+        echo $weatherForecast->displayWeeksForecast();
+    }
+
 }
 
 elseif(isset($_COOKIE["lastViewed"])){
     $last = last_viewed();
     $cityName = $last["ville"];
     $departement = $last["departement"];
-    $weatherForecast = new WeatherForecast($cityName, $departement);
-    echo $weatherForecast->displayDayForecast()."\n";
-    echo $weatherForecast->displayWeeksForecast();
-}
- else {
-    $cityName = "";
+    $region = $last["region"];
+
+    $region_list = reg_to_depart();
+    if(est_departement_dans_region($departement, $region) && ville_dans_departement( $cityName, $departement)){
+
+
+        $weatherForecast = new WeatherForecast($cityName, $departement);
+        echo $weatherForecast->displayDayForecast()."\n";
+        echo $weatherForecast->displayWeeksForecast();
+
+
+    }
+
 }
 
 
