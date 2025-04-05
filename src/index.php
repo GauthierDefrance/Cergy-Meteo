@@ -213,7 +213,7 @@ require_once "./include/functions/cookieLoading.inc.php";
                         // Créer une option pour chaque département
                         let option = document.createElement("option");
                         option.value = departement.number; // Utilise le code du département comme valeur
-                        option.textContent = departement.name; // Utilise le nom du département comme texte
+                        option.textContent = departement.name + " ("+ departement.number +")"; // Utilise le nom du département comme texte
                         departementList.appendChild(option);
                     });
                 } else {
