@@ -1,4 +1,13 @@
 <?php
+/**
+ * @file WeatherForecast.php
+ * @brief Gestion des données sortant de l'API météo.
+ *
+ * Classe gérant le calcul et la récupération de données grâce à une ou plusieurs API de prévision météo.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-20-03
+ */
 class WeatherForecast {
 
     private $cityName;

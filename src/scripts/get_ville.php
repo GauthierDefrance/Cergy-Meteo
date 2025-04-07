@@ -1,4 +1,13 @@
 <?php
+/**
+ * @file get_ville.php
+ * @brief Script récupérant la ville entré par l'utilisateur et envoyant une réponse JSON.
+ * Récupère la ville en prenant en comtpe plusieurs caractéristiques, dont la région et le département 
+ * et permet d'utiliser plusieurs origines, comme POST et GET.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-13-03
+ */
 
 // Permet toutes les origines (peut être restreint à un domaine spécifique)
 header("Access-Control-Allow-Origin: *");

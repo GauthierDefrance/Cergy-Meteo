@@ -1,5 +1,14 @@
 <?php
-
+/**
+ * @file meteo.php
+ * @brief Script pour les prévisions météo
+ *
+ * Ce script permet d'afficher les prévisions météorologiques d'une ville donnée en utilisant les données de l'API Open Meteo. Il récupère les données météo pour les 7 prochains jours ainsi que pour les 24 heures à venir, affichant diverses informations comme la température, l'humidité, la vitesse du vent, etc.
+ *
+ *
+ * @author Gauthier Defrance
+ * @date 2025-13-03
+ */
 include_once "./include/functions/main.inc.php";
 
 

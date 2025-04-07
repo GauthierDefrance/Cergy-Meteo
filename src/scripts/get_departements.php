@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * @file get_departements.php
+ * @brief Script récupérant le département entré par l'utilisateur et envoyant une réponse JSON.
+ * Récupère le département en prenant en comtpe plusieurs caractéristiques, dont la région et le département 
+ * et permet d'utiliser plusieurs origines, comme POST et GET.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-13-03
+ */
+
 // Permet toutes les origines (peut être restreint à un domaine spécifique)
 header("Access-Control-Allow-Origin: *");
 
