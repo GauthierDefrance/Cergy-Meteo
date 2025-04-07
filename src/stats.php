@@ -56,9 +56,9 @@ require "./include/functions/stats.inc.php";
         console.log("Tentative extraction de ",datalistId);
         const datalist = document.getElementById(datalistId);
         console.log("Tentative 2 extraction de ",datalist);
-        const options = datalist.querySelectorAll('options');
-        console.log(options);
-        return Array.from(options).map(option => ({
+        const option = datalist.querySelectorAll('option');
+        console.log(option);
+        return Array.from(option).map(option => ({
             value: option.getAttribute('value'), // Conversion en nombre
             name: option.getAttribute('name') || option.getAttribute('ville')+"("+option.getAttribute('departement')+")" // Récupération de l'attribut 'name' ou 'ville'
         }));
@@ -81,7 +81,7 @@ require "./include/functions/stats.inc.php";
                 borderWidth: 1
             }]
         },
-        options: {
+        option: {
             responsive: true,
             plugins: {
                 legend: {
@@ -128,7 +128,7 @@ require "./include/functions/stats.inc.php";
                 borderWidth: 1
             }]
         },
-        options: {
+        option: {
             responsive: true,
             scales: {
                 x: {

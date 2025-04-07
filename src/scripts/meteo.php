@@ -30,9 +30,11 @@ class WeatherForecast {
         $this->cityName = $cityName;
         $this->departement = $departement;
         $this->gpsCoord = $this->getGpsCoordinates($cityName);
+        assert(is_null($this->gpsCoord),"N'a pas pu récupérer les données GPS.");
         $this->latitude = $this->gpsCoord['latitude'] ?? 0;
         $this->longitude = $this->gpsCoord['longitude'] ?? 0;
         $this->weatherData = $this->fetchWeatherData();
+        assert(is_null($this->weatherData),"N'a pas pu récupérer les données Météo.");
     }
 
     /**

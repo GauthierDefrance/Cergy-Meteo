@@ -380,6 +380,45 @@ function exceptional_function(array $region){
     
 
 }
+/**
+ * Calcule la somme des carrés des n premiers entiers
+ *
+ * @param int $n Le nombre d'entiers dans la somme.
+ * @return int La somme calculée.
+ */
+function somme_carre(int $n): int {
+    $somme = 0;
+    for ($i = 1; $i <= $n; $i++) {
+        $somme += $i * $i;
+    }
+    return $somme;
+}
+
+/**
+ * Calcule la somme des carrés des n premiers entiers avec la formule
+ *
+ * @param int $n Le nombre d'entiers à inclure dans la somme.
+ * @return int Le résultat obtenu par la formule : n(n+1)(2n+1)/6.
+ */
+function somme_carre_formule(int $n): int {
+    return ($n * ($n + 1) * (2 * $n + 1)) / 6;
+}
+
+/**
+ * Vérifie que la somme des carrés calculée par boucle est identique à celle de la formule.
+ *
+ * @param int $n Le nombre d'entiers à tester
+ * @return void
+ * @throws AssertionError Si les deux résultats ne correspondent pasd
+ */
+function verifier_somme_carre(int $n): void {
+
+    $resultat_calcul = somme_carre($n);
+    $resultat_formule = somme_carre_formule($n);
+
+    assert($resultat_calcul === $resultat_formule, "Erreur : la somme des carrés calculée ne correspond pas sur n = $n, il y a donc une erreur");
+    echo("Assertion validé");
+}
 
 
 
