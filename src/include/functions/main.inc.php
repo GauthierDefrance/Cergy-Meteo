@@ -13,8 +13,8 @@
  */
 
 /*Chemins*/
-define('REG_PATH', './data/v_region_2024.csv')  ;
-const DEP_PATH = './data/v_departement_2024.csv' ;
+define('REG_PATH', '/home/hornung/www/data/v_region_2024.csv')  ;
+const DEP_PATH = '/home/hornung/www/data/v_departement_2024.csv' ; //temporary absolute paths?
 const VIL_PATH = './data/cities.csv' ;
 
 /*Fonctions*/
@@ -105,16 +105,6 @@ function def_list_regions(){
         }
     }
     return $html;
-
-}
-
-/**
- * Récupère le code d'un département grâce à son nom.
- *
- * @param string $departement Le nom du département.
- * @return string le code correspondant du département.
- */
-function nom_to_code_dep(string $departement){
 
 }
 
@@ -373,6 +363,22 @@ function est_departement_dans_region($num_departement, $nom_region) {
         }
     }
     return false; // Le département n'est pas trouvé dans cette région
+}
+
+/**
+ * Fonction de test implémentant une exception, renvoyant le nom d'une région lorsqu'on entre son numéro.
+ *
+ * @return string le code correspondant du département.
+ * @throws Exception Si la région ne correspond à rien.
+ */
+function exceptional_function(array $region){
+    $cor= reg_num_correspondance();
+    if(!isset($cor[$region])){
+        throw new Exception("Exception: Le numéro de région indiqué ne correspond à aucun numéro connu. assurez vous de bien mettre 0 avant les nombre à 1 chiffre.");
+    }
+    return ($cor[$region]);
+    
+
 }
 
 

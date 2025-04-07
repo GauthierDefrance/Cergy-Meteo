@@ -1,6 +1,6 @@
 <?php
-require_once "./include/functions/cookieLoading.inc.php";
-require_once "./include/functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
+require_once "/home/hornung/www/include/functions/cookieLoading.inc.php";
+require_once "/home/hornung/www/include/functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
@@ -9,7 +9,7 @@ if(isset($_GET['ville']) && isset($_GET['departement']) && isset($_GET['region']
     increase_ville_hits($_GET['ville'],$_GET['departement']);
 }
 
-require_once "./include/functions/increasePageNumber.php";
+require_once "/home/hornung/www/include/functions/increasePageNumber.php";
 
 ?>
 
@@ -75,6 +75,9 @@ require_once "./include/functions/increasePageNumber.php";
 
                         <a href="./td/defrance/index.php" class="button-style">
                             Gauthier Defrance
+                        </a>
+                        <a href="./td/shared.php" class="button-style">
+                            Partagé (TD 10 et 11)
                         </a>
                     </div>
                 </li>
