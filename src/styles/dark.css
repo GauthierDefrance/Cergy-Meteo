@@ -138,7 +138,7 @@ section ul li a {
 
 input[type="search"] {
     border: 1px solid #555; /* Bordure plus foncée */
-    background-color: #3b3b3b; /* Fond sombre pour le champ de recherche */
+    background-color: c; /* Fond sombre pour le champ de recherche */
     color: #e0e0e0; /* Texte clair */
 }
 
@@ -160,4 +160,13 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #0056b3;
+}
+
+canvas {
+    color: white;
+}
+
+.internal-nav {
+    background-color: #3b3b3b;
+    color: white;
 }
