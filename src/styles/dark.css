@@ -90,16 +90,17 @@ th, td {
 }
 
 main a {
-    color: rgb(200, 200, 255);
+    color: rgb(235, 235, 255);
     text-decoration: none;  
 }
   
+/*
 main a:visited {
     color: rgb(225, 200, 255);           
 }
-
+*/
 section ul li a {
-    color: black;
+    color: rgb(255, 244, 244);
 }
 
 .searchbox {
