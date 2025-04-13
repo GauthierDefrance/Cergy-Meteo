@@ -436,10 +436,9 @@ table.panelw .meteo-box img {
 
 
 .map-list li a::before,
-.map-sub-list li a::before,
-ul li a::before {
+.map-sub-list li a::before {
     content: "➤ ";
-    color: #4fc3f7;
+    color: #79f3a3;
     margin-right: 6px;
 }
 
