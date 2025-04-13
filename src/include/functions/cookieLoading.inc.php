@@ -28,8 +28,22 @@ function set_mode(string $mode):void{
 function mode():string{
     if(isset($_GET['mode'])){
         $mode = $_GET['mode'];
-        return ($mode==='dark') ? 'dark' : 'light'; //preuve de concept temporaire, a éffacer quand on aura une meilleure solution
+        return ($mode==='dark') ? 'dark' : 'light'; 
     }
+    elseif(isset($_COOKIE['mode'])){
+        $mode = $_COOKIE['mode'];
+        if (in_array($mode, ["light", "dark"])) {
+            return $mode;
+        } else {
+            //efface le cookie en le placeant dans le passé
+            setcookie('mode', $mode, time() - 4000 , "/");
+        }
+    }
+    else{
+        return 'light';
+    }
+
+    return ($mode==='dark') ? 'dark' : 'light';
     $mode = isset($_COOKIE['mode']) ? $_COOKIE['mode'] : 'light';
     return ($mode==='dark') ? 'dark' : 'light';
 }
