@@ -26,7 +26,7 @@ require_once "./include/functions/cookieLoading.inc.php";
         <h2 id="Recherche">Recherche</h2>
 
         <figure>
-            <img src="./ressources/carte-france.png" usemap="#france-map" alt="Carte de la France">
+            <img src="./ressources/carte-france.webp" usemap="#france-map" alt="Carte de la France">
             <figcaption>Source : <a href="https://www.regions-departements-france.fr">regions-departements-france</a> </figcaption>
         </figure>
 
