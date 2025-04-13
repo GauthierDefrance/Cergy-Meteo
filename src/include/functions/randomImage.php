@@ -54,7 +54,7 @@ function getRandomImage() : string {
     }
 
     return "<figure>
-                <img class='galery' src='".$path."/".$IMAGE_NAME."'/>
+                <img class='galery' src='".$path."/".$IMAGE_NAME."' alt='Image aléatoire'/>
                 <figcaption><p>$IMAGE_CAPTION</p></figcaption>
         </figure>";
 }
