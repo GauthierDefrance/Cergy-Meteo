@@ -434,3 +434,24 @@ table.panelw .meteo-box img {
     max-height: 30px;
 }
 
+
+/* Site Map custom lists */
+.map-list {
+    padding-left: 20px;
+    text-align: left;
+    margin: 0 auto;
+    
+}
+
+.main-list li a {
+    
+}
+
+.map-sub-list {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+.map-sub-list li {
+    margin-left: 20px;
+}

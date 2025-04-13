@@ -7,14 +7,14 @@ require "./include/header.inc.php";
     <h1>Site map</h1>
     <section>
         <h2>Liste des pages du site</h2>
-        <ul>
+        <ul class="map-list">
             <li><a href="./index.php">Accueil</a></li>
             <li><ul>
                 <li><a href="./index.php#Recherche">Recherche</a></li>
                 <li><a href="./index.php#Projet">Projet</a></li>
             </ul></li>
             <li><a href="./stats.php">Statistiques</a></li>
-            <li><ul>
+            <li><ul class="map-sub-list">
                 <li><a href="./index.php#Stats-Pages">Statistiques sur les pages</a></li>
                 <li><a href="./index.php#Stats-Ville">Statistiques sur les villes</a></li>
             </ul></li>
