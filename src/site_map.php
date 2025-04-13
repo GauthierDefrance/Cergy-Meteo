@@ -9,7 +9,20 @@ require "./include/header.inc.php";
         <h2>Liste des pages du site</h2>
         <ul>
             <li><a href="./index.php">Accueil</a></li>
+            <li><ul>
+                <li><a href="./index.php#Recherche">Recherche</a></li>
+                <li><a href="./index.php#Projet">Projet</a></li>
+            </ul></li>
             <li><a href="./stats.php">Statistiques</a></li>
+            <li><ul>
+                <li><a href="./index.php#Stats-Pages">Statistiques sur les pages</a></li>
+                <li><a href="./index.php#Stats-Ville">Statistiques sur les villes</a></li>
+            </ul></li>
+            <li>TD<ul>
+                <li><a href="./td/hornung/index.php">Thomas Hornung</a></li>
+                <li><a href="./td/defrance/index.php">Gauthier Defrance</a></li>
+                <li><a href="./td/shared.php">TD 10 et 11</a></li>
+            </ul></li>
             <li><a href="./tech.php">Techniques</a></li>
             <li><a href="./site_map.php">Site Map</a></li>
         </ul>

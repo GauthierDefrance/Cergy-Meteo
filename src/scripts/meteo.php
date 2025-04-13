@@ -44,10 +44,12 @@ class WeatherForecast {
      */
     function getGpsCoordinates($cityName,$departement) {
         $coords=get_ville_coordinates($departement,$cityName);
-        return [
-            'latitude' => $coords[0],
-            'longitude' => $coords[1]
-        ];
+        if(isset($coords[0]) && isset($coords[1])){
+            return [
+                'latitude' => $coords[0],
+                'longitude' => $coords[1]
+            ];
+        }
         return null;
     }
 
