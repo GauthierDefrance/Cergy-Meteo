@@ -271,31 +271,18 @@ figcaption {
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
-    background-color: #007BFF;
-    color: white;
     border: none;
     border-radius: 5px;
-}
-
-.day-btn:hover {
-    background-color: #0056b3;
 }
 
 .day-radio {
     display: none;
 }
 
-.day-radio:checked + .day-btn{
-    background-color: #007BFF;
-    color: white;
-    border-color: #0056b3;
-}
-
 .day-btn {
     cursor: pointer;
     padding: 10px;
     display: inline-block;
-    background-color: #ddd;
     margin-right: 5px;
 }
 
@@ -309,12 +296,24 @@ td, th {
 }
 
 .graph {
-    width: 50%;
-    height: 50%;
+    height: 75%;
+    width: 75%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 20px auto;
+    padding: 20px;
 }
+
+.graph canvas {
+    border-radius: 8px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 90%;
+    max-height: 90%;
+}
+
 /* Général */
 table.panel {
     width: 100%;

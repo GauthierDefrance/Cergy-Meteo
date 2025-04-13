@@ -237,3 +237,28 @@ table.panel thead th{
     color: white;
     border: 1px solid #ccc;
 }
+
+
+.day-btn {
+    background-color: #0056b3;
+    color: white;
+}
+
+.day-btn:hover {
+    background-color: #0056b3;
+}
+
+.day-radio:checked + .day-btn{
+    background-color: #007BFF;
+    color: white;
+    border-color: #0056b3;
+}
+
+.day-btn {
+    background-color: #6e6e6e;
+}
+
+.graph canvas {
+    background-color: #1f1f1f;
+    border: 2px solid #444;
+}
