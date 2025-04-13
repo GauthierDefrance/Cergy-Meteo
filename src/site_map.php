@@ -30,19 +30,6 @@ require "./include/header.inc.php";
         </ul>
     </section>
 
-    <section>
-        <h2>Sources :</h2>
-        <ul>
-            <li>TD4</li>
-            <li>TD5</li>
-            <li>TD6</li>
-            <li>TD7</li>
-            <li>TD8</li>
-            <li>TD9</li>
-            <li>TD10</li>
-        </ul>
-    </section>
-
 </main>
 
 <?php
