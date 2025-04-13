@@ -29,7 +29,7 @@ class WeatherForecast {
     public function __construct($cityName, $departement) {
         $this->cityName = $cityName;
         $this->departement = $departement;
-        $this->gpsCoord = $this->getGpsCoordinates($cityName);
+        $this->gpsCoord = $this->getGpsCoordinates($cityName,$departement);
         assert(!is_null($this->gpsCoord),"N'a pas pu récupérer les données GPS.");
         $this->latitude = $this->gpsCoord['latitude'] ?? 0;
         $this->longitude = $this->gpsCoord['longitude'] ?? 0;
@@ -42,23 +42,12 @@ class WeatherForecast {
      * @param $cityName
      * @return array|void|null
      */
-    function getGpsCoordinates($cityName) {
-        $file = './data/cities.csv';
-        if (!file_exists($file) || !is_readable($file)) {
-            die("Le fichier n'existe pas ou n'est pas lisible.");
-        }
-        if (($handle = fopen($file, 'r')) !== false) {
-            $headers = fgetcsv($handle, 1000, ",");
-            while (($row = fgetcsv($handle, 1000, ",")) !== false) {
-                if ($row[4] === $cityName) {
-                    return [
-                        'latitude' => $row[6],
-                        'longitude' => $row[7]
-                    ];
-                }
-            }
-            fclose($handle);
-        }
+    function getGpsCoordinates($cityName,$departement) {
+        $coords=get_ville_coordinates($departement,$cityName);
+        return [
+            'latitude' => $coords[0],
+            'longitude' => $coords[1]
+        ];
         return null;
     }
 

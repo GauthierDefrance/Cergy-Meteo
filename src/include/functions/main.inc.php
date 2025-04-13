@@ -125,7 +125,10 @@ function villes_de_dep(string $departement):array{
         while (($ligne = fgetcsv($csv, 50000, ",")) !== false) {
             
             if($ligne[1]==$departement){
-                $villes[]=$ligne[4];
+                if((!in_array($ligne[4], $villes))){
+                    $villes[]=$ligne[4];
+                }
+                
             }
         }
         fclose($csv);
@@ -273,6 +276,22 @@ function get_ville_longitude(string $departement,string $ville){
     $villes=villes_de_dep_location($departement);
     $longitude=$villes[$ville][1];
     return $longitude;
+}
+
+/**
+ * Récupère la longitude et la longitude d'une ville donnée.
+ *
+ * @param string $departement Le numero du département.
+ * @param string $ville Le nom de la ville.
+ * @return array un tableau des coordonées de la ville, latitude en première case
+ */
+function get_ville_coordinates(string $departement,string $ville){
+    $villes=villes_de_dep_location($departement);
+    $latitude=$villes[$ville][0];
+    $longitude=$villes[$ville][1];
+    $coords=[$latitude,$longitude];
+
+    return $coords;
 }
 
 /**
