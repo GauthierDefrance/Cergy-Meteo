@@ -48,7 +48,7 @@ function getRandomImagePath() : string {
 function getRandomImage() : string {
     $path = "./ressources/Galery";
     $IMAGE_NAME = getRandomImagePath();
-    $IMAGE_CAPTION = "Aucune caption détécté.";
+    $IMAGE_CAPTION = $IMAGE_NAME;
     if(isset(IMAGES[$IMAGE_NAME])){
         $IMAGE_CAPTION=IMAGES[$IMAGE_NAME];
     }
