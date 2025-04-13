@@ -220,8 +220,8 @@ class WeatherForecast {
             if (isset($this->weatherData['daily']['windspeed_10m_max'])) {
                 $output .= "<tr><th>Vent (vitesse)</th>";
                 foreach ($this->weatherData['daily']['windspeed_10m_max'] as $index => $windSpeed) {
-                    $var = $this->temperatureToColor($windSpeed,-10, 30);
-                    $output .="<td><span style='background-color:$var;'>".$windSpeed." °C</span></td>";
+                    $var = $this->temperatureToColor($windSpeed,0, 80);
+                    $output .="<td><span style='background-color:$var;'>".$windSpeed." km/h</span></td>";
                 }
                 $output .= "</tr>";
             } else {
@@ -327,7 +327,7 @@ class WeatherForecast {
         else if ("weather_code"==$elem) {
             $output=$this->getDescImage($tmp);
         } else if ("wind_speed_10m"==$elem&&(is_numeric($tmp))) {
-            $var = $this->temperatureToColor($tmp,-10, 30);
+            $var = $this->temperatureToColor($tmp,0, 80);
             $output="<span style='background-color:$var;'>".$tmp."</span>";
         }else if ("wind_direction_10m"==$elem) {
             $output = $this->getCardinalDirection($tmp);
