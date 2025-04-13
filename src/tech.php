@@ -9,8 +9,24 @@ require "./include/header.inc.php";
     $url= $json['url'] ?? false;
 ?>
 
+<div style="width: 100%;">
+    <nav class="internal-nav">
+        <ul>
+            <li><a href="#Dev-Tech">Dev. & Tech.</a></li>
+            <li><a href="#ImageOfTheDay">APOD</a></li>
+            <li><a href="#ip">IP</a></li>
+            <li><a href="#Meteo">Méteo</a></li>
+            <li>Image aléatoire</li>
+            <?php
+            require_once "./include/functions/randomImage.php";
+            echo getRandomImage();
+            ?>
+        </ul>
+    </nav>
+</div>
+
 <main>
-    <h1>Developpement et Technique</h1>
+    <h1 id="Dev-Tech">Developpement et Technique</h1>
     <section>
         <h2 id="ImageOfTheDay">Image du Jour</h2>
         <?php
@@ -56,7 +72,7 @@ require "./include/header.inc.php";
     </section>
 
     <section>
-        <h2>IP</h2>
+        <h2 id="ip">IP</h2>
         <?php
             require "./include/functions/UserIp.php";
             echo getUserLocalisation();
@@ -72,7 +88,7 @@ require "./include/header.inc.php";
 <!---->
 <!--    </section>-->
     <section>
-        <h2>Votre météo en PHP!</h2>
+        <h2 id="Meteo">Votre météo en PHP!</h2>
         <p>Cette page est temporaire, elle sert d'option simplifiée de recherche météo, utilisant uniquement PHP, des scrolling lists et des chargements de pages.</p>
             <figure>
                 <img src="./ressources/carte-france.png" usemap="#france-map" alt="Carte de la France">

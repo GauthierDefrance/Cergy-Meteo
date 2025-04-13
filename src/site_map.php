@@ -9,7 +9,7 @@ require "./include/header.inc.php";
         <h2>Liste des pages du site</h2>
         <ul class="map-list">
             <li><a href="./index.php">Accueil</a></li>
-            <li><ul>
+            <li><ul class="map-sub-list">
                 <li><a href="./index.php#Recherche">Recherche</a></li>
                 <li><a href="./index.php#Projet">Projet</a></li>
             </ul></li>
