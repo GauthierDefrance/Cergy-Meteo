@@ -63,10 +63,14 @@ require "./include/header.inc.php";
         ?>
 
    </section>
-        <h2>Graphes</h2>
-
-
-
+<!--    <section>-->
+<!--        <h2>TD 10 Exercice 5</h2>-->
+<!--        --><?php
+//            require "./include/functions/main.inc.php";
+//            echo def_list_regions();
+//        ?>
+<!---->
+<!--    </section>-->
     <section>
         <h2>Votre météo en PHP!</h2>
         <p>Cette page est temporaire, elle sert d'option simplifiée de recherche météo, utilisant uniquement PHP, des scrolling lists et des chargements de pages.</p>
@@ -95,13 +99,11 @@ require "./include/header.inc.php";
                 <area href="weather.php?region=GUADELOUPE" alt="GUADELOUPE" title="GUADELOUPE" data-region="GUADELOUPE" coords="2,161,0,179,8,196,21,195,25,185,34,184,45,203,54,202,57,195,38,182,34,184,41,171,55,169,43,157,34,144,24,151,24,163,14,160" shape="poly">
             </map>
     </section>
-
+    
 
 
 
 </main>
-
-
 
 <?php
 require "./include/footer.inc.php";

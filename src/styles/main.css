@@ -106,6 +106,10 @@ area {
     font-size: 24px;
 }
 
+h2 {
+    scroll-margin-top:  185px;
+}
+
 .autocomplete-container {
     display: flex;
     position: relative;
@@ -237,7 +241,6 @@ input[type="search"]:focus + .autocomplete-items {
 
 .internal-nav ul li a {
     text-decoration: none;
-    color: #333;
     font-weight: bold;
 }
 
@@ -308,7 +311,118 @@ td, th {
 .graph {
     width: 50%;
     height: 50%;
-    display: flex;               /* Active Flexbox */
-    justify-content: center;     /* Centre horizontalement */
-    align-items: center;         /* Centre verticalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+/* Général */
+table.panel {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+/* Entêtes */
+table.panel thead th{
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Cellules */
+table.panel td, table.panel th{
+    padding: 6px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Lignes de corps */
+table.panel tbody td:first-child {
+    font-weight: bold;
+}
+
+/* Améliorer l'affichage des valeurs colorées */
+table.panel span {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 4px;
+    font-weight: bold;
+    min-width: 40px;
+}
+
+/* Icones météo dans des box stylées */
+.meteo-box {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.meteo-box img {
+    max-width: 30px;
+    max-height: 30px;
+}
+
+/* TABLEAU panelw : style spécifique */
+table.panelw {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    table-layout: fixed;
+}
+
+/* En-têtes spécifiques à panelw */
+table.panelw thead th, table.panelw th {
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Cellules de données pour panelw */
+table.panelw td {
+    padding: 8px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Première colonne de chaque ligne pour panelw */
+table.panelw tr th:first-child {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* Amélioration de l'affichage des valeurs encadrées */
+table.panelw span {
+    display: inline-block;
+    padding: 5px 7px;
+    border-radius: 4px;
+    font-weight: bold;
+    min-width: 50px;
+}
+
+/* Icônes météo dans une box stylée */
+table.panelw .meteo-box {
+    width: 40px;
+    height: 40px;
+    margin: auto;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table.panelw .meteo-box img {
+    max-width: 30px;
+    max-height: 30px;
+}
+

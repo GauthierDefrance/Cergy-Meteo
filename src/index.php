@@ -7,8 +7,8 @@ require_once "./include/functions/cookieLoading.inc.php";
 <div style="width: 100%;">
     <nav class="internal-nav">
         <ul>
-            <li><a href="#Projet">Projet</a></li>
             <li><a href="#Recherche">Recherche</a></li>
+            <li><a href="#Projet">Projet</a></li>
             <li>Image aléatoire</li>
             <?php
             require_once "./include/functions/randomImage.php";
@@ -21,16 +21,6 @@ require_once "./include/functions/cookieLoading.inc.php";
 <main>
 
     <h1>Accueil</h1>
-
-    <section>
-        <h2 id="Projet">Projet</h2>
-        <p>Le but de notre projet est de crée un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France. 
-        Nous combinerons des données géographiques sur la France, obtenue à partir de plusieurs fichiers CSV trouvés sur Internet, avec une carte des régions de France, ainsi que 
-        des API renvoyant des informations météorologiques, pour crée un système de recherche permettant à un utilisteur de trouver la météo à l'endroit désiré. 
-        Dans la section ci-dessous, vous trouverez la première version du moteur de recherche météo. Elle est fonctionelle.
-
-        </p>
-    </section>
 
     <section>
         <h2 id="Recherche">Recherche</h2>
@@ -114,6 +104,15 @@ require_once "./include/functions/cookieLoading.inc.php";
 
     </section>
 
+
+    <section>
+        <h2 id="Projet">Projet</h2>
+        <p>Le but de notre projet est de créer un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France.
+            Nous combinerons des données géographiques sur la France, obtenue à partir de plusieurs fichiers CSV trouvés sur Internet, avec une carte des régions de France, ainsi que
+            des API renvoyant des informations météorologiques, pour crée un système de recherche permettant à un utilisteur de trouver la météo à l'endroit désiré.
+            Dans la section ci-dessous, vous trouverez la première version du moteur de recherche météo. Elle est fonctionelle.
+        </p>
+    </section>
 
 
 </main>

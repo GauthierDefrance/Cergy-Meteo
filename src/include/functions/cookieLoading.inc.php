@@ -38,10 +38,9 @@ function mode():string{
  * Crée un cookie 'lastViewed' pendant 90 jours, contant le dernière ville recherché, son département, et la date du stockage.
  * @param string $ville la ville recherché.
  * @param string $departement le département de la ville recherché.
- * @return void
  */
 
-function set_last_viewed(string $ville,string $departement, string $region):void {
+function set_last_viewed(string $ville,string $departement, string $region) {
     $date = date("Y-m-d"); //peut êtres à mettre en francais une autre fois?
     $lastViewed = [
         "ville" => $ville,

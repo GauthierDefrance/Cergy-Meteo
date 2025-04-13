@@ -32,8 +32,6 @@ require "./include/header.inc.php";
                 <h2>Votre météo pour la ville ' . $_GET['ville'] . ' en PHP!</h2>
                 <p>Cette page est temporaire, elle sert d\'option simplifiée de recherche météo, utilisant uniquement PHP, des scrolling lists et des chargements de pages.</p>';
                 require_once "./scripts/meteo.php";
-                log_array2(last_viewed());
-                increase_ville_hits($_GET['ville'],$_GET['departement']);
             echo'</section>';
             break;
         case 'dep':
@@ -41,7 +39,7 @@ require "./include/header.inc.php";
             <section>
                 <h2>Votre météo pour le département ' . $_GET['departement'] . ' en PHP!</h2>
                 <p>Cette page est temporaire, elle sert d\'option simplifiée de recherche météo, utilisant uniquement PHP, des scrolling lists et des chargements de pages.</p>'.
-                villes_scrolling_list($_GET['departement'])
+                villes_scrolling_list($_GET['departement'],$_GET['region'])
             .'</section>';
             break;
         case 'reg':

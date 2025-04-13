@@ -103,12 +103,11 @@ section ul li a {
 }
 
 .searchbox {
-    background-color: black;
+    background-color: #272727;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .autocomplete-items {
-    background: black;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
@@ -128,7 +127,7 @@ section ul li a {
 
 .autocomplete-items {
     border: 1px solid #444; /* Bordure plus sombre */
-    background: #2b2b2b; /* Fond sombre */
+    background: #6c6c6c; /* Fond sombre */
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
 }
 
@@ -138,8 +137,8 @@ section ul li a {
 
 input[type="search"] {
     border: 1px solid #555; /* Bordure plus foncée */
-    background-color: c; /* Fond sombre pour le champ de recherche */
-    color: #e0e0e0; /* Texte clair */
+    background-color: #595959; /* Fond sombre pour le champ de recherche */
+    color: #ffffff; /* Texte clair */
 }
 
 input[type="search"]:focus {
@@ -154,12 +153,12 @@ input[type="search"]:focus {
 
 /* Bouton de soumission */
 input[type="submit"] {
-    background-color: #007bff;
-    color: white;
+    background-color: #0056b3;
+    color: #ffffff;
 }
 
 input[type="submit"]:hover {
-    background-color: #0056b3;
+    background-color: #007bff;
 }
 
 canvas {
@@ -167,6 +166,74 @@ canvas {
 }
 
 .internal-nav {
-    background-color: #3b3b3b;
+    background-color: #333;
     color: white;
+}
+
+/* Cibler les éléments <li> dans la navigation */
+.internal-nav li {
+    color: white; /* Texte des éléments li en blanc */
+}
+
+/* Cibler les liens <a> dans les <li> et changer leur couleur */
+.internal-nav li a {
+    color: white; /* Liens en blanc */
+    text-decoration: none; /* Enlever le soulignement */
+}
+
+.internal-nav li a:hover {
+    color: rgba(255,255,255,0.6);
+}
+
+
+
+
+
+
+
+
+table.panelw tr:first-child th {
+    color: white;
+}
+
+table.panelw span {
+    color: #000;
+}
+
+table.panelw tr th:first-child {
+    background-color: #272727;;
+    color: white;
+}
+
+table.panelw td {
+    border: 1px solid #ddd;
+}
+
+table.panelw thead th, table.panelw th {
+    background-color: #004466;
+    color: black;
+    border: 1px solid #bbb;
+}
+
+table.panelw {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+table.panel span {
+    color: #000;
+}
+
+table.panel tbody td:first-child {
+    background-color: #272727;
+}
+
+table.panel td, table.panel th{
+    border: 1px solid #ddd;
+}
+
+table.panel thead th{
+    background-color: #004466;
+    color: white;
+    border: 1px solid #ccc;
 }

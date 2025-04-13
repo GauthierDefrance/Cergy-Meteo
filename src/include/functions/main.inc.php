@@ -214,6 +214,7 @@ function region_data_list(string $region){
 function departements_scrolling_list(string $region){
     $departs=reg_to_depart()[$region];
     $html='<form action="weather.php" method="get" >
+    <input type="hidden" name="region" value="'.$region.'">
     <label for="departement">Choisissez un département :</label>
     <select name="departement" id="departement">';
     foreach ($departs as $key => $dep){
@@ -232,10 +233,11 @@ function departements_scrolling_list(string $region){
  * @return string $html une scrolling list html des noms des villes du département.
  */
 
-function villes_scrolling_list(string $depart_code){
+function villes_scrolling_list(string $depart_code, string $reg_name='none'){
     $villes=villes_de_dep($depart_code);
     $html='<form action="weather.php" method="get" >
     <input type="hidden" name="departement" value="'.$depart_code.'">
+    <input type="hidden" name="region" value="'.$reg_name.'">
     <label for="ville">Choisissez une ville :</label>
     <select name="ville" id="ville">';
     foreach ($villes as $key => $ville){

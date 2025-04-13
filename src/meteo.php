@@ -1,14 +1,5 @@
 <?php
-/**
- * @file meteo.php
- * @brief Script pour les prévisions météo
- *
- * Ce script permet d'afficher les prévisions météorologiques d'une ville donnée en utilisant les données de l'API Open Meteo. Il récupère les données météo pour les 7 prochains jours ainsi que pour les 24 heures à venir, affichant diverses informations comme la température, l'humidité, la vitesse du vent, etc.
- *
- *
- * @author Gauthier Defrance
- * @date 2025-13-03
- */
+
 include_once "./include/functions/main.inc.php";
 
 
@@ -30,11 +21,9 @@ class WeatherForecast {
         $this->cityName = $cityName;
         $this->departement = $departement;
         $this->gpsCoord = $this->getGpsCoordinates($cityName);
-        assert(!is_null($this->gpsCoord),"N'a pas pu récupérer les données GPS.");
         $this->latitude = $this->gpsCoord['latitude'] ?? 0;
         $this->longitude = $this->gpsCoord['longitude'] ?? 0;
         $this->weatherData = $this->fetchWeatherData();
-        assert(!is_null($this->weatherData),"N'a pas pu récupérer les données Météo.");
     }
 
     /**
@@ -141,19 +130,40 @@ class WeatherForecast {
         return $output;
     }
 
-    public function generateDayButtons(int $n = 5): string {
+    public function generateDayButtons(int $n=5): string {
+        // Mapping des jours en anglais vers le français
+        $daysMapping = [
+            "Monday"    => "Lundi",
+            "Tuesday"   => "Mardi",
+            "Wednesday" => "Mercredi",
+            "Thursday"  => "Jeudi",
+            "Friday"    => "Vendredi",
+            "Saturday"  => "Samedi",
+            "Sunday"    => "Dimanche"
+        ];
+
         $output = "<form class='day-buttons'>";
 
-        for ($i = 0; $i < $n; $i++) {
-            $date = date('Y-m-d', strtotime("+$i day"));
-            $frenchDay = getFrenchDayName($date); // Appel de ta fonction
 
-            $checked = ($i === 0) ? " checked" : "";
-            $output .= "<input type='radio' id='jour$i' name='jour' class='day-radio'$checked>\n";
+        $dateTimestamp = strtotime("+0 day");
+        $englishDay = date("l", $dateTimestamp);
+        $frenchDay = $daysMapping[$englishDay] ?? $englishDay;
+        $output .= "<input type='radio' id='jour0' name='jour' class='day-radio' checked>\n";
+        $output .= "<label for='jour0' class='day-btn'>$frenchDay</label>\n";
+        for ($i = 1; $i < $n; $i++) {
+            // Calcule la date du jour i (0 pour aujourd'hui, 1 pour demain, etc.)
+            $dateTimestamp = strtotime("+$i day");
+            // Récupère le nom du jour en anglais
+            $englishDay = date("l", $dateTimestamp);
+            // Convertit en français grâce au mapping
+            $frenchDay = $daysMapping[$englishDay] ?? $englishDay;
+            // Ajoute un bouton pour ce jour
+            $output .= "<input type='radio' id='jour$i' name='jour' class='day-radio'>\n";
             $output .= "<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
+            //$output .= "<button class='day-btn' id='jour$i'>$frenchDay</button>";
         }
-
         $output .= "</form>";
+
         return $output;
     }
 
@@ -166,29 +176,26 @@ class WeatherForecast {
         if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
             $output = "<h2>Prévisions météo sur 7 jours pour {$this->cityName}</h2>";
-            $output .= "<table class='panelw' style='text-align: center;'>";
+            $output .= "<table style='text-align: center;'>";
             $output .= "<tr><th>Catégorie</th>";
 
             // Ajouter les dates en en-tête horizontale
             foreach ($this->weatherData['daily']['time'] as $date) {
-                //CONVERTIR LA DATE
-                $output .= "<th>" . getFrenchDayName($date, true) . "</th>";
+                $output .= "<th>$date</th>";
             }
             $output .= "</tr>";
 
             // Ajouter les températures minimales
             $output .= "<tr><th>Température Min (°C)</th>";
             foreach ($this->weatherData['daily']['temperature_2m_min'] as $tempMin) {
-                $var = $this->temperatureToColor($tempMin,-10, 30);
-                $output.="<td><span style='background-color:$var;'>".$tempMin." °C</span></td>";
+                $output .= "<td>$tempMin °C</td>";
             }
             $output .= "</tr>";
 
             // Ajouter les températures maximales
             $output .= "<tr><th>Température Max (°C)</th>";
             foreach ($this->weatherData['daily']['temperature_2m_max'] as $tempMax) {
-                $var = $this->temperatureToColor($tempMax,-10, 30);
-                $output.="<td><span style='background-color:$var;'>".$tempMax." °C</span></td>";
+                $output .= "<td>$tempMax °C</td>";
             }
             $output .= "</tr>";
 
@@ -220,8 +227,7 @@ class WeatherForecast {
             if (isset($this->weatherData['daily']['windspeed_10m_max'])) {
                 $output .= "<tr><th>Vent (vitesse)</th>";
                 foreach ($this->weatherData['daily']['windspeed_10m_max'] as $index => $windSpeed) {
-                    $var = $this->temperatureToColor($windSpeed,-10, 30);
-                    $output .="<td><span style='background-color:$var;'>".$windSpeed." °C</span></td>";
+                    $output .= "<td>".$windSpeed." km/h</td>";
                 }
                 $output .= "</tr>";
             } else {
@@ -387,30 +393,6 @@ function calculateWindChill($temperature, $windSpeed) : string {
         + 0.3965 * $temperature * pow($windSpeed, 0.16);
 
     return round($windChill, 1);
-}
-
-function getFrenchDayName(string $date, bool $withShortDate = false): string {
-    // Liste des jours de la semaine en français
-    $days = [
-        'Sunday'    => 'Dimanche',
-        'Monday'    => 'Lundi',
-        'Tuesday'   => 'Mardi',
-        'Wednesday' => 'Mercredi',
-        'Thursday'  => 'Jeudi',
-        'Friday'    => 'Vendredi',
-        'Saturday'  => 'Samedi',
-    ];
-
-    $timestamp = strtotime($date);
-    $englishDay = date('l', $timestamp); // ex: "Monday"
-    $frenchDay = $days[$englishDay] ?? $englishDay;
-
-    if ($withShortDate) {
-        $shortDate = date('d/m', $timestamp);
-        return "$frenchDay<br><small>$shortDate</small>";
-    }
-
-    return $frenchDay;
 }
 
 

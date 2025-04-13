@@ -171,14 +171,76 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
+.internal-nav {
+    background-color: white;
+    color: black;
+}
+
+/* Cibler les éléments <li> dans la navigation */
+.internal-nav li {
+    color: black; /* Texte des éléments li en blanc */
+    text-decoration: none;
+}
+
+/* Cibler les liens <a> dans les <li> et changer leur couleur */
+.internal-nav li a {
+    color: black;
+    text-decoration: none;
+}
+
+.internal-nav li a:hover {
+    color: rgba(0,0,0,0.6);
+}
 
 
 
 
 
 
+table.panelw tr:first-child th {
+    color: white;
+}
 
+table.panelw span {
+    color: #000;
+}
 
+table.panelw tr th:first-child {
+    background-color: #e6e6e6;
+}
+
+table.panelw td {
+    border: 1px solid #ddd;
+}
+
+table.panelw thead th, table.panelw th {
+    background-color: #004466;
+    color: black;
+    border: 1px solid #bbb;
+}
+
+table.panelw {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+table.panel span {
+    color: #000;
+}
+
+table.panel tbody td:first-child {
+    background-color: #f0f0f0;
+}
+
+table.panel td, table.panel th{
+    border: 1px solid #ddd;
+}
+
+table.panel thead th{
+    background-color: #004466;
+    color: white;
+    border: 1px solid #ccc;
+}
 
 
 

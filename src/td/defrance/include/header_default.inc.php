@@ -67,7 +67,6 @@ if (isset($_GET['lang']) &&  $_GET['lang']=="en") {
                     <li><a href="./td7.php<?="?style=".$mode."&amp;lang=".$lang2load ?>">TD7</a></li>
                     <li><a href="./td8.php<?="?style=".$mode."&amp;lang=".$lang2load ?>">TD8</a></li>
                     <li><a href="./td9.php<?="?style=".$mode."&amp;lang=".$lang2load ?>">TD9</a></li>
-                    <li><a href="./td10.php<?="?style=".$mode."&amp;lang=".$lang2load ?>">TD10</a></li>
                 </ul>
             </li>
         </ul>
