@@ -12,7 +12,7 @@
 - [📌 Présentation](#-présentation)
 - [⚙️ Fonctionnalités](#-fonctionnalités)
 - [🖥️ Utilisation](#-utilisation)
-- [🛠️ Technologies utilisées](#-technologies-utilisées)
+- [🛠️ API utilisées](#-technologies-utilisées)
 - [📸 Captures d'écran](#-captures-décran)
 - [🧪 À venir / TODO](#-à-venir--todo)
 - [📄 Licence](#-licence)
@@ -41,6 +41,7 @@ Il s'adresse aux utilisateurs souhaitant :
 
 ## 🖥️️ Utilisation
 
+### 🔎 Recherche Météo
 > Afin d'obtenir la météo d'une ville précise il est nécéssaire de d'abord sélectioner votre ville sur la page d'accueil.
 > Tout d'abord il vous faudra sélectionner votre région. Vous pouvez la sélectionner en cliquant sur la région de votre choix sur la carte.
 > Sinon il est possible de la sélectionner en écrivant le nom de votre région dans la boîte de texte région.
@@ -52,3 +53,12 @@ Il s'adresse aux utilisateurs souhaitant :
 > pour choisir votre département. Même chose pour votre ville.
 
 ![Image département](https://github.com/GauthierDefrance/Cergy-Meteo/blob/main/ressources/departement_test.png)
+
+### 📊 Statistiques
+
+> Sur la page de statistiques, 
+
+---
+
+## 🛠️ API utilisées
+
