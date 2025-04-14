@@ -75,4 +75,5 @@ Il s'adresse aux utilisateurs souhaitant :
 ## 🛠️ API utilisées
 
 - [🌥️ OpenMeteo API](https://open-meteo.com/)
-- 
+- [🗺️ GeoPlugin API](https://www.geoplugin.com/)
+- AJOUTER D'AUTRES API
