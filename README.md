@@ -56,9 +56,23 @@ Il s'adresse aux utilisateurs souhaitant :
 
 ### 📊 Statistiques
 
-> Sur la page de statistiques, 
+> Sur la page de statistiques, différentes données sont accessibles.
+> Tel que un graphe avec les pages les plus recherché.
+> Mais également un graphe avec les villes les plus recherché.
+
+### 🛰️ APOD
+
+> Sur la page technique, il est possible de voir une image / vidéo chaque jour.
+> Elle sera accompagné d'un texte. Ce contenu est actualisé toutes les 24h d'après les données APOD de la Nasa.
+
+### 📬 IP
+> Sur cette même page technique il est possible de voir votre IP et une approximation de votre position géographique.
+
+
 
 ---
 
 ## 🛠️ API utilisées
 
+- [🌥️ OpenMeteo API](https://open-meteo.com/)
+- 
