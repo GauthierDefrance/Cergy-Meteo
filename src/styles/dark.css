@@ -56,7 +56,6 @@ header a, footer a {
     background-color: #5e5e5e;
 }
 
-/* Optionnel : style pour le li */
 .dropdown:hover {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -77,7 +76,6 @@ section {
     background-color: #272750;
 }
 
-/* Table détouré */
 table {
     
     background-color: rgb(29, 29, 29);
@@ -93,12 +91,7 @@ main a {
     color: rgb(235, 235, 255);
     text-decoration: none;  
 }
-  
-/*
-main a:visited {
-    color: rgb(225, 200, 255);           
-}
-*/
+
 section ul li a {
     color: rgb(255, 244, 244);
 }
@@ -116,30 +109,28 @@ section ul li a {
     background: black;
 }
 
-/* Conteneur du formulaire */
 .searchbox {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Ombre plus prononcée */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* Titre du formulaire */
 .searchbox h2 {
-    color: #e0e0e0; /* Texte clair pour le titre */
+    color: #e0e0e0;
 }
 
 .autocomplete-items {
-    border: 1px solid #444; /* Bordure plus sombre */
-    background: #6c6c6c; /* Fond sombre */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Ombre plus marquée */
+    border: 1px solid #444;
+    background: #6c6c6c;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
 .autocomplete-container label {
-    color: #e0e0e0; /* Texte clair pour le label */
+    color: #e0e0e0;
 }
 
 input[type="search"] {
-    border: 1px solid #555; /* Bordure plus foncée */
-    background-color: #595959; /* Fond sombre pour le champ de recherche */
-    color: #ffffff; /* Texte clair */
+    border: 1px solid #555;
+    background-color: #595959;
+    color: #ffffff;
 }
 
 input[type="search"]:focus {
@@ -149,10 +140,10 @@ input[type="search"]:focus {
 
 
 .autocomplete-items div:hover {
-    background: #3a3a3a; /* Légère modification de fond lors du survol */
+    background: #3a3a3a;
 }
 
-/* Bouton de soumission */
+
 input[type="submit"] {
     background-color: #0056b3;
     color: #ffffff;
@@ -171,15 +162,15 @@ canvas {
     color: white;
 }
 
-/* Cibler les éléments <li> dans la navigation */
+
 .internal-nav li {
-    color: white; /* Texte des éléments li en blanc */
+    color: white;
 }
 
-/* Cibler les liens <a> dans les <li> et changer leur couleur */
+
 .internal-nav li a {
-    color: white; /* Liens en blanc */
-    text-decoration: none; /* Enlever le soulignement */
+    color: white;
+    text-decoration: none;
 }
 
 .internal-nav li a:hover {
@@ -262,6 +253,6 @@ table.panel thead th{
 }
 
 .graph canvas {
-    background-color: #1f1f1f;
+    background-color: #e0f0ff;
     border: 2px solid #444;
 }

@@ -1,5 +1,7 @@
 <?php $title="Stats"; ?>
 <?php
+$MadeDate = '14/04/2025';
+$description = 'Page regroupant les statistiques diverse du site.';
 require "./include/header.inc.php";
 require "./include/functions/stats.inc.php";
 ?>
@@ -11,10 +13,10 @@ require "./include/functions/stats.inc.php";
             <li><a href="#Stats-Pages">Stats Pages</a></li>
             <li><a href="#Stats-Ville">Stats Villes</a></li>
             <li>Image aléatoire</li>
-            <?php
-            require_once "./include/functions/randomImage.php";
-            echo getRandomImage();
-            ?>
+            <li><?php
+                require_once "./include/functions/randomImage.php";
+                echo getRandomImage();
+                ?></li>
         </ul>
     </nav>
 </div>
@@ -60,7 +62,7 @@ require "./include/functions/stats.inc.php";
         console.log(option);
         return Array.from(option).map(option => ({
             value: option.getAttribute('value'), // Conversion en nombre
-            name: option.getAttribute('name') || option.getAttribute('ville')+"("+option.getAttribute('departement')+")" // Récupération de l'attribut 'name' ou 'ville'
+            name: option.getAttribute('data-name') || option.getAttribute('data-ville')+"("+option.getAttribute('data-departement')+")" // Récupération de l'attribut 'name' ou 'ville'
         }));
     }
 

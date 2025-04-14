@@ -18,16 +18,16 @@ require_once "/home/hornung/www/include/functions/increasePageNumber.php";
     <head>
         <title><?= $title;?></title>
         <meta charset='UTF-8'/>
-        <meta name='author' content=''/>
-        <meta name='date' content=''/>
-        <meta name='description' content=''/>
+        <meta name='author' content='Hornung et Defrance'/>
+        <meta name='date' content='<?= $MadeDate ?? '' ?>'/>
+        <meta name='description' content='<?= $description ?? '' ?>'/>
         <link rel="icon" type="image/png" href='./ressources/favicon.png'/>
         <link rel='stylesheet' href='./styles/main.css'/>
         <link rel='stylesheet' href='./styles/pagehf.css'/>
         <link rel='stylesheet' href='./styles/effect.css'/>
         <link rel='stylesheet' href='./styles/<?= mode() ?>.css'/>
         <script src="https://kit.fontawesome.com/39e26908ee.js" crossorigin="anonymous"></script>
-        <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&family=Saira+Stencil+One&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&amp;family=Saira+Stencil+One&amp;display=swap" rel="stylesheet" />
     </head>
 <body>
 <header id="PageHeader">

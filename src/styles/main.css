@@ -114,15 +114,15 @@ h2 {
     display: flex;
     position: relative;
     width: 100%;
-    max-width: 400px; /* Largeur maximale des champs */
-    flex-direction: column; /* Aligner les éléments verticalement */
-    gap: 5px; /* Espace entre l'étiquette et le champ */
-    align-items: flex-start; /* Aligner à gauche (ou centré si nécessaire) */
+    max-width: 400px;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-start;
 }
 
 .autocomplete-items {
     position: absolute;
-    top: 100%; /* Place la boîte juste en dessous de l'input */
+    top: 100%;
     left: 0;
     width: 100%;
     border-top: none;
@@ -155,7 +155,7 @@ input[type="search"]:focus {
     transition: background 0.3s ease;
 }
 
-/* Bouton de soumission */
+
 input[type="submit"] {
     padding: 10px;
     border: none;
@@ -163,7 +163,7 @@ input[type="submit"] {
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-top: 20px; /* Espacement supplémentaire pour le bouton */
+    margin-top: 20px;
 }
 
 input[type="submit"]:focus {
@@ -183,13 +183,13 @@ input[type="submit"]:focus {
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    position: relative; /* Nécessaire pour positionner le menu correctement */
+    position: relative;
 }
 
 /* Menu déroulant (initialement caché) */
 .autocomplete-items {
     position: absolute;
-    top: 100%; /* Place la boîte juste en dessous de l'input */
+    top: 100%;
     left: 0;
     width: 100%;
     border-top: none;
@@ -197,14 +197,14 @@ input[type="submit"]:focus {
     overflow-y: auto;
     z-index: 1000;
     border-radius: 4px;
-    display: none; /* Cacher par défaut */
+    display: none;
 }
 
 /* Afficher le menu déroulant lorsqu'on interagit avec l'input ou le conteneur */
 .autocomplete-container:focus-within .autocomplete-items,
 .autocomplete-container:hover .autocomplete-items,
 input[type="search"]:focus + .autocomplete-items {
-    display: block; /* Affiche le menu lorsque l'input est en focus ou le conteneur est survolé */
+    display: block;
 }
 
 /* Ajout de l'effet hover pour les éléments du menu */
@@ -216,9 +216,9 @@ input[type="search"]:focus + .autocomplete-items {
 
 
 .internal-nav {
-    position: fixed; /* Pour qu'elle reste à droite lors du scroll */
-    top: 140px;      /* Ajustez selon votre header */
-    right: 0px;     /* Distance du bord droit */
+    position: fixed;
+    top: 140px;
+    right: 0px;
     width: 15%;
     background-color: #f8f8f8;
     border: 1px solid #ddd;
@@ -265,8 +265,8 @@ input[type="search"]:focus + .autocomplete-items {
 }
 
 .galery {
-    width: 100%;  /* L'image prend 100% de la largeur disponible */
-    height: auto; /* La hauteur est ajustée pour conserver les proportions */
+    width: 100%;
+    height: auto;
 }
 
 figcaption {
@@ -348,12 +348,12 @@ table.panel td, table.panel th{
     word-wrap: break-word;
 }
 
-/* Lignes de corps */
+
 table.panel tbody td:first-child {
     font-weight: bold;
 }
 
-/* Améliorer l'affichage des valeurs colorées */
+
 table.panel span {
     display: inline-block;
     padding: 5px;
@@ -362,7 +362,7 @@ table.panel span {
     min-width: 40px;
 }
 
-/* Icones météo dans des box stylées */
+
 .meteo-box {
     width: 40px;
     height: 40px;
@@ -378,7 +378,7 @@ table.panel span {
     max-height: 30px;
 }
 
-/* TABLEAU panelw : style spécifique */
+
 table.panelw {
     width: 100%;
     border-collapse: collapse;
@@ -388,7 +388,7 @@ table.panelw {
     table-layout: fixed;
 }
 
-/* En-têtes spécifiques à panelw */
+
 table.panelw thead th, table.panelw th {
     padding: 10px;
     text-align: center;
@@ -396,20 +396,20 @@ table.panelw thead th, table.panelw th {
     font-size: 13px;
 }
 
-/* Cellules de données pour panelw */
+
 table.panelw td {
     padding: 8px;
     text-align: center;
     word-wrap: break-word;
 }
 
-/* Première colonne de chaque ligne pour panelw */
+
 table.panelw tr th:first-child {
     font-weight: bold;
     font-size: 13px;
 }
 
-/* Amélioration de l'affichage des valeurs encadrées */
+
 table.panelw span {
     display: inline-block;
     padding: 5px 7px;
@@ -418,7 +418,7 @@ table.panelw span {
     min-width: 50px;
 }
 
-/* Icônes météo dans une box stylée */
+
 table.panelw .meteo-box {
     width: 40px;
     height: 40px;
@@ -441,7 +441,7 @@ table.panelw .meteo-box img {
     color: #79f3a3;
 }
 
-/* Structure des listes */
+
 .map-list {
     margin-left: 10%;
     padding-left: 20px;
@@ -449,13 +449,13 @@ table.panelw .meteo-box img {
     font-size: 32px;
 }
 
-.map-list li a {
-    color: ;
-}
+/*.map-list li a {*/
+/*    color: ;*/
+/*}*/
 
 
 .map-sub-list {
-    list-style-type: none; /* On supprime le disc par défaut */
+    list-style-type: none;
     padding-left: 20px;
     font-size: 20px;
 }

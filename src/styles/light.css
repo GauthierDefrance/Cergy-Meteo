@@ -13,22 +13,22 @@
 }
 
 body {
-    /*background-color: var(--bg-color-light);*/
+
     background: linear-gradient(90deg, lightskyblue, lightcyan);
 }
 
 /* Header & Footer */
 #PageHeader {
-    /*background-color: var(--primary-color);*/
+
     background: linear-gradient(0, lightskyblue, lightcyan);
 } #PageFooter {
-      /*background-color: var(--primary-color);*/
+
       background: linear-gradient(0, lightcyan, lightskyblue);
   }
 
 
 header, footer {
-    background-color: rgba(8, 43, 203, 0.7); /* Bleu principal en transparence */
+    background-color: rgba(8, 43, 203, 0.7);
 }
 
 /* Footer */
@@ -48,7 +48,7 @@ header a, footer a {
 
 /* Hover effets */
 .box:hover {
-    background-color: var(--accent-color); /* Jaune foncé sur le survol */
+    background-color: var(--accent-color);
 }
 
 .dropdown-menu {
@@ -61,17 +61,17 @@ header a, footer a {
 }
 
 .dropdown-menu button:hover {
-    background-color: var(--bg-color-light);  /* Bleu clair sur le survol */
+    background-color: var(--bg-color-light);
 }
 
-/* Optionnel : style pour le li */
+
 .dropdown:hover {
-    background-color: var(--accent-color); /* Jaune foncé sur le survol */
+    background-color: var(--accent-color);
 }
 
 /* Corps de page */
 main {
-    background-color: var(--secondary-color);  /* Bleu pâle pour le fond */
+    background-color: var(--secondary-color);
 }
 
 /* Section */
@@ -81,22 +81,22 @@ section {
 }
 
 .texte {
-    border: 2px solid var(--accent-color); /* Jaune foncé pour les bordures */
-    background-color: var(--bg-color-light);  /* Bleu pâle pour le fond */
+    border: 2px solid var(--accent-color);
+    background-color: var(--bg-color-light);
 }
 
 /* Table */
 table {
-    background-color: var(--primary-color);  /* Bleu principal pour le fond */
+    background-color: var(--primary-color);
     box-shadow: 5px 5px 5px var(--box-shadow-color);
 }
 
 th, td {
-    background-color: var(--bg-color-section);  /* Fond blanc pour les cellules */
+    background-color: var(--bg-color-section);
 }
 
 section ul li a {
-    color: var(--text-link-color);  /* Couleur du texte des liens */
+    color: var(--text-link-color);
 }
 
 .searchbox {
@@ -176,13 +176,13 @@ input[type="submit"]:hover {
     color: black;
 }
 
-/* Cibler les éléments <li> dans la navigation */
+
 .internal-nav li {
-    color: black; /* Texte des éléments li en blanc */
+    color: black;
     text-decoration: none;
 }
 
-/* Cibler les liens <a> dans les <li> et changer leur couleur */
+
 .internal-nav li a {
     color: black;
     text-decoration: none;

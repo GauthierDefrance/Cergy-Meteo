@@ -139,12 +139,12 @@ class WeatherForecast {
             $date = date('Y-m-d', strtotime("+$i day"));
             $frenchDay = getFrenchDayName($date); // Appel de ta fonction
 
-            $checked = ($i === 0) ? " checked" : "";
-            $output .= "<input type='radio' id='jour$i' name='jour' class='day-radio'$checked>\n";
-            $output .= "<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
+            $checked = ($i === 0) ? "checked" : "";
+            $output .= "\n<input type='radio' id='jour$i' name='jour' class='day-radio' checked='$checked' />\n";
+            $output .= "\n<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
         }
 
-        $output .= "</form>";
+        $output .= "\n</form>";
         return $output;
     }
 
@@ -157,8 +157,8 @@ class WeatherForecast {
         if (isset($this->weatherData['daily']['time'])) {
             // On commence à créer la table HTML
             $output = "<h2>Prévisions météo sur 7 jours pour {$this->cityName}</h2>";
-            $output .= "<table class='panelw' style='text-align: center;'>";
-            $output .= "<tr><th>Catégorie</th>";
+            $output .= "\n<table class='panelw' style='text-align: center;'>";
+            $output .= "\n<tr><th>Catégorie</th>";
 
             // Ajouter les dates en en-tête horizontale
             foreach ($this->weatherData['daily']['time'] as $date) {
@@ -168,7 +168,7 @@ class WeatherForecast {
             $output .= "</tr>";
 
             // Ajouter les températures minimales
-            $output .= "<tr><th>Température Min (°C)</th>";
+            $output .= "\n<tr><th>Température Min (°C)</th>";
             foreach ($this->weatherData['daily']['temperature_2m_min'] as $tempMin) {
                 $var = $this->temperatureToColor($tempMin,-10, 30);
                 $output.="<td><span style='background-color:$var;'>".$tempMin." °C</span></td>";
@@ -176,7 +176,7 @@ class WeatherForecast {
             $output .= "</tr>";
 
             // Ajouter les températures maximales
-            $output .= "<tr><th>Température Max (°C)</th>";
+            $output .= "\n<tr><th>Température Max (°C)</th>";
             foreach ($this->weatherData['daily']['temperature_2m_max'] as $tempMax) {
                 $var = $this->temperatureToColor($tempMax,-10, 30);
                 $output.="<td><span style='background-color:$var;'>".$tempMax." °C</span></td>";
@@ -184,39 +184,39 @@ class WeatherForecast {
             $output .= "</tr>";
 
             // Ajouter les précipitations
-            $output .= "<tr><th>Précipitations (mm)</th>";
+            $output .= "\n<tr><th>Précipitations (mm)</th>";
             foreach ($this->weatherData['daily']['precipitation_sum'] as $precipitation) {
                 $output .= "<td>$precipitation mm</td>";
             }
             $output .= "</tr>";
 
             // Ajouter les conditions météo
-            $output .= "<tr><th>Conditions Météo</th>";
+            $output .= "\n<tr><th>Conditions Météo</th>";
             foreach ($this->weatherData['daily']['weathercode'] as $weatherCode) {
                 $output .= "<td>".$this->getDescImage($weatherCode)."</td>";
             }
             $output .= "</tr>";
 
             if (isset($this->weatherData['daily']['winddirection_10m_dominant'])) {
-                $output .= "<tr><th>Vent (direction)</th>";
+                $output .= "\n<tr><th>Vent (direction)</th>";
                 foreach ($this->weatherData['daily']['winddirection_10m_dominant'] as $index => $windDirection) {
                     $cardinal = $this->getCardinalDirection($windDirection);
                     $output .= "<td>$cardinal</td>";
                 }
                 $output .= "</tr>";
             } else {
-                $output .= "<tr><th>Vent (direction)</th><td>N/A</td></tr>";
+                $output .= "\n<tr><th>Vent (direction)</th><td>N/A</td></tr>";
             }
 
             if (isset($this->weatherData['daily']['windspeed_10m_max'])) {
-                $output .= "<tr><th>Vent (vitesse)</th>";
+                $output .= "\n<tr><th>Vent (vitesse)</th>";
                 foreach ($this->weatherData['daily']['windspeed_10m_max'] as $index => $windSpeed) {
                     $var = $this->temperatureToColor($windSpeed,0, 80);
                     $output .="<td><span style='background-color:$var;'>".$windSpeed." km/h</span></td>";
                 }
                 $output .= "</tr>";
             } else {
-                $output .= "<tr><th>Vent vitesse max</th><td>N/A</td></tr>";
+                $output .= "\n<tr><th>Vent vitesse max</th><td>N/A</td></tr>";
             }
 
             // On ferme la table
@@ -234,10 +234,10 @@ class WeatherForecast {
      * @return string
      */
     public function displayDayForecast(): string {
-        $output = "<h2>Prévision sur 24h pour {$this->cityName}</h2><p>(des jours prochains)</p>\n";
+        $output = "<h2>Prévision sur 24h pour {$this->cityName}</h2>\n<p>(des jours prochains)</p>\n";
         $output .= $this->generateDayButtons(7);
 
-        $output .= "<div class='panels'>\n";
+        $output .= "\n<div class='panels'>\n";
         for ($k=0; $k<7; $k++){
             $output .= $this->getDayTable($k);
         } $output .= "</div>\n";
@@ -265,9 +265,9 @@ class WeatherForecast {
 
         $DayFourth = (DayHour/$HourStep)/4;
 
-        $output = "<table id='panel-jour$day' class='panel' style='text-align: center;'>
-                     <thead>
-                        <tr>
+        $output = "\n<table id='panel-jour$day' class='panel' style='text-align: center;'>
+                     \n<thead>
+                        \n<tr>
                             <th rowspan='2'></th>
                             <th colspan='$DayFourth'>Nuit</th> 
                             <th colspan='$DayFourth'>Matinée</th> 
@@ -275,13 +275,13 @@ class WeatherForecast {
                             <th colspan='$DayFourth'>Soirée</th>
                         </tr>\n";
 
-        $output .= "<tr>";
+        $output .= "\n<tr>";
         for($k=0; $k<DayHour ; $k+=$HourStep){
             $output .= "<th>".sprintf('%02d',$k).":00"."</th>";
         }$output .= "</tr></thead>\n<tbody>";
 
         foreach (array_keys(ElemDataDayList) as $elem) {
-            $output .= "<tr>";
+            $output .= "\n<tr>";
             $output .= "<td>".ElemDataDayList[$elem]."</td>";
             for($k=0; $k<DayHour ; $k+=$HourStep){
                 $tmp="-";
@@ -398,7 +398,7 @@ function getFrenchDayName(string $date, bool $withShortDate = false): string {
 
     if ($withShortDate) {
         $shortDate = date('d/m', $timestamp);
-        return "$frenchDay<br><small>$shortDate</small>";
+        return "$frenchDay<small>$shortDate</small>";
     }
 
     return $frenchDay;

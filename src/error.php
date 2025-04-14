@@ -1,5 +1,7 @@
 <?php $title="Erreur"; ?>
 <?php
+$MadeDate = '14/04/2025';
+$description = 'Page affichant l&apos;erreur rencontré par l&apos;utilisateur.';
 $Error="None";
 if(isset($_GET['error'])){
     $Error=$_GET['error'];

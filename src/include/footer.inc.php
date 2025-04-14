@@ -3,7 +3,7 @@
         <p>Ce site vous est proposé par <strong>Thomas Hornung</strong> et <strong>Gauthier Defrance</strong> du groupe L2I-C à CY CERGY PARIS UNIVERSITÉ</p>
 
         <p>Cette page a été affiché <?= $currentHits ?> fois.</p>
-    <hr>
+    <hr />
 
     <nav class="navigation">
         <div class="container">
@@ -56,7 +56,7 @@
         </div>
     </nav>
 
-    <hr>
+    <hr />
 
     <a href="#">Haut de page</a>
 
