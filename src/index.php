@@ -63,7 +63,6 @@ require_once "./include/functions/cookieLoading.inc.php";
                 <datalist id="region-list">
                     <option value="AUVERGNE RHONE ALPES">Auvergne Rhône-Alpes</option>
                     <option value="BOURGOGNE FRANCHE COMTE">Bourgogne France Compte</option>
-                    <option value="FRANCHE COMTE">Franche-Comté</option>
                     <option value="BRETAGNE">Bretagne</option>
                     <option value="CENTRE VAL DE LOIRE">Centre-Val de Loire</option>
                     <option value="CORSE">Corse</option>
@@ -120,7 +119,6 @@ require_once "./include/functions/cookieLoading.inc.php";
 </main>
 
 <script>
-<![CDATA[
     /**
      * Map fonctionnement
      */
@@ -303,7 +301,6 @@ require_once "./include/functions/cookieLoading.inc.php";
         // Appeler la fonction une fois au chargement de la page pour afficher le tableau initial
         afficherTableau();
     });
-]]>
 </script>
 
 

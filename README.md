@@ -49,5 +49,6 @@ Il s'adresse aux utilisateurs souhaitant :
 ![Image région](https://github.com/GauthierDefrance/Cergy-Meteo/blob/main/ressources/region_test.png)
 
 > Une fois votre région sélectionné, vous pourrez alors sélectionner votre département. Vous n'aurez alors que à remplir la boîte de texte
-> pour choisir votre département
+> pour choisir votre département. Même chose pour votre ville.
 
+![Image département](https://github.com/GauthierDefrance/Cergy-Meteo/blob/main/ressources/departement_test.png)
