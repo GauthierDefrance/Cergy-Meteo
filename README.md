@@ -46,7 +46,7 @@ Il s'adresse aux utilisateurs souhaitant :
 > Sinon il est possible de la sélectionner en écrivant le nom de votre région dans la boîte de texte région.
 > En cliquant deux fois sur votre boîte de texte vous ferez alors apparaître la liste des régions disponible.
 
-![Image région](https://example.com/bild.jpg)
+![Image région](https://github.com/GauthierDefrance/Cergy-Meteo/ressources/region_test.png)
 
 > Une fois votre région sélectionné, vous pourrez alors sélectionner votre département. Vous n'aurez alors que à remplir la boîte de texte
 > pour choisir votre département
