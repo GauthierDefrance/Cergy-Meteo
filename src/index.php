@@ -1,7 +1,7 @@
 <?php $title="Accueil"; ?>
 <?php
 $MadeDate = '14/04/2025';
-$description = 'Page d&apos;accueil du site web permettant la recherche et l&apos;obtentions d&apos;infomrations météo de la ville choisie.';
+$description = 'Page d&apos;accueil du site web permettant la recherche et l&apos;obtentions d&apos;informations météo de la ville choisie.';
 require "./include/header.inc.php";
 require_once "./include/functions/cookieLoading.inc.php";
 ?>
