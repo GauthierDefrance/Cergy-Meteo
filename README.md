@@ -13,7 +13,7 @@
 - [⚙️ Fonctionnalités](#-fonctionnalités)
 - [🖥️ Utilisation](#-utilisation)
 - [🛠️ Technologies utilisées](#-technologies-utilisées)
-- [📧 URL utiles](#-url_utiles)
+- [📧 URL utiles](#-url-utiles)
 
 ---
 
@@ -39,7 +39,7 @@ Il s'adresse aux utilisateurs souhaitant :
 
 ---
 
-## 🖥️️ Utilisation
+## 🖥️ Utilisation
 
 ### 🔎 Recherche Météo
 > Afin d'obtenir la météo d'une ville précise il est nécéssaire de d'abord sélectioner votre ville sur la page d'accueil.
