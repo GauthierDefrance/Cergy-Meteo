@@ -12,10 +12,8 @@
 - [📌 Présentation](#-présentation)
 - [⚙️ Fonctionnalités](#-fonctionnalités)
 - [🖥️ Utilisation](#-utilisation)
-- [🛠️ API utilisées](#-technologies-utilisées)
-- [📸 Captures d'écran](#-captures-décran)
-- [🧪 À venir / TODO](#-à-venir--todo)
-- [📄 Licence](#-licence)
+- [🛠️ Technologies utilisées](#-technologies-utilisées)
+- [📧 URL utiles](#-url_utiles)
 
 ---
 
@@ -36,6 +34,8 @@ Il s'adresse aux utilisateurs souhaitant :
 - ✅ Statistiques sur les recherches les plus fréquentes  
 - ✅ Données en temps réel via API météo de OpenMeteo
 - ✅ Historique local des recherches
+- ✅ Anglais et Français disponible
+- ✅ Style Light et Dark à sélectionner au choix
 
 ---
 
@@ -54,6 +54,10 @@ Il s'adresse aux utilisateurs souhaitant :
 
 ![Image département](https://github.com/GauthierDefrance/Cergy-Meteo/blob/main/ressources/departement_test.png)
 
+> Vous obtiendrez alors un résultat sous cette forme :
+
+![Image recherche](https://github.com/GauthierDefrance/Cergy-Meteo/blob/main/ressources/search_test.png)
+
 ### 📊 Statistiques
 
 > Sur la page de statistiques, différentes données sont accessibles.
@@ -69,11 +73,19 @@ Il s'adresse aux utilisateurs souhaitant :
 > Sur cette même page technique il est possible de voir votre IP et une approximation de votre position géographique.
 
 
-
 ---
 
-## 🛠️ API utilisées
+
+## 🛠️ Technologies Utilisées
 
 - [🌥️ OpenMeteo API](https://open-meteo.com/)
 - [🗺️ GeoPlugin API](https://www.geoplugin.com/)
-- AJOUTER D'AUTRES API
+
+
+## 📧 Url utiles
+
+- [Accueil](https://hornung.alwaysdata.net/)
+- [Stats](https://hornung.alwaysdata.net/stats.php)
+- [Tech](https://hornung.alwaysdata.net/tech.php)
+- [Site Map](https://hornung.alwaysdata.net/site_map.php)
+
