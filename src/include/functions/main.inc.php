@@ -114,8 +114,8 @@ function def_list_regions(){
  * @param string $departement Le code du département.
  * @return array Un tableau des villes appartenant au département.
  */
-function villes_de_dep(string $departement):array{
-    $csv = fopen(VIL_PATH, "r");
+function villes_de_dep(string $departement, string $path=VIL_PATH):array{
+    $csv = fopen($path, "r");
     $villes = [];
     if (($csv) !== false) {
 

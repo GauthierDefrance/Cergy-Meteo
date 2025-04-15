@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit;
 }
 
-include_once "./include/functions/main.inc.php";
+include_once "../include/functions/main.inc.php";
 
 header('Content-Type: application/json');
 
