@@ -25,11 +25,11 @@ require "./include/functions/stats.inc.php";
     <h1>Stats</h1>
 
     <section>
-        <h2 id="Stats">Statistiques du Site</h2>
+        <h2 id="Stats"><?php if($lang=="fr"){ echo "Statistiques du Site";} else { echo "Website stats";} ?></h2>
 
         <article>
-            <h3 id="Stats-Pages">Pages les plus recherché</h3>
-            <p>Nombres total de visites : <strong><?= getDataListNBTotalVisits() ?></strong></p>
+            <h3 id="Stats-Pages"><?php if($lang=="fr"){ echo "Pages les plus recherché";} else { echo "Most searched pages";} ?></h3>
+            <p><?php if($lang=="fr"){ echo "Nombres total de visites";} else { echo "Total number of visits";} ?> : <strong><?= getDataListNBTotalVisits() ?></strong></p>
             <?php echo getDataListMostVisitedPages(); ?>
             <div class="graph">
                 <canvas id="pagesChart" width="100" height="100"></canvas>
@@ -37,7 +37,7 @@ require "./include/functions/stats.inc.php";
         </article>
 
         <article>
-            <h3 id="Stats-Ville">Villes les plus recherché</h3>
+            <h3 id="Stats-Ville"><?php if($lang=="fr"){ echo "Villes les plus recherché";} else { echo "Most searched cities";} ?></h3>
             <?php echo getDataListMostSearchedCities(10); ?>
             <div class="graph">
                 <canvas id="citiesChart" width="100" height="100"></canvas>

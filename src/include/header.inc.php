@@ -9,8 +9,12 @@ if(isset($_GET['ville']) && isset($_GET['departement']) && isset($_GET['region']
     increase_ville_hits($_GET['ville'],$_GET['departement']);
 }
 
+global $lang;
 $lang = $_COOKIE['lang'] ?? "fr";
-if(isset($_GET['lang'])) $lang=$_GET['lang'];
+if(isset($_GET['lang'])) {
+    $lang=$_GET['lang'];
+    set_lang($lang);
+}
 if(!($lang=="fr"||$lang=="en"))$lang = "fr";
 
 require_once "/home/hornung/www/include/functions/increasePageNumber.php";
@@ -18,11 +22,11 @@ require_once "/home/hornung/www/include/functions/increasePageNumber.php";
 ?>
 
 <!DOCTYPE html>
-<html lang="<?php if(lang=="fr"){ echo "fr";} else {echo "en";}?>">
+<html lang=<?php if($lang=="fr"){ echo "'fr'";} else {echo "'en'";}?>>
     <head>
         <title><?= $title;?></title>
         <meta charset='UTF-8'/>
-        <meta name='author' content='<?php if(lang=="fr"){ echo "Hornung et Defrance";} else {echo "Hornung and Defrance";}?>'/>
+        <meta name='author' content='<?php if($lang=="fr"){ echo "Hornung et Defrance";} else {echo "Hornung and Defrance";}?>'/>
         <meta name='date' content='<?= $MadeDate ?? '' ?>'/>
         <meta name='description' content='<?= $description ?? '' ?>'/>
         <link rel="icon" type="image/png" href='./ressources/favicon.png'/>
@@ -44,7 +48,7 @@ require_once "/home/hornung/www/include/functions/increasePageNumber.php";
                     <a href="./index.php">
                         <div class="nav-menu-button">
                             <i class="fa-solid fa-house-chimney fa-xl"></i>
-                            <span><?php if(lang=="fr"){ echo "Accueil";} else {echo "Home";}?></span>
+                            <span><?php if($lang=="fr"){ echo "Accueil";} else {echo "Home";}?></span>
                         </div>
                     </a>
                 </li>
@@ -81,7 +85,7 @@ require_once "/home/hornung/www/include/functions/increasePageNumber.php";
                             Gauthier Defrance
                         </a>
                         <a href="./td/shared.php" class="button-style">
-                            <?php if(lang=="en"){ echo "Shared";} else {echo "Partagé";}?> (TD 10 et 11)
+                            <?php if($lang=="en"){ echo "Shared";} else {echo "Partagé";}?> (TD 10 et 11)
                         </a>
                     </div>
                 </li>

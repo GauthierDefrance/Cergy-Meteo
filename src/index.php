@@ -9,8 +9,8 @@ require_once "./include/functions/cookieLoading.inc.php";
 <div style="width: 100%;">
     <nav class="internal-nav">
         <ul>
-            <li><a href="#Recherche">Recherche</a></li>
-            <li><a href="#Projet">Projet</a></li>
+            <li><a href="#Recherche"><?php if($lang=="fr"){ echo "Recherche";} else { echo "Search";} ?></a></li>
+            <li><a href="#Projet"><?php if($lang=="fr"){ echo "Projet";} else { echo "Project";} ?></a></li>
             <li>Image aléatoire</li>
             <li><?php
             require_once "./include/functions/randomImage.php";
@@ -22,10 +22,10 @@ require_once "./include/functions/cookieLoading.inc.php";
 
 <main>
 
-    <h1>Accueil</h1>
+    <h1><?php if($lang=="fr"){ echo "Accueil";} else { echo "Home";} ?></h1>
 
     <section>
-        <h2 id="Recherche">Recherche</h2>
+        <h2 id="Recherche"><?php if($lang=="fr"){ echo "Recherche";} else { echo "Search";} ?></h2>
 
         <figure>
             <img src="./ressources/carte-france.webp" usemap="#france-map" alt="Carte de la France"/>
@@ -107,12 +107,23 @@ require_once "./include/functions/cookieLoading.inc.php";
 
 
     <section>
-        <h2 id="Projet">Projet</h2>
-        <p>Le but de notre projet est de créer un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France.
+        <h2 id="Projet"><?php if($lang=="fr"){ echo "Projet";} else { echo "Project";} ?></h2>
+        <?php
+        if($lang=="fr"){
+            echo "<p>Le but de notre projet est de créer un système de recherche d'informations météo dans un endroit donné pour un utilisateur en France.
             Nous combinerons des données géographiques sur la France, obtenue à partir de plusieurs fichiers CSV trouvés sur Internet, avec une carte des régions de France, ainsi que
             des API renvoyant des informations météorologiques, pour crée un système de recherche permettant à un utilisteur de trouver la météo à l'endroit désiré.
             Dans la section ci-dessous, vous trouverez la première version du moteur de recherche météo. Elle est fonctionelle.
-        </p>
+        </p>";
+        } else {
+            echo "<p>The goal of our project is to create a weather information search system for a specific location in France.
+            We will combine geographic data about France, obtained from various CSV files found online, with a map of the French regions,
+            as well as APIs that provide weather information, to build a search system that allows a user to find the weather for a chosen location.
+            In the section below, you will find the first version of the weather search engine. It is fully functional.
+        </p>";
+        }
+        ?>
+
     </section>
 
 

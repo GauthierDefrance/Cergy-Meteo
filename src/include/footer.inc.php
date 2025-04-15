@@ -3,10 +3,10 @@
         <?php
         if ($lang=="fr") {
             echo "<p>Ce site vous est proposé par <strong>Thomas Hornung</strong> et <strong>Gauthier Defrance</strong> du groupe L2I-C à CY CERGY PARIS UNIVERSITÉ</p>
-        <p>Cette page a été affiché <?= $currentHits ?> fois.</p>";
+        <p>Cette page a été affiché $currentHits fois.</p>";
         } else {
             echo "<p>This website is brought to you by <strong>Thomas Hornung</strong> and <strong>Gauthier Defrance</strong> from the L2I-C group at CY CERGY PARIS UNIVERSITY.</p>
-        <p>This page has been viewed <?= $currentHits ?> times.</p>";
+        <p>This page has been viewed $currentHits times.</p>";
         }
         ?>
     <hr />
@@ -46,7 +46,7 @@
                     <a href="./site_map.php">
                         <div class="nav-menu-button">
                             <i class="fa-solid fa-map-location-dot fa-2xl"></i>
-                            <span><?php if(lang=="fr"){ echo "Carte";} else {echo "Map";}?></span>
+                            <span><?php if($lang=="fr"){ echo "Carte";} else {echo "Map";}?></span>
                         </div>
                     </a>
                 </li>
@@ -64,7 +64,7 @@
 
     <hr />
 
-    <a href="#"><?php if(lang=="fr"){ echo "Haut de page";} else {echo "Start of the page";}?></a>
+    <a href="#"><?php if($lang=="fr"){ echo "Haut de page";} else {echo "Start of the page";}?></a>
 
 
 </footer>

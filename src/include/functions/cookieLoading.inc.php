@@ -21,6 +21,11 @@ function set_mode(string $mode):void{
     setcookie('mode', $mode, time() + (86400 * 30), "/");
 }
 
+/**
+ * Modifie la langue sélectionné dans les cookies.
+ * @param string $lang
+ * @return void
+ */
 function set_lang(string $lang) {
     setcookie('lang',$lang, time() + (86400 * 30), "/");
 }

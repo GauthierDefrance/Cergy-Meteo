@@ -27,9 +27,9 @@ require "./include/header.inc.php";
 </div>
 
 <main>
-    <h1 id="Dev-Tech">Developpement et Technique</h1>
+    <h1 id="Dev-Tech"><?php if($lang=="fr"){ echo "Developpement et Technique";} else { echo "Developpement and Tech";} ?></h1>
     <section>
-        <h2 id="ImageOfTheDay">Image du Jour</h2>
+        <h2 id="ImageOfTheDay"><?php if($lang=="fr"){ echo "Image du jour";} else { echo "Image of the day";} ?></h2>
         <?php
             if($media_type=="image"){
                 echo("
