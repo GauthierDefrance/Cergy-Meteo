@@ -9,11 +9,11 @@
 
 ## 🗂️ Sommaire
 
-- [Présentation](#presentation)
-- [Fonctionnalités](#fonctionnalites)
-- [Utilisation](#utilisation)
-- [Technologies utilisées](#technologies-utilisees)
-- [URL utiles](#url-utiles)
+- [📌 Présentation](#-presentation)
+- [⚙️ Fonctionnalités](#-fonctionnalites)
+- [🖥️ Utilisation](#-utilisation)
+- [🛠️ Technologies utilisées](#-technologies-utilisees)
+- [📧 URL utiles](#-url-utiles)
 
 ---
 
