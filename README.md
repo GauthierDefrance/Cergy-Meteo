@@ -9,15 +9,15 @@
 
 ## 🗂️ Sommaire
 
-- [📌 Présentation](#-présentation)
-- [⚙️ Fonctionnalités](#-fonctionnalités)
+- [📌 Présentation](#-presentation)
+- [⚙️ Fonctionnalités](#-fonctionnalites)
 - [🖥️ Utilisation](#-utilisation)
-- [🛠️ Technologies utilisées](#-technologies-utilisées)
+- [🛠️ Technologies utilisées](#-technologies-utilisees)
 - [📧 URL utiles](#-url-utiles)
 
 ---
 
-## 📌 Présentation
+## 📌 Presentation
 
 **CloudWatch** est un projet web développé pour afficher les données météorologique des villes françaises.
 
@@ -28,7 +28,7 @@ Il s'adresse aux utilisateurs souhaitant :
 
 ---
 
-## ⚙️ Fonctionnalités
+## ⚙️ Fonctionnalites
 
 - ✅ Recherche météo par région => département => ville
 - ✅ Statistiques sur les recherches les plus fréquentes  
@@ -76,7 +76,7 @@ Il s'adresse aux utilisateurs souhaitant :
 ---
 
 
-## 🛠️ Technologies Utilisées
+## 🛠️ Technologies Utilisees
 
 - [🌥️ OpenMeteo API](https://open-meteo.com/)
 - [🗺️ GeoPlugin API](https://www.geoplugin.com/)
