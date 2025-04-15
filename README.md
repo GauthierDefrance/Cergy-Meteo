@@ -10,16 +10,16 @@
 ## 🗂️ Sommaire
 
 - [📌 Présentation](#-presentation)
-- [⚙️ Fonctionnalités](#-fonctionnalites)
+- [⚙️ Fonctionnalites](#-fonctionnalites)
 - [🖥️ Utilisation](#-utilisation)
-- [🛠️ Technologies utilisées](#-technologies-utilisees)
+- [🛠️ Technologies utilisees](#-technologies-utilisees)
 - [📧 URL utiles](#-url-utiles)
 
 ---
 
 ## 📌 Presentation
 
-**CloudWatch** est un projet web développé pour afficher les données météorologique des villes françaises.
+**CloudWatch** est un projet web développé pour afficher les données météorologiques des villes françaises.
 
 Il s'adresse aux utilisateurs souhaitant :
 - Obtenir la météo actuelle et les prévisions sur une des 7 journées à venir.
