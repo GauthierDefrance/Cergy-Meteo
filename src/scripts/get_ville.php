@@ -24,8 +24,8 @@ header('Content-Type: application/json');
  */
 
 // Récupération des paramètres depuis l'URL
-$region = $_GET['region'] ?? '';
-$departementNum = $_GET['departement'] ?? '';
+$region = sanitize_string($_GET['region']) ?? '';
+$departementNum = sanitize_string($_GET['departement']) ?? '';
 
 // Récupérer la liste des villes du département en utilisant son code
 $TabAssociatifVilles = villes_de_dep($departementNum,"../data/cities.csv");

@@ -441,7 +441,17 @@ function verifier_somme_carre(int $n): void {
     echo("Assertion validé");
 }
 
-
+/**
+ * Fonction qui normalise un string pour éviter toutes injections
+ * @param string $string le string à convertir
+ * @return string un string purger
+ */
+function sanitize_string(string $string) : string {
+    $clean = strip_tags($string);
+    $clean = htmlspecialchars($clean, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+    $clean = preg_replace('/[<>=!]/', '', $clean);
+    return $clean;
+}
 
 
 

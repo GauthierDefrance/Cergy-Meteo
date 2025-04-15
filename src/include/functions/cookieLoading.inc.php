@@ -21,6 +21,10 @@ function set_mode(string $mode):void{
     setcookie('mode', $mode, time() + (86400 * 30), "/");
 }
 
+function set_lang(string $lang) {
+    setcookie('lang',$lang, time() + (86400 * 30), "/");
+}
+
 /**
  * Récupère le mode stocké en cookie ou, s'il est indiqué, le mode passé en paramètre dans l'URL.
  * @return string le mode d'affichage.

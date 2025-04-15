@@ -34,7 +34,7 @@ if (!isset($_GET['region']) || empty($_GET['region'])) {
     exit;
 }
 
-$region = $_GET['region'];
+$region = sanitize_string($_GET['region']);
 
 $q = isset($_GET['q']) ? strtolower($_GET['q']) : '';
 
