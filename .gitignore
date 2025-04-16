@@ -2,6 +2,6 @@ out/
 *.iml
 /.idea/
 .json
-/src/protected/
+
 /src/td/
 /src/docu/
