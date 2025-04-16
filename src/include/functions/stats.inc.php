@@ -92,12 +92,12 @@ function getDataListMostSearchedCities(int $n=10) : string
         $n = sizeof($data);
         for ($k=0; $k<$n; $k++) {
             $myMap = $data[$k];
-            $result .= "<option value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></option>";
+            $result .= "<option value='{$myMap['recherches']}' data-ville='{$myMap['ville']}' data-departement='{$myMap['departement']}'></option>";
         } $result .= '</datalist>';
     } else {
         $data = getTopSearchedCities($data, $n);
         foreach ($data as $myMap) {
-            $result .= "<option value='{$myMap['recherches']}' ville='{$myMap['ville']}' departement='{$myMap['departement']}'></option>";
+            $result .= "<option value='{$myMap['recherches']}' data-ville='{$myMap['ville']}' data-departement='{$myMap['departement']}'></option>";
         }$result .= '</datalist>';
     }
     return $result;
@@ -113,7 +113,7 @@ function getDataListMostVisitedPages() : string {
     $result = "<datalist id='MostSearchedPages'>";
 
     foreach ($data as $myMap) {
-        $result .= "<option value='{$myMap['visites']}' name ='{$myMap['page']}' ></option>";
+        $result .= "<option value='{$myMap['visites']}' data-name ='{$myMap['page']}' ></option>";
     }$result .= '</datalist>';
 
     return $result;

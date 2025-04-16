@@ -1,6 +1,6 @@
 <?php
-require_once "/home/hornung/www/include/functions/cookieLoading.inc.php";
-require_once "/home/hornung/www/include/functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
+require_once "functions/cookieLoading.inc.php";
+require_once "functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
 if(isset($_GET['mode'])){
     set_mode($_GET['mode']);
 }
@@ -17,7 +17,7 @@ if(isset($_GET['lang'])) {
 }
 if(!($lang=="fr"||$lang=="en"))$lang = "fr";
 
-require_once "/home/hornung/www/include/functions/increasePageNumber.php";
+require_once "functions/increasePageNumber.php";
 
 ?>
 

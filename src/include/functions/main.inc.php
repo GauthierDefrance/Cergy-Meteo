@@ -13,8 +13,8 @@
  */
 
 /*Chemins*/
-define('REG_PATH', '/home/hornung/www/data/v_region_2024.csv')  ;
-const DEP_PATH = '/home/hornung/www/data/v_departement_2024.csv' ; //temporary absolute paths?
+define('REG_PATH', './data/v_region_2024.csv')  ;
+const DEP_PATH = './data/v_departement_2024.csv' ; //temporary absolute paths?
 const VIL_PATH = './data/cities.csv' ;
 
 /*Fonctions*/
