@@ -22,6 +22,11 @@ const IMAGES = [
     "peinture_ciel.webp" => "peinture du ciel"
 ];
 
+/**
+ * Fonction qui renvoit la liste des fichiers dans un répetoire
+ * @param $répertoire
+ * @return array|false
+ */
 function getFichiersInDirectory($répertoire) {
     if (is_dir($répertoire)) {
         $contenu = scandir($répertoire);
@@ -38,6 +43,11 @@ function getFichiersInDirectory($répertoire) {
     }
 }
 
+/**
+ * fonction qui renvoit le chemin vers une image aléatoire
+ * @return string
+ * @throws \Random\RandomException
+ */
 function getRandomImagePath() : string {
     $path = "./ressources/Galery";
     $dir = getFichiersInDirectory($path);
@@ -45,6 +55,11 @@ function getRandomImagePath() : string {
     return $dir[$random];
 }
 
+/**
+ * Fonction qui renvoit une image aléatoire dans un format HTML
+ * @return string
+ * @throws \Random\RandomException
+ */
 function getRandomImage() : string {
     $path = "./ressources/Galery";
     $IMAGE_NAME = getRandomImagePath();

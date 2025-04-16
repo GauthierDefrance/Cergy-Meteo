@@ -441,7 +441,7 @@ function calculateWindChill($temperature, $windSpeed) : string {
 }
 
 /**
- * Fonction de conversion 
+ * Fonction de conversion d'une date vers une date en français
  * @param string $date
  * @param bool $withShortDate
  * @return string
@@ -471,15 +471,13 @@ function getFrenchDayName(string $date, bool $withShortDate = false): string {
 }
 
 
-if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="" &&$_GET["region"] && $_GET["region"]!="") {
 
+if (isset($_GET["ville"])&&$_GET["ville"]!=""&&$_GET["departement"] && $_GET["departement"]!="" &&$_GET["region"] && $_GET["region"]!="") {
     $cityName = $_GET["ville"];
     $departement = $_GET["departement"];
     $region = $_GET["region"];
-
     $region_list = reg_to_depart();
     if(est_departement_dans_region($departement, $region) && ville_dans_departement( $cityName, $departement)){
-
         $weatherForecast = new WeatherForecast($cityName, $departement);
         echo $weatherForecast->displayDayForecast()."\n";
         echo $weatherForecast->displayWeeksForecast();
@@ -495,13 +493,9 @@ elseif(isset($_COOKIE["lastViewed"])){
 
     $region_list = reg_to_depart();
     if(est_departement_dans_region($departement, $region) && ville_dans_departement( $cityName, $departement)){
-
-
         $weatherForecast = new WeatherForecast($cityName, $departement);
         echo $weatherForecast->displayDayForecast()."\n";
         echo $weatherForecast->displayWeeksForecast();
-
-
     }
 
 }
