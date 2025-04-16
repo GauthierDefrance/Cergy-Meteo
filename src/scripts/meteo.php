@@ -165,17 +165,18 @@ class WeatherForecast {
      */
     public function generateDayButtons(int $n = 5): string {
         $output = "<form class='day-buttons'>";
-
         for ($i = 0; $i < $n; $i++) {
             $date = date('Y-m-d', strtotime("+$i day"));
-            $frenchDay = getFrenchDayName($date); // Appel de ta fonction
+            $frenchDay = getFrenchDayName($date);
 
-            $checked = ($i === 0) ? "checked" : "";
-            $output .= "\n<input type='radio' id='jour$i' name='jour' class='day-radio' checked='$checked' />\n";
-            $output .= "\n<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
+            $output .= "\n<input type='radio' id='jour$i' name='jour' class='day-radio'";
+            if ($i === 0) {
+                $output .= " checked";
+            }
+            $output .= " />\n";
+            $output .= "<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
         }
-
-        $output .= "\n</form>";
+        $output .= "</form>";
         return $output;
     }
 
@@ -378,12 +379,12 @@ class WeatherForecast {
 
     /**
      * Fonction qui renvoit une couleur pour une valeur donnée et une valeur min et max.
-     * @param int $temp valeur donné
-     * @param int $cold valeur minimal
-     * @param int $hot valeur maximal
+     * @param float $temp valeur donné
+     * @param float $cold valeur minimal
+     * @param float $hot valeur maximal
      * @return string
      */
-    function temperatureToColor(int $temp, int $cold, int $hot) : string {
+    function temperatureToColor(float $temp, float $cold, float $hot) : string {
         // Définition des températures extrêmes
 
         // Normalisation de la température entre 0 et 1
