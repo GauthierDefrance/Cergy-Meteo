@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file UserIp.php
+ * @brief Programme servant à obtenir l'IP d'un utilisateur connecté
+ *
+ * @author Gauthier Defrance & Thomas Hornung
+ * @date 2025-16-04
+ */
+
 
 /**
  * Méthode qui calcule l'IP de l'utilisateur actuel.

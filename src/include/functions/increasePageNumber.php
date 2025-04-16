@@ -1,4 +1,11 @@
 <?php
+/**
+ * @file increasePageNumber.php
+ * @brief Programme permettant d'incrémenter le nombre de recherche faites sur une page.
+ *
+ * @author Gauthier Defrance & Thomas Hornung
+ * @date 2025-16-04
+ */
 require_once "./include/class/Hits.php";
 
 /**

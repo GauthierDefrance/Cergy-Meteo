@@ -1,4 +1,15 @@
 <?php
+/**
+ * @file grab.php
+ * @brief Script pour actualiser l'image du jour APOD
+ *
+ * Ce script permet d'actualiser l'image du jour APOD
+ *
+ * @author Thomas Hornung
+ * @date 2025-16-04
+ */
+
+
     require_once('../protected/KEYS.php');
 
     $jsonUrl = "https://api.nasa.gov/planetary/apod?api_key=".$NASA_KEY;

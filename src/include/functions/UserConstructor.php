@@ -1,4 +1,12 @@
 <?php
+/**
+ * @file UserConstructor.php
+ * @brief Programme permettant de générer certaines variables sur la page
+ *
+ * @author Gauthier Defrance
+ * @date 2025-16-04
+ */
+
 $style=null;
 $lang=null;
 

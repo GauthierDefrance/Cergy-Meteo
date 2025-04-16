@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * @file Hits.php
+ * @brief Classe permettant d'incrémenter facilement le nombre de fois que à été affiché une page.
+ *
+ * @author Gauthier Defrance
+ * @date 2025-16-04
+ */
 
 /**
  * Classe gérant la gestion du calcul et récupération de données dans le hits.csv

@@ -1,3 +1,13 @@
+<?php
+/**
+ * @file footer.inc.php
+ * @brief Programme permettant la génération d'un footer pour une page HTML généré à la volée
+ *
+ * @author Gauthier Defrance & Thomas Hornung
+ * @date 2025-16-04
+ */
+?>
+
 <footer id="PageFooter">
 
         <?php

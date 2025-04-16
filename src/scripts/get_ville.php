@@ -1,13 +1,17 @@
 <?php
-
-/* * * * * * * * * * * * * *
+/**
+ * @file get_ville.php
+ * @brief Script pour récupérer les villes associé à un département d'une région
+ *
  * Scripts PHP fonctionnant un peu comme une API.
  * JavaScript sur la page indexe fait des requêtes à cette pages pour
  * demander quelles villes afficher selon la région, le département et des charactères tapé.
  *
  * Le Script PHP renvoit alors un JSON selon si la requête est valide ou non.
- * * * * * * * * * * * * * * */
-
+ *
+ * @author Gauthier Defrance
+ * @date 2025-16-04
+ */
 
 
 // Permet toutes les origines (peut être restreint à un domaine spécifique)

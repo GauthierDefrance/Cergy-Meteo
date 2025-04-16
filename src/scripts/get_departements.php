@@ -1,14 +1,18 @@
 <?php
 
-/* * * * * * * * * * * * * *
+/**
+ * @file get_departements.php
+ * @brief Script pour obtenir les départements d'une région
+ *
  * Scripts PHP fonctionnant un peu comme une API.
  * JavaScript sur la page indexe fait des requêtes à cette pages pour
  * demander quelles départements afficher selon le département et des charactères tapé.
  *
  * Le Script PHP renvoit alors un JSON selon si la requête est valide ou non.
- * * * * * * * * * * * * * * */
-
-
+ *
+ * @author Gauthier Defrance
+ * @date 2025-16-04
+ */
 
 // Permet toutes les origines (peut être restreint à un domaine spécifique)
 header("Access-Control-Allow-Origin: *");

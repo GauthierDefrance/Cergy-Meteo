@@ -1,4 +1,14 @@
 <?php
+/**
+ * @file header.inc.php
+ * @brief Programme permettant la génération d'un header pour une page HTML généré à la volée
+ *
+ * @author Gauthier Defrance & Thomas Hornung
+ * @date 2025-16-04
+ */
+
+
+
 require_once "functions/cookieLoading.inc.php";
 require_once "functions/main.inc.php"; //a retirer, idéalement mettre dans un hits.inc.php
 if(isset($_GET['mode'])){
