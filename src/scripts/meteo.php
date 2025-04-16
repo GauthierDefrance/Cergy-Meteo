@@ -144,7 +144,7 @@ class WeatherForecast {
     }
 
     /**
-     * 
+     * Fonction qui renvoit une image associé à un WeatherCode spécifique
      * @param $weatherCode
      * @return string
      */
@@ -158,6 +158,11 @@ class WeatherForecast {
         return $output;
     }
 
+    /**
+     * Génère $n boutons allant du jour actuel au $n-1 jours suivants.
+     * @param int $n Le nombre de jours à générer
+     * @return string
+     */
     public function generateDayButtons(int $n = 5): string {
         $output = "<form class='day-buttons'>";
 
@@ -175,7 +180,8 @@ class WeatherForecast {
     }
 
     /**
-     *
+     * Fonction qui renvoit un tableau avec une prévisions sur les 7 jours à venir
+     * pour une ville spécifique.
      * @return string
      */
     public function displayWeeksForecast() : string {
@@ -257,6 +263,7 @@ class WeatherForecast {
     }
 
     /**
+     * Fonction qui renvoit une météo sur une journée précise, génère la météo pour les 7 prochains jours.
      * @return string
      */
     public function displayDayForecast(): string {
@@ -275,7 +282,8 @@ class WeatherForecast {
     /**
      * Can predict the meteo at up to 7 days on a specific location.
      * Take 0-6 int. 0 = today, 1 = tomorrow ...
-     *
+     * @param int $day
+     * @param int $HourStep
      * @return string
      */
     private function getDayTable(int $day, int $HourStep=2): string {
@@ -323,6 +331,13 @@ class WeatherForecast {
         return $output;
     }
 
+    /**
+     * Fonction qui récupére une donnée dans un style particulier et la traite selon le jour et l'heure
+     * @param string $elem la donnée
+     * @param int $k l'heure
+     * @param int $day le jour
+     * @return string
+     */
     private function transformDataHourly(string $elem, int $k, int $day) : string{
         $data = $this->weatherData;
         $tmp = $data['hourly'][$elem][$k + ($day * 24)] ?? "";
@@ -361,7 +376,14 @@ class WeatherForecast {
         return $output;
     }
 
-    function temperatureToColor($temp, $cold, $hot) : string {
+    /**
+     * Fonction qui renvoit une couleur pour une valeur donnée et une valeur min et max.
+     * @param int $temp valeur donné
+     * @param int $cold valeur minimal
+     * @param int $hot valeur maximal
+     * @return string
+     */
+    function temperatureToColor(int $temp, int $cold, int $hot) : string {
         // Définition des températures extrêmes
 
         // Normalisation de la température entre 0 et 1
@@ -377,6 +399,12 @@ class WeatherForecast {
 
 }
 
+/**
+ * Fonction de calcule de l'indice Humidex
+ * @param $temperature
+ * @param $humidity
+ * @return string
+ */
 function calculateHumidex($temperature, $humidity) : string {
     if ($humidity <= 0 || $humidity > 100) return "-";
 
@@ -394,6 +422,12 @@ function calculateHumidex($temperature, $humidity) : string {
     return round($humidex, 1);
 }
 
+/**
+ * Fonction de calcul de l'indice WindChill
+ * @param $temperature
+ * @param $windSpeed
+ * @return string
+ */
 function calculateWindChill($temperature, $windSpeed) : string {
     // Windchill s'applique seulement si T ≤ 10°C et vent ≥ 5 km/h
     if ($temperature > 10 || $windSpeed < 5) return $temperature;
@@ -406,6 +440,12 @@ function calculateWindChill($temperature, $windSpeed) : string {
     return round($windChill, 1);
 }
 
+/**
+ * Fonction de conversion 
+ * @param string $date
+ * @param bool $withShortDate
+ * @return string
+ */
 function getFrenchDayName(string $date, bool $withShortDate = false): string {
     // Liste des jours de la semaine en français
     $days = [
