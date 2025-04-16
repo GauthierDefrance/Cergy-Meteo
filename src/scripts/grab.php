@@ -1,8 +1,7 @@
 <?php
-    require_once('/home/hornung/www/protected/KEYS.php');
+    require_once('../protected/KEYS.php');
 
     $jsonUrl = "https://api.nasa.gov/planetary/apod?api_key=".$NASA_KEY;
-    //$jsonUrl = "https://api.nasa.gov/planetary/apod?api_key=".$NASA_KEY.'&date=2025-02-05';
     $jsonPath= '../ressources/nasa_file.JSON';
     $json = file_get_contents($jsonUrl);
     if ($json === false) {
