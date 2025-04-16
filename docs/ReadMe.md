@@ -14,7 +14,7 @@ Once there, you will see two main categories :
 
 - - -
 
-## ⚙️ Data Structures
+## ⚙️ Data-Structures
 
 > In the data structure, all the used class will appear
 > you will normally see here : ConnectionWeb, Hits, User and WeatherForecast.
@@ -30,7 +30,7 @@ Once there, you will see two main categories :
 
 - - -
 
-## 🛠️ Tool used
+## 🛠️ Tool-used
 
 > This documentation was made using doxygen here is their website !
 > You should totaly check it : [https://www.doxygen.nl/](https://www.doxygen.nl/)
