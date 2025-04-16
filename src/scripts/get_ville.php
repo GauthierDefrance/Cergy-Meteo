@@ -1,5 +1,15 @@
 <?php
 
+/* * * * * * * * * * * * * *
+ * Scripts PHP fonctionnant un peu comme une API.
+ * JavaScript sur la page indexe fait des requêtes à cette pages pour
+ * demander quelles villes afficher selon la région, le département et des charactères tapé.
+ *
+ * Le Script PHP renvoit alors un JSON selon si la requête est valide ou non.
+ * * * * * * * * * * * * * * */
+
+
+
 // Permet toutes les origines (peut être restreint à un domaine spécifique)
 header("Access-Control-Allow-Origin: *");
 

@@ -1,4 +1,14 @@
-// Fonction pour extraire les données depuis un datalist
+/**
+ * Scripts JS servant à afficher des graphes et camembert
+ * selon des données stockées dans des datalist sur la page.
+ */
+
+
+/**
+ * Fonction pour extraire les données depuis un datalist
+ * @param datalistId
+ * @returns {{value: *, name}[]}
+ */
 function extractDataFromDatalist(datalistId) {
     console.log("Tentative extraction de ",datalistId);
     const datalist = document.getElementById(datalistId);

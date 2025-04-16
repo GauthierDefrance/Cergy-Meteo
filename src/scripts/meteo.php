@@ -16,6 +16,10 @@ const ElemDataDayList = Array("temperature_2m"=>"Temperature °C", "Humidex"=>"H
 
 const DayHour = 24;
 
+/**
+ * Classes permettant l'affichage et la prévision de données d'une ville précise
+ * avec un département à spécifier.
+ */
 class WeatherForecast {
 
     private $cityName;
@@ -25,7 +29,11 @@ class WeatherForecast {
     private $gpsCoord;
     private $weatherData;
 
-    // Constructeur pour initialiser la ville
+    /**
+     * Constructeur pour initialiser la ville et ses données
+     * @param $cityName
+     * @param $departement
+     */
     public function __construct($cityName, $departement) {
         $this->cityName = $cityName;
         $this->departement = $departement;
@@ -53,7 +61,10 @@ class WeatherForecast {
         return null;
     }
 
-    // Fonction pour récupérer les données météo depuis l'API Open Meteo
+    /**
+     * Fonction pour récupérer les données météo depuis l'API Open Meteo
+     * @return mixed|void
+     */
     private function fetchWeatherData() {
 
         $url = "https://api.open-meteo.com/v1/forecast?latitude=$this->latitude&longitude=$this->longitude&daily=wind_direction_10m_dominant,weathercode,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,windspeed_10m_max,winddirection_10m_dominant&hourly=temperature_2m,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m,precipitation_probability,pressure_msl,relative_humidity_2m&timezone=auto";
@@ -66,6 +77,11 @@ class WeatherForecast {
         return json_decode($response, true);
     }
 
+    /**
+     * Fonction qui renvoit une couleur associé à un WeatherCode unique.
+     * @param $code
+     * @return string[]
+     */
     function getWeatherInfo($code) : array {
         switch ($code) {
             case 0: return ['Clear', '#FFD700']; // Jaune doré
@@ -100,6 +116,11 @@ class WeatherForecast {
         }
     }
 
+    /**
+     * Fonctions qui convertie un angle en degrées en une direction Nord/Sud ...
+     * @param $degrees
+     * @return string
+     */
     private function getCardinalDirection($degrees) {
         if ($degrees >= 0 && $degrees < 22.5) {
             return 'Nord';
@@ -122,6 +143,11 @@ class WeatherForecast {
         }
     }
 
+    /**
+     * 
+     * @param $weatherCode
+     * @return string
+     */
     private function getDescImage($weatherCode): string {
         $tab = $this->getWeatherInfo($weatherCode);
         $output = "<div class='meteo-box' style='background-color:{$tab[1]};'>";

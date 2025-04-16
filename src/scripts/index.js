@@ -1,4 +1,14 @@
 /**
+ * Scripts JS servant à effectuer des requetes de villes et départements sur la page
+ * de recherche de villes. Permet alors de sélectionner aisément la page de son choix.
+ */
+
+
+
+
+
+
+/**
  * Map fonctionnement
  */
 document.addEventListener("DOMContentLoaded", function() {
