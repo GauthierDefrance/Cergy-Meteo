@@ -14,7 +14,7 @@ require "./include/functions/stats.inc.php";
             <li><a href="#Stats-Ville">Stats Villes</a></li>
             <li>Image aléatoire</li>
             <li><?php
-                require_once "./include/functions/randomImage.php";
+                require_once "./include/functions/randomImage.inc.php";
                 echo getRandomImage();
                 ?></li>
         </ul>

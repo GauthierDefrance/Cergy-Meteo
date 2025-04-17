@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['randomimage_2ephp_0',['randomImage.php',['../include_2functions_2random_image_8php.html',1,'(Global Namespace)'],['../td_2defrance_2include_2functions_2random_image_8php.html',1,'(Global Namespace)']]],
+  ['randomimage_2ephp_0',['randomImage.inc.php',['../include_2functions_2random_image_8php.html',1,'(Global Namespace)'],['../td_2defrance_2include_2functions_2random_image_8php.html',1,'(Global Namespace)']]],
   ['reg_5fnum_5fcorrespondance_1',['reg_num_correspondance',['../main_8inc_8php.html#aab8d789a5eba90abe62e1ea33768ec63',1,'main.inc.php']]],
   ['reg_5fpath_2',['REG_PATH',['../main_8inc_8php.html#a1150b21e6a1640c2b58bbb6e7b8f3d02',1,'main.inc.php']]],
   ['reg_5fto_5fdepart_3',['reg_to_depart',['../main_8inc_8php.html#a8cdb4272f74adfb3fd53eae00c4b3a17',1,'main.inc.php']]],

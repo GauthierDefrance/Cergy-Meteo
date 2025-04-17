@@ -13,7 +13,7 @@ require_once "./include/functions/cookieLoading.inc.php";
             <li><a href="#Projet"><?php if($lang=="fr"){ echo "Projet";} else { echo "Project";} ?></a></li>
             <li>Image aléatoire</li>
             <li><?php
-            require_once "./include/functions/randomImage.php";
+            require_once "./include/functions/randomImage.inc.php";
             echo getRandomImage();
             ?></li>
         </ul>

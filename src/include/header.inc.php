@@ -27,7 +27,7 @@ if(isset($_GET['lang'])) {
 }
 if(!($lang=="fr"||$lang=="en"))$lang = "fr";
 
-require_once "functions/increasePageNumber.php";
+require_once "./scripts/increasePageNumber.php";
 
 ?>
 

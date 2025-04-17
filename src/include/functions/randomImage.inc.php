@@ -1,6 +1,6 @@
 <?php
 /**
- * @file randomImage.php
+ * @file randomImage.inc.php
  * @brief Fonctions en relation avec le retrait d'images aléatoires.
  *
  * Ces fonctions permettent de trouver des fichiers images dans un dossier et 

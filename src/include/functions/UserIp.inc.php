@@ -1,6 +1,6 @@
 <?php
 /**
- * @file UserIp.php
+ * @file UserIp.inc.php
  * @brief Programme servant à obtenir l'IP d'un utilisateur connecté
  *
  * @author Gauthier Defrance & Thomas Hornung

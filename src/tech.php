@@ -19,7 +19,7 @@ require "./include/header.inc.php";
             <li><a href="#ip">IP</a></li>
             <li>Image aléatoire</li>
             <li><?php
-                require_once "./include/functions/randomImage.php";
+                require_once "./include/functions/randomImage.inc.php";
                 echo getRandomImage();
                 ?></li>
         </ul>
@@ -75,7 +75,7 @@ require "./include/header.inc.php";
     <section>
         <h2 id="ip">IP</h2>
         <?php
-            require "./include/functions/UserIp.php";
+            require "./include/functions/UserIp.inc.php";
             echo getUserLocalisation();
         ?>
 
