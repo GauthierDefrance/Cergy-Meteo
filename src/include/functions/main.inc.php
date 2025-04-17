@@ -24,8 +24,8 @@ const VIL_PATH = './data/cities.csv' ;
  *
  * @return array Tableau associatif associant le numéro d'une région à son nom.
  */
-function reg_num_correspondance(){
-    $csv = fopen(REG_PATH, "r");
+function reg_num_correspondance($path=REG_PATH){
+    $csv = fopen($path, "r");
     $reg = [];
     if (($csv) !== false) {
         //saute la première ligne
@@ -50,9 +50,9 @@ function reg_num_correspondance(){
  *
  * @return array Tableau associatif associant le nom de la région à une liste de départements, composées d'un numéro et d'un nom.
  */
-function reg_to_depart(){
-    $reg= reg_num_correspondance();
-    $csv = fopen(DEP_PATH, "r");
+function reg_to_depart($path=DEP_PATH, $rpath=REG_PATH){
+    $reg= reg_num_correspondance($rpath);
+    $csv = fopen($path, "r");
     $reg_to_deps = [];
     if (($csv) !== false) {
         //Saute la première ligne
@@ -159,8 +159,8 @@ function ville_dans_departement(string $ville, string $departement): bool {
  * @param string $departement Le code du département.
  * @return array Un tableau associatif associant le nom d'une ville d'un département à sa localisation.
  */
-function villes_de_dep_location(string $departement):array{
-    $csv = fopen(VIL_PATH, "r");
+function villes_de_dep_location(string $departement, $path=VIL_PATH):array{
+    $csv = fopen($path, "r");
     $villes = [];
     if (($csv) !== false) {
 
@@ -327,9 +327,7 @@ function get_weather_data(string $departement,string $ville){
  * @param string $ville Le nom de la ville.
  * @return void
  */
-function increase_ville_hits(string $ville,string $departement){
-    $filepath = './data/hits_villes.csv';
-
+function increase_ville_hits(string $ville,string $departement, $filepath='./data/hits_villes.csv'){
     //read mode, grab toutes les lignes du fichiers, peu éfficace sur des grands fichiers
     if (($file = fopen($filepath, 'r')) !== false) {
         $data = [];
@@ -392,8 +390,8 @@ function est_departement_dans_region($num_departement, $nom_region) {
  * @return string le code correspondant du département.
  * @throws Exception Si la région ne correspond à rien.
  */
-function exceptional_function(array $region){
-    $cor= reg_num_correspondance();
+function exceptional_function(array $region, $path=REG_PATH){
+    $cor= reg_num_correspondance($path);
     if(!isset($cor[$region])){
         throw new Exception("Exception: Le numéro de région indiqué ne correspond à aucun numéro connu. assurez vous de bien mettre 0 avant les nombre à 1 chiffre.");
     }

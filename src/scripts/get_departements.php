@@ -37,16 +37,8 @@ header('Content-Type: application/json');
  * Script qui renvoie les départements associés à une région.
  */
 
-$TabAssociatifDepartements = reg_to_depart();
+$TabAssociatifDepartements = reg_to_depart("../data/v_departement_2024.csv","../data/v_region_2024.csv");
 
-if (!isset($_GET['region']) || empty($_GET['region'])) {
-    echo json_encode([
-        "success" => false,
-        "message" => "Région invalide ou non spécifiée",
-        "data" => []
-    ]);
-    exit;
-}
 
 $region = sanitize_string($_GET['region']);
 
