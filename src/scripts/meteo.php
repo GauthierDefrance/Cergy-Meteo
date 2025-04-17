@@ -171,7 +171,7 @@ class WeatherForecast {
 
             $output .= "\n<input type='radio' id='jour$i' name='jour' class='day-radio'";
             if ($i === 0) {
-                $output .= " checked";
+                $output .= " checked='checked'";
             }
             $output .= " />\n";
             $output .= "<label for='jour$i' class='day-btn'>$frenchDay</label>\n";
