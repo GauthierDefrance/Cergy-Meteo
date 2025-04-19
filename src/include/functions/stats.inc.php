@@ -1,6 +1,6 @@
 <?php
 /**
- * @file stats.php
+ * @file stats.inc.php
  * @brief Fonctions relatives aux statistiques.
  *
  * Ces fonctions permettent de récuperer des statistiques sur les pages du site et les villes rechercés.

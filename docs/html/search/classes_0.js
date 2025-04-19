@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['connectionweb_0',['ConnectionWeb',['../class_connection_web.html',1,'']]]
+  ['hits_0',['Hits',['../class_hits.html',1,'']]]
 ];

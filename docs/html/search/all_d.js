@@ -1,10 +1,7 @@
 var searchData=
 [
-  ['main_2einc_2ephp_0',['main.inc.php',['../main_8inc_8php.html',1,'']]],
-  ['meteo_2ephp_1',['meteo.php',['../meteo_8php.html',1,'']]],
-  ['mode_2',['mode',['../include_2functions_2cookie_loading_8inc_8php.html#a0da531fc30bdf883d86d4219c3c54e07',1,'mode():&#160;cookieLoading.inc.php'],['../td_2defrance_2include_2functions_2cookie_loading_8inc_8php.html#a0da531fc30bdf883d86d4219c3c54e07',1,'mode():&#160;cookieLoading.inc.php']]],
-  ['month_5fdictionary_3',['MONTH_DICTIONARY',['../functions_8inc_8php.html#af4af3f971205eb1d4fb51f4dc7688918',1,'functions.inc.php']]],
-  ['month_5ftraduction_4',['MONTH_TRADUCTION',['../functions_8inc_8php.html#ad79915fc5fe6856987875aa5128ba367',1,'functions.inc.php']]],
-  ['most_5fsearched_5fcities_5',['most_searched_cities',['../stats_8inc_8php.html#ac6f35084efb7707055ab264889f6b64f',1,'stats.inc.php']]],
-  ['most_5fvisited_5fpages_6',['most_visited_pages',['../stats_8inc_8php.html#a71aca3f7d81a6dfda4efc7667612cc7f',1,'stats.inc.php']]]
+  ['randomimage_2einc_2ephp_0',['randomImage.inc.php',['../random_image_8inc_8php.html',1,'']]],
+  ['reg_5fnum_5fcorrespondance_1',['reg_num_correspondance',['../main_8inc_8php.html#ae8f8fbb8ddc8705677e0f2cfcbd1458f',1,'main.inc.php']]],
+  ['reg_5fto_5fdepart_2',['reg_to_depart',['../main_8inc_8php.html#a09dc8c82ec73aeb175f97b335223e654',1,'main.inc.php']]],
+  ['region_5fdata_5flist_3',['region_data_list',['../main_8inc_8php.html#a165c15df78eb0de901d10db731b4783b',1,'main.inc.php']]]
 ];

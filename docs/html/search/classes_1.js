@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['hits_0',['Hits',['../class_hits.html',1,'']]]
+  ['weatherforecast_0',['WeatherForecast',['../class_weather_forecast.html',1,'']]]
 ];
