@@ -26,6 +26,9 @@ require_once "./include/functions/cookieLoading.inc.php";
 
     <section>
         <h2 id="Recherche"><?php if($lang=="fr"){ echo "Recherche";} else { echo "Search";} ?></h2>
+        <p>
+            <?php if($lang=="fr"){ echo "Vous pouvez chercher la météo ici grâce à la carte et au formulaire ci dessous.";} else { echo "You can search the weather here by using the map and the form below.";} ?>
+        </p>
 
         <figure>
             <img src="./ressources/carte-france.webp" usemap="#france-map" alt="Carte de la France"/>
