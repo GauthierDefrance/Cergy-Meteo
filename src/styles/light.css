@@ -74,6 +74,11 @@ main {
     background-color: var(--secondary-color);
 }
 
+main a {
+    color: rgb(4, 4, 97);
+    text-decoration: none;  
+}
+
 /* Section */
 section {
     box-shadow: 5px 5px 5px var(--box-shadow-color);

@@ -24,11 +24,11 @@ require "./include/functions/stats.inc.php";
 <main>
     <h1>Stats</h1>
 
-    <section>
-        <h2 id="Stats"><?php if($lang=="fr"){ echo "Statistiques du Site";} else { echo "Website stats";} ?></h2>
+    <section id="Stats">
+        <h2 ><?php if($lang=="fr"){ echo "Statistiques du Site";} else { echo "Website stats";} ?></h2>
 
-        <article>
-            <h3 id="Stats-Pages"><?php if($lang=="fr"){ echo "Pages les plus recherché";} else { echo "Most searched pages";} ?></h3>
+        <article id="Stats-Pages">
+            <h3><?php if($lang=="fr"){ echo "Pages les plus recherché";} else { echo "Most searched pages";} ?></h3>
             <p><?php if($lang=="fr"){ echo "Nombres total de visites";} else { echo "Total number of visits";} ?> : <strong><?= getDataListNBTotalVisits() ?></strong></p>
             <?php echo getDataListMostVisitedPages(); ?>
             <div class="graph">
@@ -36,8 +36,8 @@ require "./include/functions/stats.inc.php";
             </div>
         </article>
 
-        <article>
-            <h3 id="Stats-Ville"><?php if($lang=="fr"){ echo "Villes les plus recherché";} else { echo "Most searched cities";} ?></h3>
+        <article id="Stats-Ville">
+            <h3><?php if($lang=="fr"){ echo "Villes les plus recherché";} else { echo "Most searched cities";} ?></h3>
             <?php echo getDataListMostSearchedCities(10); ?>
             <div class="graph">
                 <canvas id="citiesChart" width="100" height="100"></canvas>
